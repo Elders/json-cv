@@ -41,14 +41,23 @@ button {
     background: var(--red);
     color: #fff;
   }
+
+  &.bg {
+    background: var(--red);
+    color: #fff;
+  }
 }
 
-input {
+input,
+textarea {
   border: 1px solid var(--red);
   padding: 8px;
   appearance: none;
   -moz-appearance: textfield;
   border-radius: 8px;
+  resize: none;
+  font-family: inherit;
+  font-size: 1rem;
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -60,10 +69,24 @@ input {
   }
 }
 
+label {
+  display: block;
+}
+
 .container {
   max-width: 1600px;
   width: 85%;
   margin-inline: auto;
+}
+
+.column-name {
+  color: var(--red);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .flex {
