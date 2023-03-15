@@ -27,9 +27,32 @@ button {
   border: 1px solid var(--red);
   padding: 0.5rem 1.25rem;
   font-size: 18px;
+  transition: 0.2s background ease-in-out;
 
   &:active {
     transform: scale(0.95);
+  }
+
+  &:hover {
+    background: var(--red);
+    color: #fff;
+  }
+}
+
+input {
+  border: 1px solid var(--red);
+  padding: 8px;
+  appearance: none;
+  -moz-appearance: textfield;
+  border-radius: 8px;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  &:focus {
+    outline: none;
   }
 }
 
@@ -37,6 +60,10 @@ button {
   max-width: 1600px;
   width: 85%;
   margin-inline: auto;
+}
+
+.flex {
+  display: flex;
 }
 
 @media (prefers-color-scheme: dark) {
