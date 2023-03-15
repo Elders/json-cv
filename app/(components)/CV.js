@@ -11,5 +11,11 @@ export default function CV() {
     return <CreateCV />;
   }
 
-  return <p>asdadadss</p>;
+  return (
+    <div>
+      <nav>
+        <h1>ELDER N/ {data.elderNumber}</h1>
+      </nav>
+    </div>
+  );
 }
