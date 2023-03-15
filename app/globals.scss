@@ -1,7 +1,11 @@
+:root {
+  --red: #f03c29;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
-  margin: 30px;
+  margin: 0;
 }
 
 html,
@@ -13,6 +17,26 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  border: 1px solid var(--red);
+  padding: 0.5rem 1.25rem;
+  font-size: 18px;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.container {
+  max-width: 1600px;
+  width: 85%;
+  margin-inline: auto;
 }
 
 @media (prefers-color-scheme: dark) {
