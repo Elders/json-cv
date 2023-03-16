@@ -1,6 +1,7 @@
-import cardStyles from "../../card.module.scss";
 import { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import { CVContext } from "@/app/ContextProvivder";
+import cardStyles from "../../card.module.scss";
 
 export default function PositionEditable({ position, onSave }) {
   const [isEdit, setIsEdit] = useState(false);
@@ -17,6 +18,7 @@ export default function PositionEditable({ position, onSave }) {
   }, [position]);
 
   function saveHandler() {
+    alert("saving...");
     let positions = data.positions || [];
 
     if (!isEdit) {
@@ -26,6 +28,9 @@ export default function PositionEditable({ position, onSave }) {
         return position.id === currentPosition.id ? currentPosition : position;
       });
     }
+
+    axios.post("/api/cv", { positions });
+    // fetch("/api/cv", { method: "POST", body: JSON.stringify({ positions }) });
 
     setData({ ...data, positions });
     onSave && onSave();
