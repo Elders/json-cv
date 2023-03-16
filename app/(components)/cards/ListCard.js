@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { setData } from "@/store/slices/cv";
 import store from "@/store/store";
 import ListEditable from "./ListEditable";
-import cardStyles from "../../card.module.scss";
+import cardStyles from "@/app/(styles)/card.module.scss";
 import axios from "axios";
 
 export default function ListCard({ title, items, propName }) {

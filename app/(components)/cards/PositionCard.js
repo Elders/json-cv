@@ -1,5 +1,5 @@
 import { useState } from "react";
-import cardStyles from "../../card.module.scss";
+import cardStyles from "@/app/(styles)/card.module.scss";
 import PositionEditable from "./PositionEditable";
 
 export default function PositionCard({ position, index, ...rest }) {

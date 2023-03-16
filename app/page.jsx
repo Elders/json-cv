@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import axios from "axios";
 import ContextProvider from "./ContextProvivder";
 import CV from "./(components)/CV";

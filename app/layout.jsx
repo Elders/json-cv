@@ -1,5 +1,5 @@
-import "./globals.scss";
-import styles from "./layout.module.scss";
+import "@/app/(styles)/globals.scss";
+import styles from "@/app/(styles)/layout.module.scss";
 
 export default function RootLayout({ children }) {
   return (

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import store from "@/store/store";
 import { setData } from "@/store/slices/cv";
-import cardStyles from "../../card.module.scss";
+import cardStyles from "@/app/(styles)/card.module.scss";
 
 export default function PositionEditable({ position, onSave }) {
   const [isEdit, setIsEdit] = useState(false);
