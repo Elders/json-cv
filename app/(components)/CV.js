@@ -1,10 +1,10 @@
 "use client";
 import { useState, useContext } from "react";
 import { CVContext } from "../ContextProvivder";
+import ListCard from "./cards/ListCard";
 import PositionCard from "./cards/PositionCard";
 import PositionEditable from "./cards/PositionEditable";
 import CreateCV from "./CreateCV";
-import styles from "./CV.module.scss";
 
 export default function CV() {
   const { data } = useContext(CVContext);
@@ -29,10 +29,12 @@ export default function CV() {
         {isAdding ? (
           <PositionEditable onSave={() => setIsAdding(false)} />
         ) : null}
-        <button className="bg" onClick={() => setIsAdding(!isAdding)}>
-          {isAdding ? "Cancel" : "Add +"}
+        <button className="bg no-print" onClick={() => setIsAdding(!isAdding)}>
+          {isAdding ? "Cancel" : "Add Position +"}
         </button>
       </section>
+
+      <ListCard title="Tools & Technologies" items={data.technologies || []} />
     </div>
   );
 }

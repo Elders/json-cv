@@ -1,8 +1,10 @@
+import fs from "fs";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import ContextProvider from "./ContextProvivder";
 import styles from "./page.module.scss";
 import CV from "./(components)/CV";
+import Test from "./Test";
 
 const inter = Inter({ subsets: ["latin"] });
 

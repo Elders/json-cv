@@ -38,6 +38,18 @@
   }
 }
 
+.list_items_holder {
+  width: max-content;
+  display: flex;
+  flex-flow: column wrap;
+  height: 160px;
+
+  & > * {
+    padding-inline: 20px;
+    line-height: 2;
+  }
+}
+
 .position_description {
   width: 80%;
 }
