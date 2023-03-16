@@ -3,7 +3,7 @@ import cardStyles from "../../card.module.scss";
 
 export default function ListEditable({ title, items, holderClass, onSave }) {
   const [renderItems, setRenderItems] = useState(items);
-  const itemsValues = useRef(items);
+  const itemsValues = useRef([...items]);
 
   function addItem() {
     setRenderItems([...renderItems, ""]);

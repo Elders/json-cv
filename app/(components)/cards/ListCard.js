@@ -1,14 +1,18 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { setData } from "@/store/slices/cv";
+import store from "@/store/store";
 import ListEditable from "./ListEditable";
 import cardStyles from "../../card.module.scss";
-import { CVContext } from "@/app/ContextProvivder";
+import axios from "axios";
 
-export default function ListCard({ title, items }) {
+export default function ListCard({ title, items, propName }) {
   const [isEditing, setIsEditing] = useState(false);
-  const { data, setData } = useContext(CVContext);
 
   function updateItems(newItems) {
-    setData({ ...data, technologies: newItems });
+    const updatedData = { [propName]: newItems };
+    store.dispatch(setData(updatedData));
+    axios.post("/api/cv", updatedData);
     setIsEditing(false);
   }
 

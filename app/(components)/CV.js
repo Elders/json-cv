@@ -35,7 +35,11 @@ export default function CV() {
         </button>
       </section>
 
-      <ListCard title="Tools & Technologies" items={data.technologies || []} />
+      <ListCard
+        title="Tools & Technologies"
+        items={data.technologies || []}
+        propName="technologies"
+      />
     </div>
   );
 }
