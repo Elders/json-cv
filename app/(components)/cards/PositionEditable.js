@@ -1,12 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { CVContext } from "@/app/ContextProvivder";
+import { useSelector } from "react-redux";
+import store from "@/store/store";
+import { setData } from "@/store/slices/cv";
 import cardStyles from "../../card.module.scss";
 
 export default function PositionEditable({ position, onSave }) {
   const [isEdit, setIsEdit] = useState(false);
   const [currentPosition, setCurrentPosition] = useState(position || {});
-  const { data, setData } = useContext(CVContext);
+  const data = useSelector((state) => state.cv);
 
   useEffect(() => {
     if (!position) {
@@ -18,7 +20,6 @@ export default function PositionEditable({ position, onSave }) {
   }, [position]);
 
   function saveHandler() {
-    alert("saving...");
     let positions = data.positions || [];
 
     if (!isEdit) {
@@ -30,9 +31,7 @@ export default function PositionEditable({ position, onSave }) {
     }
 
     axios.post("/api/cv", { positions });
-    // fetch("/api/cv", { method: "POST", body: JSON.stringify({ positions }) });
-
-    setData({ ...data, positions });
+    store.dispatch(setData({ positions }));
     onSave && onSave();
   }
 
@@ -40,7 +39,9 @@ export default function PositionEditable({ position, onSave }) {
     let positions = data.positions.filter(
       (position) => position.id !== currentPosition.id
     );
-    setData({ ...data, positions });
+
+    axios.post("/api/cv", { positions });
+    store.dispatch(setData({ positions }));
   }
 
   return (
