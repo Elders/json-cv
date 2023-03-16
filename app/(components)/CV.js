@@ -1,14 +1,15 @@
 "use client";
 import { useState, useContext } from "react";
 import { CVContext } from "../ContextProvivder";
+import { useSelector } from "react-redux";
 import ListCard from "./cards/ListCard";
 import PositionCard from "./cards/PositionCard";
 import PositionEditable from "./cards/PositionEditable";
 import CreateCV from "./CreateCV";
 
 export default function CV() {
-  const { data } = useContext(CVContext);
   const [isAdding, setIsAdding] = useState(false);
+  const data = useSelector((state) => state.cv);
 
   if (!data) {
     return <CreateCV />;

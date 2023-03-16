@@ -8,7 +8,7 @@ export async function GET() {
     data = res;
   } catch (err) {}
 
-  return NextResponse.json(data);
+  return NextResponse.json(JSON.parse(data));
 }
 
 export async function POST(req) {
