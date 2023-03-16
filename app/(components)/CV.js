@@ -40,6 +40,12 @@ export default function CV() {
         items={data.technologies || []}
         propName="technologies"
       />
+
+      <ListCard
+        title="Industry knowledge"
+        items={data.industryKnowledge || []}
+        propName="industryKnowledge"
+      />
     </div>
   );
 }
