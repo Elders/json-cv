@@ -1,16 +1,12 @@
-import Link from "next/link";
+import store from "@/store/store";
+import EditButton from "./EditButton";
 
 export default function Navbar() {
+  const { cv: cvData } = store.getState();
   return (
     <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-      </ul>
+      <h1>ELDER N/ {cvData.elderNumber}</h1>
+      <EditButton />
     </nav>
   );
 }

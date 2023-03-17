@@ -1,3 +1,4 @@
+"use client";
 import { useState, useContext } from "react";
 import { CVContext } from "../ContextProvivder";
 import styles from "./CV.module.scss";
