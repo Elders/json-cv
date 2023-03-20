@@ -9,6 +9,7 @@ import CreateCV from "./CreateCV";
 import store from "@/store/store";
 import { addPosition, addProject } from "@/store/slices/app";
 import EducationCard from "./cards/EducationCard";
+import cardStyles from "@/app/(styles)/card.module.scss";
 
 export default function CVContent() {
   const { isEditing } = useSelector((state) => state.app);
@@ -41,7 +42,7 @@ export default function CVContent() {
 
       <ListCard
         title="Tools & Technologies"
-        items={data.technologies || []}
+        items={appData.cv.technologies || []}
         propName="technologies"
       />
 
@@ -51,7 +52,7 @@ export default function CVContent() {
         propName="industryKnowledge"
       />
 
-      <section>
+      <section className={cardStyles.langs_and_tech}>
         <LanguagesCard languages={appData.cv.languages || []} />
         <EducationCard items={appData.cv.education || []} />
       </section>

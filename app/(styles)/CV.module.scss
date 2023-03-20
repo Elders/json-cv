@@ -1,0 +1,55 @@
+.no_cv_buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.cv_wrapper {
+  position: relative;
+}
+
+.cv_navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+
+  & > * {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  @media print {
+    background-color: transparent;
+  }
+}
+
+.create_holder {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+
+  input {
+    flex-grow: 0.6;
+  }
+
+  button {
+    flex-grow: 0.4;
+  }
+}
+
+.logo {
+  width: 80px;
+}
+
+.waves {
+  position: absolute;
+  left: -100px;
+  bottom: -15px;
+  z-index: -1;
+}

@@ -17,9 +17,11 @@ export default function LanguagesCard({ languages }) {
         {languages.map((language) => {
           return (
             <div key={language.name}>
-              <h4 className="column-name">{language.name}</h4>
+              <h4 className={`${cardStyles.language} ${cardStyles.heading}`}>
+                {language.name}
+              </h4>
               <div className={cardStyles.language_info}>
-                {language.note}{" "}
+                <h4>{language.note} </h4>
                 <div className={cardStyles.language_tags}>
                   {language.tags?.map((tag) => {
                     return (

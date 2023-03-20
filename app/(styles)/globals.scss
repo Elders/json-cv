@@ -1,5 +1,5 @@
 :root {
-  --red: #f03c29;
+  --red: #e40521;
 }
 
 * {
@@ -11,7 +11,10 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+}
+
+body {
+  background: linear-gradient(#f7f7f7, #e4d1d1, #e6c4c2);
 }
 
 a {
@@ -21,6 +24,21 @@ a {
 
 h1 {
   color: var(--red);
+}
+
+h2,
+h3,
+h4 {
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+p {
+  font-size: 1.15rem;
+  margin-block: 0.8rem;
 }
 
 button {
@@ -81,7 +99,7 @@ label {
 
 .column-name {
   color: var(--red);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
 }
 
@@ -91,6 +109,17 @@ label {
 
 .flex {
   display: flex;
+}
+
+.tag {
+  color: #2d2e2d;
+  background: #d8d8d8;
+  display: flex;
+  align-items: center;
+  border-radius: 24px;
+  padding: 10px;
+  font-weight: 500;
+  user-select: none;
 }
 
 @media (prefers-color-scheme: dark) {

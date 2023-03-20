@@ -1,5 +1,11 @@
 import "@/app/(styles)/globals.scss";
+import { Montserrat } from "@next/font/google";
 import styles from "@/app/(styles)/layout.module.scss";
+
+const montserrat = Montserrat({
+  subsets: ["latin", "cyrillic"],
+  variable: "--montserrat",
+});
 
 export default function RootLayout({ children }) {
   return (
@@ -10,7 +16,7 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body>
-        <div className="container">
+        <div className={`container ${montserrat.variable}`}>
           <div className={styles.layout_holder}>{children}</div>
         </div>
       </body>

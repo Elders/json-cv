@@ -4,7 +4,7 @@ import store from "@/store/store";
 import { setData } from "@/store/slices/cv";
 import axios from "axios";
 
-export default function FormWrapper({ children }) {
+export default function FormWrapper({ children, ...rest }) {
   const { cv, isEditing } = useSelector((state) => state.app);
 
   function submitHandler(e) {
@@ -14,5 +14,9 @@ export default function FormWrapper({ children }) {
     axios.post("/api/cv", { ...cv });
   }
 
-  return <form onSubmit={submitHandler}>{children}</form>;
+  return (
+    <form onSubmit={submitHandler} {...rest}>
+      {children}
+    </form>
+  );
 }

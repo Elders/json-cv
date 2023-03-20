@@ -1,7 +1,7 @@
 "use client";
 import { useState, useContext } from "react";
 import { CVContext } from "../ContextProvivder";
-import styles from "./CV.module.scss";
+import styles from "../(styles)/CV.module.scss";
 
 export default function CreateCV() {
   const [number, setNumber] = useState(1);

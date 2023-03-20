@@ -11,7 +11,7 @@ export default function PositionCard({ position, index, ...rest }) {
   }
 
   return (
-    <div className={`${cardStyles.card} pointer`} {...rest}>
+    <div className={`${cardStyles.card}`} {...rest}>
       <header className={cardStyles.header}>
         <div>
           <h3 className="column-name">
@@ -31,19 +31,19 @@ export default function PositionCard({ position, index, ...rest }) {
             <h4 className="column-name">COMPANY NAME</h4>
             <h3>{position.companyName}</h3>
           </div>
-          {position.technologyStack ? (
-            <div className={cardStyles.position_description}>
-              <h3>Technology Stack: </h3>
-              <p>{position.technologyStack}</p>
-            </div>
-          ) : null}
-          {position.description ? (
-            <div className={cardStyles.position_description}>
-              <h3>Description: </h3>
-              <p>{position.description}</p>
-            </div>
-          ) : null}
         </div>
+        {position.technologyStack ? (
+          <div className={cardStyles.position_technology_stack}>
+            <h2>Technology Stack: </h2>
+            <p>{position.technologyStack}</p>
+          </div>
+        ) : null}
+        {position.description ? (
+          <div className={cardStyles.position_description}>
+            <h2>Description: </h2>
+            <p>{position.description}</p>
+          </div>
+        ) : null}
       </main>
     </div>
   );
