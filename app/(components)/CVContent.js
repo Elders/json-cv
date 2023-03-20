@@ -8,6 +8,7 @@ import CreateCV from "./CreateCV";
 import PositionEditable from "./cards/PositionEditable";
 import store from "@/store/store";
 import { createPosition } from "@/store/slices/app";
+import EducationCard from "./cards/EducationCard";
 
 export default function CVContent() {
   const { isEditing } = useSelector((state) => state.app);
@@ -67,6 +68,7 @@ export default function CVContent() {
 
       <div>
         <LanguagesCard languages={appData.cv.languages || []} />
+        <EducationCard items={appData.cv.education || []} />
       </div>
     </>
   );

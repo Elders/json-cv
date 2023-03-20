@@ -2,7 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const cvSlice = createSlice({
   name: "cv",
-  initialState: null,
+  initialState: {
+    education: [
+      {
+        name: "",
+        description: "",
+      },
+    ],
+  },
   reducers: {
     setData(state, { payload }) {
       return { ...state, ...payload };

@@ -54,6 +54,27 @@ const appSlice = createSlice({
         });
       });
     },
+
+    addEducation(state, { payload }) {
+      return produce(state, (draft) => {
+        draft.cv.education.push({
+          name: "",
+          description: "",
+        });
+      });
+    },
+
+    editEducation(state, { payload }) {
+      return produce(state, (draft) => {
+        draft.cv.education[payload.index][payload.prop] = payload.value;
+      });
+    },
+
+    deleteEducation(state, { payload }) {
+      return produce(state, (draft) => {
+        draft.cv.education.splice(payload, 1);
+      });
+    },
   },
 });
 
@@ -64,6 +85,9 @@ export const {
   updateCv,
   deletePosition,
   updateLanguages,
+  addEducation,
+  deleteEducation,
+  editEducation,
 } = appSlice.actions;
 
 export default appSlice.reducer;
