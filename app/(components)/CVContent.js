@@ -16,11 +16,11 @@ export default function CVContent() {
   const appData = useSelector((state) => state.app);
   const newPosition = appData.cv?.positions[appData.cv.positions.length - 1];
 
-  useEffect(() => {
-    if (isAdding) {
-      store.dispatch(createPosition());
-    }
-  }, [isAdding]);
+  // useEffect(() => {
+  //   if (isAdding) {
+  //     store.dispatch(createPosition());
+  //   }
+  // }, [isAdding]);
 
   if (!data) {
     return <CreateCV />;
@@ -34,20 +34,21 @@ export default function CVContent() {
             <PositionCard key={position.id} position={position} index={index} />
           );
         })}
-        {isEditing && isAdding ? (
+        {/* {isEditing && isAdding ? (
           <PositionEditable
             onSave={() => setIsAdding(false)}
             positionID={newPosition.id}
             isAdding={true}
           />
-        ) : null}
+        ) : null} */}
 
         {isEditing ? (
           <button
             className="bg no-print"
-            onClick={() => setIsAdding(!isAdding)}
+            onClick={() => store.dispatch(createPosition())}
           >
-            {isAdding ? "Cancel" : "Add Position +"}
+            {/* {isAdding ? "Cancel" : "Add Position +"} */}
+            Add Position +
           </button>
         ) : null}
       </section>
