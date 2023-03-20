@@ -1,30 +1,23 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
-import { setData } from "@/store/slices/cv";
+import { setData as updateCv } from "@/store/slices/app";
 import store from "@/store/store";
 import ListEditable from "./ListEditable";
 import cardStyles from "@/app/(styles)/card.module.scss";
 import axios from "axios";
 
 export default function ListCard({ title, items, propName }) {
-  const [isEditing, setIsEditing] = useState(false);
+  const { isEditing } = useSelector((state) => state.app);
 
-  function updateItems(newItems) {
-    const updatedData = { [propName]: newItems };
-    store.dispatch(setData(updatedData));
-    axios.post("/api/cv", updatedData);
-    setIsEditing(false);
+  function updateEditing(value) {
+    store.dispatch(setAppData({ isEditing: value }));
   }
 
   if (isEditing) {
-    return <ListEditable title={title} items={items} onSave={updateItems} />;
+    return <ListEditable title={title} items={items} propName={propName} />;
   }
 
   return (
-    <div
-      className={`${cardStyles.card} pointer`}
-      onClick={() => setIsEditing(true)}
-    >
+    <div className={`${cardStyles.card} pointer`}>
       <header className={cardStyles.header}>
         <h2>{title}</h2>
       </header>

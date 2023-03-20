@@ -1,19 +1,17 @@
 import { useState } from "react";
 import LanguagesEditable from "./LanguagesEditable";
 import cardStyles from "@/app/(styles)/card.module.scss";
+import { useSelector } from "react-redux";
 
 export default function LanguagesCard({ languages }) {
-  const [isEditing, setIsEditing] = useState(false);
+  const { isEditing } = useSelector((state) => state.app);
 
   if (isEditing) {
     return <LanguagesEditable languages={languages} />;
   }
 
   return (
-    <div
-      className={`${cardStyles.card} pointer`}
-      onClick={() => setIsEditing(true)}
-    >
+    <div className={`${cardStyles.card} pointer`}>
       <h2>Languages</h2>
       <div>
         {languages.map((language) => {

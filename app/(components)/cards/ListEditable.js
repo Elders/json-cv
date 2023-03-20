@@ -1,13 +1,15 @@
-import { useRef, useState } from "react";
 import cardStyles from "@/app/(styles)/card.module.scss";
 import MultipleInputs from "../MultipleInputs";
+import store from "@/store/store";
+import { updateCv } from "@/store/slices/app";
 
-export default function ListEditable({ title, items, holderClass, onSave }) {
-  const [currentItems, setCurrentItems] = useState(items);
-
-  function saveHandler() {
-    const items = currentItems.filter(Boolean);
-    onSave && onSave(items);
+export default function ListEditable({ title, items, holderClass, propName }) {
+  function updateItems(newItems) {
+    store.dispatch(
+      updateCv({
+        [propName]: newItems.filter(Boolean),
+      })
+    );
   }
 
   return (
@@ -16,11 +18,7 @@ export default function ListEditable({ title, items, holderClass, onSave }) {
         <h2>{title}</h2>
       </header>
       <main className={`${cardStyles.list_items_holder} ${holderClass}`}>
-        <MultipleInputs items={items} onChange={setCurrentItems} />
-
-        <button className="bg" onClick={saveHandler}>
-          Save
-        </button>
+        <MultipleInputs items={items} onChange={updateItems} />
       </main>
     </div>
   );

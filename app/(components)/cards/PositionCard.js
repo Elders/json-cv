@@ -1,26 +1,17 @@
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import cardStyles from "@/app/(styles)/card.module.scss";
 import PositionEditable from "./PositionEditable";
 
 export default function PositionCard({ position, index, ...rest }) {
-  const [isEditing, setIsEditing] = useState(false);
+  const { isEditing } = useSelector((state) => state.app);
   const indexValue = (index + 1).toString().padStart(2, "0");
 
   if (isEditing) {
-    return (
-      <PositionEditable
-        position={position}
-        onSave={() => setIsEditing(false)}
-      />
-    );
+    return <PositionEditable positionID={position.id} />;
   }
 
   return (
-    <div
-      className={`${cardStyles.card} pointer`}
-      onClick={() => setIsEditing(true)}
-      {...rest}
-    >
+    <div className={`${cardStyles.card} pointer`} {...rest}>
       <header className={cardStyles.header}>
         <div>
           <h3 className="column-name">

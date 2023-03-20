@@ -1,15 +1,1 @@
-{
-  "elderNumber": 1,
-  "industryKnowledge": ["Agi4"],
-  "technologies": ["HTML", "JavaScript", "PHP", "asdasdasd"],
-  "positions": [
-    { "id": "af98aa05-8ac0-4369-b10a-e07758ce52c4", "name": "React Developer" }
-  ],
-  "languages": [
-    {
-      "name": "Eng",
-      "note": "(Native)",
-      "tags": ["Reading", "Speaking", "Writing", "SAVE?", ""]
-    }
-  ]
-}
+{"elderNumber":1,"industryKnowledge":["Agi4","Agi5r"],"technologies":["HTML","asdasdasd"],"positions":[{"id":"af98aa05-8ac0-4369-b10a-e07758ce52c4","name":"Frontend Developer","periodStart":"2022","periodEnd":"PRESENT","projectName":"CoSync","companyName":"Elders222","technologyStack":"React, Bootstrap, HTML5, SCSS","description":"An app"},{"id":"17cf593f-38d8-49d0-9e07-a7efef8f4ffb","name":"Backend Developer","periodStart":"2016","periodEnd":"2019","projectName":"ASD","companyName":"ASD","technologyStack":"ASD","description":"ASd"}],"languages":[{"name":"English","note":"C2","tags":["ASDASDADA","Speaking","Writing","NAZDSFA","sadasdadasas","kuche"]}]}

@@ -3,6 +3,7 @@
 // import { useSelector } from "react-redux";
 
 import CVContent from "./CVContent";
+import FormWrapper from "./FormWrapper";
 import Navbar from "./Navbar";
 
 export default function CV() {
@@ -10,10 +11,10 @@ export default function CV() {
   // const data = useSelector((state) => state.cv);
 
   return (
-    <div>
+    <FormWrapper>
       <Navbar />
 
       <CVContent />
-    </div>
+    </FormWrapper>
   );
 }
