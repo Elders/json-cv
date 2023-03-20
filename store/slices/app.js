@@ -22,7 +22,7 @@ const appSlice = createSlice({
       });
     },
 
-    createPosition(state, _) {
+    addPosition(state, _) {
       return produce(state, (draft) => {
         draft.cv.positions.push({ id: crypto.randomUUID() });
       });
@@ -91,12 +91,42 @@ const appSlice = createSlice({
         draft.cv.education.splice(payload, 1);
       });
     },
+
+    addProject(state) {
+      return produce(state, (draft) => {
+        if (!draft.cv.projects) draft.cv.projects = [];
+        draft.cv.projects.push({
+          name: "",
+          role: "",
+          description: "",
+          environment: "",
+          references: [],
+          id: crypto.randomUUID(),
+        });
+      });
+    },
+
+    editProject(state, { payload }) {
+      return produce(state, (draft) => {
+        const { id, prop, value } = payload;
+        const project = draft.cv.projects.find((project) => project.id === id);
+        project[prop] = value;
+      });
+    },
+
+    deleteProject(state, { payload }) {
+      return produce(state, (draft) => {
+        draft.cv.projects = draft.cv.projects.filter(
+          (project) => project.id !== payload
+        );
+      });
+    },
   },
 });
 
 export const {
   setData,
-  createPosition,
+  addPosition,
   updatePosition,
   updateCv,
   deletePosition,
@@ -106,6 +136,9 @@ export const {
   addEducation,
   deleteEducation,
   editEducation,
+  addProject,
+  editProject,
+  deleteProject,
 } = appSlice.actions;
 
 export default appSlice.reducer;
