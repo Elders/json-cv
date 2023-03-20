@@ -55,7 +55,23 @@ const appSlice = createSlice({
       });
     },
 
-    addEducation(state, { payload }) {
+    addLanguage(state) {
+      return produce(state, (draft) => {
+        draft.cv.languages.push({
+          name: "",
+          note: "",
+          tags: [],
+        });
+      });
+    },
+
+    deleteLanguage(state, { payload }) {
+      return produce(state, (draft) => {
+        draft.cv.languages.splice(payload, 1);
+      });
+    },
+
+    addEducation(state) {
       return produce(state, (draft) => {
         draft.cv.education.push({
           name: "",
@@ -85,6 +101,8 @@ export const {
   updateCv,
   deletePosition,
   updateLanguages,
+  deleteLanguage,
+  addLanguage,
   addEducation,
   deleteEducation,
   editEducation,

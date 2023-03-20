@@ -1,19 +1,33 @@
 import cardStyles from "@/app/(styles)/card.module.scss";
 import MultipleInputs from "../MultipleInputs";
 import store from "@/store/store";
-import { updateLanguages } from "@/store/slices/app";
+import {
+  addLanguage,
+  deleteLanguage,
+  updateLanguages,
+} from "@/store/slices/app";
+import CardGroup from "./CardGroup";
 
 export default function LanguagesEditable({ languages }) {
+  function addHandler() {
+    store.dispatch(addLanguage());
+  }
+
+  function deleteHandler(index) {
+    store.dispatch(deleteLanguage(index));
+  }
+
   function changeHandler(props, index) {
     store.dispatch(updateLanguages([props, index]));
   }
 
   return (
     <div className={`${cardStyles.card} pointer`}>
+      <h2>Languages</h2>
       <div>
         {languages.map((language, index) => {
           return (
-            <div key={index}>
+            <CardGroup key={index} deleteHandler={deleteHandler}>
               <div>
                 <label htmlFor="language-name">Language: </label>
                 <input
@@ -44,9 +58,12 @@ export default function LanguagesEditable({ languages }) {
                   changeHandler([["tags", filteredTags]], index);
                 }}
               />
-            </div>
+            </CardGroup>
           );
-        })}
+        })}{" "}
+        <button className="bg" onClick={addHandler}>
+          Add{" "}
+        </button>
       </div>
     </div>
   );

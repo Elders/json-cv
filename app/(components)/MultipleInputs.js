@@ -5,7 +5,7 @@ export default function MultipleInputs({ items, onChange }) {
   const [renderItems, setRenderItems] = useState(items);
 
   useEffect(() => {
-    if (renderItems[renderItems.length - 1]) {
+    if (!renderItems.length || renderItems[renderItems.length - 1]) {
       setRenderItems([...renderItems, ""]);
     }
 
