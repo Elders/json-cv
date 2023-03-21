@@ -1,5 +1,4 @@
 import axios from "axios";
-import ContextProvider from "./ContextProvivder";
 import CV from "./(components)/CV";
 import StoreInitializer from "./(components)/StoreInitializer";
 import store from "@/store/store";
@@ -16,12 +15,12 @@ export default async function Home() {
   const cvData = await initData();
 
   return (
-    <ContextProvider>
+      <>
       <StoreInitializer data={cvData} />
       <StoreProvider>
         <CV />
       </StoreProvider>
-    </ContextProvider>
+      </>
   );
 }
 

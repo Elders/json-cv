@@ -1,6 +1,5 @@
 "use client";
 import { useState, useContext } from "react";
-import { CVContext } from "../ContextProvivder";
 import styles from "../(styles)/CV.module.scss";
 
 export default function CreateCV() {
@@ -8,7 +7,7 @@ export default function CreateCV() {
   const { data, setData } = useContext(CVContext);
 
   function submitHandler() {
-    setData({ ...data, elderNumber: number });
+    // setData({ ...data, elderNumber: number });
   }
 
   return (
