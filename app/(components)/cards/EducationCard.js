@@ -17,7 +17,7 @@ export default function EducationCard({ items }) {
         {items.map((item) => {
           return (
             <div key={item.name}>
-              <h4 className="column-name">{item.name}</h4>
+              <h4 className={`${cardStyles.heading}`}>{item.name}</h4>
               <p>{item.description}</p>
             </div>
           );

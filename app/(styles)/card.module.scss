@@ -79,6 +79,7 @@
   );
   padding: 1rem 2rem;
   display: grid;
+  align-items: start;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
   border-radius: 12px;
@@ -118,4 +119,41 @@
 
 .position_description {
   margin-top: 24px;
+}
+
+.project_card {
+  background: linear-gradient(135.84deg, #f5f5f5 21.92%, #ffffff 89.46%);
+
+  .project_header {
+    display: flex;
+    justify-content: space-between;
+
+    h4 {
+      text-align: right;
+    }
+
+    h5 {
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+  }
+
+  .project_name {
+    display: flex;
+    gap: 10px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    margin-block: 1.5rem;
+  }
+
+  .references {
+    h4 {
+      margin-block: 1.8rem 1rem;
+    }
+  }
 }

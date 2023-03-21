@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import ProjectsEditable from "./ProjectsEditable";
 import cardStyles from "@/app/(styles)/card.module.scss";
+import projectIcon from "@/assets/project-icon.svg";
+import Image from "next/image";
 
 export default function ProjectsSection() {
   const { projects } = useSelector((state) => state.cv);
@@ -14,16 +16,28 @@ export default function ProjectsSection() {
   return (
     <section>
       {projects?.map((project) => {
+        const linkOrderClass =
+          project.references.length <= 10
+            ? cardStyles.fixed
+            : cardStyles.flowing;
         return (
-          <div className={cardStyles.card} key={project.id}>
-            <header>
-              <h2>{project.name}</h2>
+          <div
+            className={`${cardStyles.card} ${cardStyles.project_card}`}
+            key={project.id}
+          >
+            <header className={cardStyles.project_header}>
+              <div className={cardStyles.project_name}>
+                <Image src={projectIcon} alt="project icon" />
+                <h2>{project.name}</h2>
+              </div>
               <div>
-                <h4 className="column-name">ROLE</h4>
+                <h4 className="column-name">ROLE:</h4>
                 <h5>{project.role}</h5>
               </div>
             </header>
-            <main>{project.description}</main>
+            <main>
+              <p>{project.description}</p>
+            </main>
 
             {project.environment ? (
               <div>
@@ -33,11 +47,19 @@ export default function ProjectsSection() {
             ) : null}
 
             {project.references?.length ? (
-              <div>
+              <div className={cardStyles.references}>
                 <h4>REFERENCES</h4>
-                {project.references.map((reference) => {
-                  return <a href={reference}>{reference}</a>;
-                })}
+                <div
+                  className={`${cardStyles.list_items_holder} ${linkOrderClass}`}
+                >
+                  {project.references.map((reference) => {
+                    return (
+                      <a href={reference} target="_blank">
+                        {reference}
+                      </a>
+                    );
+                  })}
+                </div>
               </div>
             ) : null}
           </div>
