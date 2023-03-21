@@ -69,7 +69,11 @@ export default function ProjectsEditable({ projects }) {
             <MultipleInputs
               items={project.references || []}
               onChange={(references) => {
-                editHandler("references", references, project.id);
+                editHandler(
+                  "references",
+                  references.filter(Boolean),
+                  project.id
+                );
               }}
             />
 

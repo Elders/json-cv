@@ -110,6 +110,7 @@ const appSlice = createSlice({
       return produce(state, (draft) => {
         const { id, prop, value } = payload;
         const project = draft.cv.projects.find((project) => project.id === id);
+
         project[prop] = value;
       });
     },

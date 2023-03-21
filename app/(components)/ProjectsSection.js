@@ -3,6 +3,7 @@ import ProjectsEditable from "./ProjectsEditable";
 import cardStyles from "@/app/(styles)/card.module.scss";
 import projectIcon from "@/assets/project-icon.svg";
 import Image from "next/image";
+import Link from "./Link";
 
 export default function ProjectsSection() {
   const { projects } = useSelector((state) => state.cv);
@@ -52,12 +53,8 @@ export default function ProjectsSection() {
                 <div
                   className={`${cardStyles.list_items_holder} ${linkOrderClass}`}
                 >
-                  {project.references.map((reference) => {
-                    return (
-                      <a href={reference} target="_blank">
-                        {reference}
-                      </a>
-                    );
+                  {project.references.map((reference, index) => {
+                    return <Link link={reference} key={index} />;
                   })}
                 </div>
               </div>
