@@ -4,6 +4,7 @@ import cardStyles from "@/app/(styles)/card.module.scss";
 import projectIcon from "@/assets/project-icon.svg";
 import Image from "next/image";
 import Link from "./Link";
+import FlowingList from "./FlowingList";
 
 export default function ProjectsSection() {
   const { projects } = useSelector((state) => state.cv);
@@ -17,10 +18,6 @@ export default function ProjectsSection() {
   return (
     <section>
       {projects?.map((project) => {
-        const linkOrderClass =
-          project.references.length <= 10
-            ? cardStyles.fixed
-            : cardStyles.flowing;
         return (
           <div
             className={`${cardStyles.card} ${cardStyles.project_card}`}
@@ -28,7 +25,11 @@ export default function ProjectsSection() {
           >
             <header className={cardStyles.project_header}>
               <div className={cardStyles.project_name}>
-                <Image src={projectIcon} alt="project icon" />
+                <Image
+                  src={projectIcon}
+                  className={cardStyles.project_icon}
+                  alt="project icon"
+                />
                 <h2>{project.name}</h2>
               </div>
               <div>
@@ -50,13 +51,11 @@ export default function ProjectsSection() {
             {project.references?.length ? (
               <div className={cardStyles.references}>
                 <h4>REFERENCES</h4>
-                <div
-                  className={`${cardStyles.list_items_holder} ${linkOrderClass}`}
-                >
+                <FlowingList items={project.references} breakingCount={10}>
                   {project.references.map((reference, index) => {
                     return <Link link={reference} key={index} />;
                   })}
-                </div>
+                </FlowingList>
               </div>
             ) : null}
           </div>
