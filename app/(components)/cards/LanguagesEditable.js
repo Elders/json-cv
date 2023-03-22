@@ -61,9 +61,7 @@ export default function LanguagesEditable({ languages }) {
             </CardGroup>
           );
         })}{" "}
-        <button className="bg" onClick={addHandler}>
-          Add{" "}
-        </button>
+        <button onClick={addHandler}>Add </button>
       </div>
     </div>
   );

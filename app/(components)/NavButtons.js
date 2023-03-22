@@ -35,12 +35,12 @@ export default function NavButtons() {
   return (
     <>
       {isEditing ? (
-        <button type="button" className="bg no-print" onClick={cancelHandler}>
+        <button type="button" className="no-print" onClick={cancelHandler}>
           Cancel
         </button>
       ) : null}
 
-      <button type="submit" className="bg no-print" onClick={toggle}>
+      <button type="submit" className="no-print" onClick={toggle}>
         {isEditing ? "Save" : "Edit"}
       </button>
     </>

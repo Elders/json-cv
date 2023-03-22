@@ -118,14 +118,7 @@ export default function PositionEditable({ positionID, isAdding = false }) {
         </div>
       </div>
 
-      {/* <button className="bg" onClick={saveHandler}>
-        Save
-      </button> */}
-      {!isAdding ? (
-        <button className="bg" onClick={deleteHandler}>
-          Delete
-        </button>
-      ) : null}
+      {!isAdding ? <button onClick={deleteHandler}>Delete</button> : null}
     </div>
   );
 }

@@ -38,7 +38,7 @@ export default function CVContent() {
 
         {isEditing ? (
           <button
-            className="bg no-print"
+            className="no-print"
             onClick={() => store.dispatch(addPosition())}
           >
             Add Position +
@@ -67,7 +67,7 @@ export default function CVContent() {
 
       {isEditing ? (
         <button
-          className="bg no-print"
+          className="no-print"
           onClick={() => store.dispatch(addProject())}
         >
           Add Project +

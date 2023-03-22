@@ -77,9 +77,7 @@ export default function ProjectsEditable({ projects }) {
               }}
             />
 
-            <button className="bg" onClick={() => deleteHandler(project.id)}>
-              Delete
-            </button>
+            <button onClick={() => deleteHandler(project.id)}>Delete</button>
           </div>
         );
       })}
