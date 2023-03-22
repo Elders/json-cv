@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "../(styles)/CV.module.scss";
 
 export default function CreateCV() {
-  const [number, setNumber] = useState(1);
+  const [name, setName] = useState("");
 
   function submitHandler() {
     // setData({ ...data, elderNumber: number });
@@ -11,17 +11,13 @@ export default function CreateCV() {
 
   return (
     <>
-      <div className={styles.no_cv_buttons}>
-        <button>New +</button>
-        <button>Import</button>
-      </div>
+      <label className="mt-1">Name of the CV: </label>
       <div className={styles.create_holder}>
         <input
-          type="number"
-          min="1"
-          placeholder="Elder №"
-          value={number}
-          onChange={(e) => setNumber(+e.target.value)}
+          type="text"
+          placeholder="CV Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <button onClick={submitHandler}>Create</button>
       </div>

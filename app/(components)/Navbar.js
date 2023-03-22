@@ -1,4 +1,5 @@
 import Image from "next/image";
+import CreateCV from "./CreateCV";
 import logo from "@/assets/logo.svg";
 import styles from "@/app/(styles)/navbar.module.scss";
 export default function Navbar() {
@@ -11,7 +12,7 @@ export default function Navbar() {
           <button>Import</button>
         </div>
       </nav>
-      <div></div>
+      <CreateCV />
     </>
   );
 }
