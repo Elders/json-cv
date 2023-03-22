@@ -4,9 +4,6 @@
 
 import CVContent from "./CVContent";
 import FormWrapper from "./FormWrapper";
-import Navbar from "./Navbar";
-import Image from "next/image";
-import waves from "@/assets/waves.svg";
 import styles from "@/app/(styles)/CV.module.scss";
 
 export default function CV() {
@@ -15,8 +12,6 @@ export default function CV() {
 
   return (
     <FormWrapper className={styles.cv_wrapper}>
-      <Navbar />
-      <Image src={waves} alt="waves" className={styles.waves} />
       <CVContent />
     </FormWrapper>
   );

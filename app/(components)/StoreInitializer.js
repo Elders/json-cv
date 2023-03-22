@@ -7,8 +7,9 @@ import { setData as setAppData } from "@/store/slices/app";
 export default function StoreInitializer({ data }) {
   const loaded = useRef(false);
   if (!loaded.current) {
+    console.log("data: ", data);
     store.dispatch(setData(data));
-    store.dispatch(setAppData({ cv: data }));
+    store.dispatch(setAppData({ cv: data || {} }));
     loaded.current = true;
   }
   return null;

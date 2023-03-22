@@ -1,6 +1,7 @@
 "use client";
 
 import { useSelector } from "react-redux";
+import Navbar from "./Navbar";
 import ListCard from "./cards/ListCard";
 import PositionCard from "./cards/PositionCard";
 import LanguagesCard from "./cards/LanguagesCard";
@@ -10,6 +11,9 @@ import store from "@/store/store";
 import { addPosition, addProject } from "@/store/slices/app";
 import EducationCard from "./cards/EducationCard";
 import cardStyles from "@/app/(styles)/card.module.scss";
+import cvStyles from "@/app/(styles)/cv.module.scss";
+import Image from "next/image";
+import waves from "@/assets/waves.svg";
 
 export default function CVContent() {
   const { isEditing } = useSelector((state) => state.app);
@@ -17,12 +21,14 @@ export default function CVContent() {
   const data = useSelector((state) => state.cv);
   const appData = useSelector((state) => state.app);
 
-  if (!data) {
+  if (!Object.keys(data).length) {
     return <CreateCV />;
   }
 
   return (
     <>
+      <Navbar />
+      <Image src={waves} alt="waves" className={cvStyles.waves} />
       <section>
         {appData.cv.positions?.map((position, index) => {
           return (

@@ -1,6 +1,5 @@
 import produce from "immer";
 import { createSlice } from "@reduxjs/toolkit";
-import findPosition from "@/helpers/findPosition";
 
 const appSlice = createSlice({
   name: "app",

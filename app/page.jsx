@@ -7,6 +7,7 @@ import StoreProvider from "./(components)/StoreProvider";
 
 async function initData() {
   const { data } = await axios.get(process.env.HOST + "api/cv");
+  // const dispatchData = Object.keys(data).length ? data : null;
   store.dispatch(setData(data));
   return data;
 }
@@ -15,12 +16,12 @@ export default async function Home() {
   const cvData = await initData();
 
   return (
-      <>
+    <>
       <StoreInitializer data={cvData} />
       <StoreProvider>
         <CV />
       </StoreProvider>
-      </>
+    </>
   );
 }
 
