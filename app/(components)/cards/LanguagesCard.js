@@ -11,7 +11,7 @@ export default function LanguagesCard({ languages }) {
   }
 
   return (
-    <div className={`${cardStyles.card} pointer`}>
+    <div className={cardStyles.card}>
       <h2>Languages</h2>
       <div>
         {languages.map((language) => {

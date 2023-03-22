@@ -11,7 +11,7 @@ export default function EducationCard({ items }) {
   }
 
   return (
-    <div className={`${cardStyles.card} pointer`}>
+    <div className={cardStyles.card}>
       <h2>Education</h2>
       <div>
         {items.map((item) => {

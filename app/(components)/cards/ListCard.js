@@ -11,7 +11,7 @@ export default function ListCard({ title, items, propName }) {
   }
 
   return (
-    <div className={`${cardStyles.card} ${cardStyles.list_card} pointer`}>
+    <div className={`${cardStyles.card} ${cardStyles.list_card}`}>
       <header className={cardStyles.header}>
         <h2>{title}</h2>
       </header>
