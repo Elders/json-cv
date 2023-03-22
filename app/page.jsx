@@ -1,5 +1,7 @@
 import axios from "axios";
 import CV from "./(components)/CV";
+import Navbar from "./(components)/Navbar";
+import CVList from "./(components)/CVList";
 import StoreInitializer from "./(components)/StoreInitializer";
 import store from "@/store/store";
 import { setData } from "@/store/slices/cv";
@@ -7,7 +9,7 @@ import StoreProvider from "./(components)/StoreProvider";
 
 async function initData() {
   const { data } = await axios.get(process.env.HOST + "api/cv");
-  // const dispatchData = Object.keys(data).length ? data : null;
+
   store.dispatch(setData(data));
   return data;
 }
@@ -18,9 +20,11 @@ export default async function Home() {
   return (
     <>
       <StoreInitializer data={cvData} />
-      <StoreProvider>
+      <Navbar />
+      <CVList />
+      {/* <StoreProvider>
         <CV />
-      </StoreProvider>
+      </StoreProvider> */}
     </>
   );
 }

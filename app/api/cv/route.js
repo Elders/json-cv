@@ -2,7 +2,8 @@ import fs from "fs";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  let data = "{}";
+  let data = "[]";
+
   try {
     data = await fs.readFileSync("./data/cv.json", "utf-8");
   } catch (err) {
