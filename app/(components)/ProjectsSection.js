@@ -6,10 +6,10 @@ import Image from "next/image";
 import Link from "./Link";
 import FlowingList from "./FlowingList";
 
-export default function ProjectsSection() {
-  const { projects } = useSelector((state) => state.cv);
+export default function ProjectsSection({ projects }) {
+  // const { projects } = useSelector((state) => state.cv);
   const { isEditing, cv: cvData } = useSelector((state) => state.app);
-  const appProjects = cvData.projects;
+  const appProjects = cvData?.projects || [];
 
   if (isEditing) {
     return <ProjectsEditable projects={appProjects} />;

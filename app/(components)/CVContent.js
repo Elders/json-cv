@@ -1,5 +1,5 @@
 "use client";
-
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Navbar from "../cv/Navbar";
 import ListCard from "./cards/ListCard";
@@ -8,29 +8,37 @@ import LanguagesCard from "./cards/LanguagesCard";
 import ProjectsSection from "./ProjectsSection.js";
 import CreateCV from "./CreateCV";
 import store from "@/store/store";
-import { addPosition, addProject } from "@/store/slices/app";
+import {
+  addPosition,
+  addProject,
+  setData as setAppData,
+} from "@/store/slices/app";
 import EducationCard from "./cards/EducationCard";
 import cardStyles from "@/app/(styles)/card.module.scss";
 import cvStyles from "@/app/(styles)/CV.module.scss";
 import Image from "next/image";
 import waves from "@/assets/waves.svg";
 
-export default function CVContent() {
+export default function CVContent({ initialCV }) {
   const { isEditing } = useSelector((state) => state.app);
+  const { cv: storedCV } = useSelector((state) => state.app);
 
-  const data = useSelector((state) => state.cv);
-  const appData = useSelector((state) => state.app);
+  const [CV, setCV] = useState(initialCV);
 
-  if (!Object.keys(data).length) {
-    return <CreateCV />;
-  }
+  useEffect(() => {
+    store.dispatch(setAppData({ cv: CV }));
+  }, []);
+
+  useEffect(() => {
+    storedCV && setCV(storedCV);
+  }, [storedCV]);
 
   return (
     <>
-      <Navbar />
+      <Navbar cv={CV} />
       <Image src={waves} alt="waves" className={cvStyles.waves} />
       <section>
-        {appData.cv.positions?.map((position, index) => {
+        {CV?.positions?.map((position, index) => {
           return (
             <PositionCard key={position.id} position={position} index={index} />
           );
@@ -45,26 +53,22 @@ export default function CVContent() {
           </button>
         ) : null}
       </section>
-
       <ListCard
         title="Tools & Technologies"
-        items={appData.cv.technologies || []}
+        items={CV?.technologies || []}
         propName="technologies"
       />
-
       <ListCard
         title="Industry knowledge"
-        items={data.industryKnowledge || []}
+        items={CV?.industryKnowledge || []}
         propName="industryKnowledge"
       />
 
       <section className={cardStyles.langs_and_tech}>
-        <LanguagesCard languages={appData.cv.languages || []} />
-        <EducationCard items={appData.cv.education || []} />
+        <LanguagesCard languages={CV?.languages || []} />
+        <EducationCard items={CV?.education || []} />
       </section>
-
-      <ProjectsSection />
-
+      <ProjectsSection projects={CV?.projects || []} />
       {isEditing ? (
         <button
           className="no-print"

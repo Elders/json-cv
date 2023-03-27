@@ -1,6 +1,9 @@
 import "@/app/(styles)/globals.scss";
 import { Montserrat } from "@next/font/google";
 import styles from "@/app/(styles)/layout.module.scss";
+import StoreInitializer from "./(components)/StoreInitializer";
+import store from "@/store/store";
+import StoreProvider from "./(components)/StoreProvider";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -17,7 +20,10 @@ export default function RootLayout({ children }) {
       <head />
       <body>
         <div className={`container ${montserrat.variable}`}>
-          <div className={styles.layout_holder}>{children}</div>
+          <div className={styles.layout_holder}>
+            <StoreProvider>{children}</StoreProvider>
+          </div>{" "}
+          {/* <StoreInitializer serverStore={store.getState()} /> */}
         </div>
       </body>
     </html>

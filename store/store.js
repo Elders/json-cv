@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import appReducer from "./slices/app";
-import cvReducer from "./slices/cv";
+import cvsReducer from "./slices/cvs";
 
 const store = configureStore({
   reducer: {
     app: appReducer,
-    cv: cvReducer,
+    cvs: cvsReducer,
   },
 });
 

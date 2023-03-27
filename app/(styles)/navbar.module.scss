@@ -3,8 +3,24 @@
   align-items: center;
   justify-content: space-between;
 
+  border-radius: 12px;
+
   & > :nth-child(2) {
     display: flex;
     gap: 10px;
+  }
+
+  &.sticky {
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+    background: #fff;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    gap: 12px;
   }
 }

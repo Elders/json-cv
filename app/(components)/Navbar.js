@@ -8,7 +8,6 @@ export default function Navbar() {
       <nav className={styles.navbar}>
         <Image src={logo} alt="elders" />
         <div>
-          <button>New +</button>
           <button>Import</button>
         </div>
       </nav>

@@ -27,7 +27,12 @@ export default function LanguagesEditable({ languages }) {
       <div>
         {languages.map((language, index) => {
           return (
-            <CardGroup key={index} deleteHandler={deleteHandler}>
+            <CardGroup
+              key={index}
+              deleteHandler={() => {
+                deleteHandler(index);
+              }}
+            >
               <div>
                 <label htmlFor="language-name">Language: </label>
                 <input
@@ -43,7 +48,7 @@ export default function LanguagesEditable({ languages }) {
                 <label htmlFor="language-note">Note: </label>
                 <input
                   type="text"
-                  defaultValue={language.note}
+                  value={language.note}
                   placeholder="Note"
                   onChange={(e) => {
                     changeHandler([["note", e.target.value]], index);

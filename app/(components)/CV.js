@@ -9,9 +9,6 @@ import styles from "@/app/(styles)/CV.module.scss";
 export default function CV() {
   // const [isAdding, setIsAdding] = useState(false);
   // const data = useSelector((state) => state.cv);
-
-  return <p>asdasdsa</p>;
-
   // return (
   //   <FormWrapper className={styles.cv_wrapper}>
   //     <CVContent />

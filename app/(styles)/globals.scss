@@ -49,12 +49,13 @@ p {
 }
 
 button {
+  --clr: var(--red);
   cursor: pointer;
   border-radius: 8px;
   border: 0;
-  background: var(--red);
+  background: var(--clr);
   color: #fff;
-  border: 1px solid var(--red);
+  border: 1px solid var(--clr);
   padding: 0.5rem 1.25rem;
   font-size: 18px;
   transition: 0.2s background ease-in-out;
@@ -66,6 +67,10 @@ button {
   &:hover {
     background: var(--red);
     color: #fff;
+  }
+
+  &:disabled {
+    --clr: gray;
   }
 }
 

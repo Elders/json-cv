@@ -48,7 +48,6 @@ const appSlice = createSlice({
 
       return produce(state, (draft) => {
         props.forEach((pair) => {
-          console.log(pair);
           draft.cv.languages[index][pair[0]] = pair[1];
         });
       });
