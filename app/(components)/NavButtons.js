@@ -26,7 +26,13 @@ export default function NavButtons() {
   }
 
   function exportCV() {
-    //TODO: export the CV
+    const dataStr =
+      "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(cv));
+    const downloadAnchorNode = document.createElement("a");
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", cv.name + ".json");
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
   }
 
   return (
@@ -40,6 +46,7 @@ export default function NavButtons() {
         {isEditing ? "Save" : "Edit"}
       </button>
       <button type="button" className="no-print" onClick={exportCV}>
+        <a href=""></a>
         Export
       </button>
     </div>
