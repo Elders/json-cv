@@ -71,7 +71,7 @@ export default function CVContent({ initialCV }) {
       <ProjectsSection projects={CV?.projects || []} />
       {isEditing ? (
         <button
-          className="no-print"
+          className="no-print mt-1"
           onClick={() => store.dispatch(addProject())}
         >
           Add Project +

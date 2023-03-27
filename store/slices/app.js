@@ -55,6 +55,7 @@ const appSlice = createSlice({
 
     addLanguage(state) {
       return produce(state, (draft) => {
+        draft.cv.languages = draft.cv.languages || [];
         draft.cv.languages.push({
           name: "",
           note: "",
@@ -71,6 +72,7 @@ const appSlice = createSlice({
 
     addEducation(state) {
       return produce(state, (draft) => {
+        draft.cv.education = draft.cv.education || [];
         draft.cv.education.push({
           name: "",
           description: "",

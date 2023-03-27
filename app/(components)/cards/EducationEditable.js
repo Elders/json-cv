@@ -60,7 +60,9 @@ export default function EducationEditable({ items }) {
           </CardGroup>
         );
       })}
-      <button onClick={addHandler}>Add</button>
+      <button className="mt-1" onClick={addHandler}>
+        Add
+      </button>
     </div>
   );
 }

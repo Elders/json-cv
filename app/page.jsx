@@ -8,7 +8,6 @@ import StoreProvider from "./(components)/StoreProvider";
 import Navbar from "./(components)/Navbar";
 
 async function initData() {
-  console.log("INIT DATA");
   const response = await fetch(process.env.HOST + "api/cv", {
     cache: "no-store",
   });
