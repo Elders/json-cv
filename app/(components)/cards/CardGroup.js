@@ -1,5 +1,6 @@
 import Image from "next/image";
 import binIcon from "@/assets/bin.svg";
+import cardStyles from "@/app/(styles)/card.module.scss";
 
 export default function CardGroup({
   addHandler,
@@ -9,14 +10,14 @@ export default function CardGroup({
 }) {
   return (
     <div {...rest}>
-      <div>
+      <div className={cardStyles.card_group}>
         <Image
           src={binIcon}
           alt="a bin icon"
           className="pointer"
           onClick={deleteHandler}
         />
-        {children}
+        <div>{children}</div>
       </div>
     </div>
   );

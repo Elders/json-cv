@@ -24,7 +24,7 @@ export default function ProjectsEditable({ projects }) {
         return (
           <div className={cardStyles.card} key={project.id}>
             <header>
-              <label>Name: </label>
+              <h4 className="my-1">Name: </h4>
               <input
                 type="text"
                 value={project.name}
@@ -33,7 +33,7 @@ export default function ProjectsEditable({ projects }) {
                 }
               />
               <div>
-                <h4 className="column-name">ROLE</h4>
+                <h4 className="my-1">Role:</h4>
                 <input
                   type="text"
                   value={project.role}
@@ -44,7 +44,7 @@ export default function ProjectsEditable({ projects }) {
               </div>
             </header>
             <div>
-              <h4>DESCRIPTION:</h4>
+              <h4 className="my-1">Description:</h4>
               <textarea
                 value={project.description}
                 onChange={(e) =>
@@ -53,7 +53,7 @@ export default function ProjectsEditable({ projects }) {
               ></textarea>
             </div>
             <div>
-              <h4>ENVIRONMENT:</h4>
+              <h4 className="my-1">Environment:</h4>
               <input
                 value={project.environment}
                 onChange={(e) =>
@@ -63,7 +63,7 @@ export default function ProjectsEditable({ projects }) {
             </div>
 
             <div>
-              <h4>REFERENCES:</h4>
+              <h4 className="my-1">References:</h4>
             </div>
 
             <MultipleInputs

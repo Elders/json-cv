@@ -39,6 +39,7 @@ export default function MultipleInputs({ items, onChange }) {
             key={index}
             value={item}
             onChange={(e) => updateItem(e, index)}
+            className="mr-1"
           />
         );
       })}

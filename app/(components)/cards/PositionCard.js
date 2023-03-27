@@ -7,7 +7,7 @@ export default function PositionCard({ position, index, ...rest }) {
   const indexValue = (index + 1).toString().padStart(2, "0");
 
   if (isEditing) {
-    return <PositionEditable positionID={position.id} />;
+    return <PositionEditable positionID={position.id} index={index} />;
   }
 
   return (

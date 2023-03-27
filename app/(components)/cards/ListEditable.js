@@ -16,7 +16,7 @@ export default function ListEditable({ title, items, holderClass, propName }) {
   }
 
   return (
-    <div className={`${cardStyles.card} pointer`}>
+    <div className={`${cardStyles.card}`}>
       <header className={cardStyles.header}>
         <h2>{title}</h2>
       </header>

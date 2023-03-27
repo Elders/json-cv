@@ -18,6 +18,34 @@
   }
 }
 
+.card_group {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-block: 1.5rem;
+
+  label {
+    font-weight: 600;
+  }
+
+  & > div > div,
+  img {
+    margin-top: 1.5rem;
+  }
+
+  input {
+    margin-block: 0.5rem 0.25rem;
+    margin-right: 0.75rem;
+  }
+}
+
+.list_items_holder {
+  & > * {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+}
+
 .row {
   margin-block: 1rem;
   display: flex;
@@ -27,7 +55,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   border-bottom: 1px solid #ccc;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
