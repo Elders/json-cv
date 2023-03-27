@@ -14,9 +14,13 @@ const cvSlice = createSlice({
         draft.push(payload);
       });
     },
+
+    deleteCV(state, { payload }) {
+      return state.filter((cv) => cv.id !== payload);
+    },
   },
 });
 
-export const { setData, addCV } = cvSlice.actions;
+export const { setData, addCV, deleteCV } = cvSlice.actions;
 
 export default cvSlice.reducer;

@@ -5,6 +5,7 @@ import SingleCV from "./SingleCV";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { setData } from "@/store/slices/cvs";
+import styles from "@/app/(styles)/CV.module.scss";
 
 export default function CVList({ initData }) {
   const storedCVS = useSelector((state) => state.cvs);
@@ -19,7 +20,7 @@ export default function CVList({ initData }) {
   }, [storedCVS]);
 
   return (
-    <div>
+    <div className={styles.cvs_holder}>
       {renderCV?.map((cv) => (
         <SingleCV key={cv.id} cv={cv} />
       ))}
