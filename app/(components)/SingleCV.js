@@ -7,6 +7,7 @@ import Image from "next/image";
 import axios from "axios";
 import { deleteCV } from "@/store/slices/cvs";
 import store from "@/store/store";
+import { motion } from "framer-motion";
 
 export default function SingleCV({ cv }) {
   const router = useRouter();
@@ -22,21 +23,32 @@ export default function SingleCV({ cv }) {
     } catch (err) {}
   }
 
-  return (
-    <div onClick={() => openCV(cv.id)} className={`${styles.cv_card} pointer`}>
-      <Image
-        src={binIcon}
-        alt="bin"
-        className={styles.bin_icon}
-        onClick={deleteHandler}
-      />
-      <div className={styles.img_holder}>
-        <Image src={logo} alt="elders" />
-      </div>
+  const baligo = {
+    start: { x: 0, y: 1000 },
+    end: { x: 0, y: 0 },
+  };
 
-      <div>
-        <div className={styles.cv_name}>{cv.name}</div>
-      </div>
-    </div>
+  return (
+      <motion.div
+        exit={{x:0, y: 1000}}
+        variants={baligo}
+        whileHover={{ scale: 1.1 }}
+        onClick={() => openCV(cv.id)}
+        className={`${styles.cv_card} pointer`}
+      >
+        <Image
+          src={binIcon}
+          alt="bin"
+          className={styles.bin_icon}
+          onClick={deleteHandler}
+        />
+        <div className={styles.img_holder}>
+          <Image src={logo} alt="elders" />
+        </div>
+
+        <div>
+          <div className={styles.cv_name}>{cv.name}</div>
+        </div>
+      </motion.div>
   );
 }
