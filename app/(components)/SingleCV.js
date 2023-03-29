@@ -9,10 +9,16 @@ import Image from "next/image";
 import axios from "axios";
 import { deleteCV } from "@/store/slices/cvs";
 import store from "@/store/store";
+import { motion } from "framer-motion";
 
 export default function SingleCV({ cv }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const router = useRouter();
+  const animationPoints = {
+    start: { x: 0, y: 1000 },
+    end: { x: 0, y: 0 },
+  };
+
   function openCV(id) {
     router.push(`/cv/${id}`);
   }
@@ -23,6 +29,7 @@ export default function SingleCV({ cv }) {
   }
 
   async function deleteHandler() {
+    setShowConfirm(false);
     try {
       await axios.delete(`${process.env.NEXT_PUBLIC_HOST}/api/cv/${cv.id}`);
       store.dispatch(deleteCV(cv.id));
@@ -38,7 +45,10 @@ export default function SingleCV({ cv }) {
           onCancel={() => setShowConfirm(false)}
         />
       ) : null}
-      <div
+      <motion.div
+        exit={{ x: 0, y: "100vh" }}
+        variants={animationPoints}
+        whileHover={{ scale: 1.1 }}
         onClick={() => openCV(cv.id)}
         className={`${styles.cv_card} pointer`}
       >
@@ -55,7 +65,7 @@ export default function SingleCV({ cv }) {
         <div>
           <div className={styles.cv_name}>{cv.name}</div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

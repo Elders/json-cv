@@ -1,11 +1,12 @@
 "use client";
-
+import { motion, AnimatePresence } from "framer-motion";
 import store from "@/store/store";
 import SingleCV from "./SingleCV";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { setData } from "@/store/slices/cvs";
 import styles from "@/app/(styles)/CV.module.scss";
+import AnimationWrapper from "./AnimationWrapper";
 
 export default function CVList({ initData }) {
   const storedCVS = useSelector((state) => state.cvs);
@@ -20,10 +21,14 @@ export default function CVList({ initData }) {
   }, [storedCVS]);
 
   return (
-    <div className={styles.cvs_holder}>
-      {renderCV?.map((cv) => (
-        <SingleCV key={cv.id} cv={cv} />
-      ))}
-    </div>
+    <AnimationWrapper>
+      <motion.div className={styles.cvs_holder}>
+        <AnimatePresence>
+        {renderCV?.map((cv) => (
+          <SingleCV key={cv.id} cv={cv} />
+        ))}
+        </AnimatePresence>
+      </motion.div>
+    </AnimationWrapper>
   );
 }
