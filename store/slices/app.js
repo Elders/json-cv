@@ -23,6 +23,7 @@ const appSlice = createSlice({
 
     addPosition(state, _) {
       return produce(state, (draft) => {
+        draft.cv.positions = draft.cv.positions || [];
         draft.cv.positions.push({ id: crypto.randomUUID() });
       });
     },
