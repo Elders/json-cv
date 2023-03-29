@@ -172,3 +172,10 @@
     }
   }
 }
+
+@media print {
+  .card,
+  .langs_and_tech {
+    z-index: 3;
+  }
+}
