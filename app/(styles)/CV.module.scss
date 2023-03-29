@@ -44,8 +44,6 @@
 
   .cv_name {
     font-weight: 600;
-    // margin-block: 1.5rem 0.5rem;
-    // text-align: center;
     margin-top: 1.5rem;
     display: flex;
     justify-content: center;
@@ -89,7 +87,7 @@
 }
 
 .waves {
-  position: absolute;
+  position: fixed;
   left: -100px;
   bottom: -15px;
   z-index: -1;

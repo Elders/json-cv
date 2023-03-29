@@ -6,7 +6,7 @@ import navStyles from "@/app/(styles)/navbar.module.scss";
 
 export default function Navbar() {
   return (
-    <nav className={`${navStyles.navbar} ${navStyles.sticky}`}>
+    <nav className={`${navStyles.navbar} ${navStyles.sticky} no-print`}>
       <Link href="/">
         <Image src={homeIcon} alt="home icon" width={32} height={32} /> Home
       </Link>

@@ -97,6 +97,7 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
   border-radius: 12px;
+  page-break-inside: avoid;
 
   h4 {
     font-size: 1rem;

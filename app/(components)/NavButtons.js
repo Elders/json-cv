@@ -47,7 +47,11 @@ export default function NavButtons() {
       </button>
       <button type="button" className="no-print" onClick={exportCV}>
         <a href=""></a>
-        Export
+        Export JSON
+      </button>
+      <button type="button" className="no-print" onClick={() => window.print()}>
+        <a href=""></a>
+        Export PDF
       </button>
     </div>
   );
