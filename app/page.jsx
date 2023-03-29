@@ -6,6 +6,7 @@ import store from "@/store/store";
 import { setData } from "@/store/slices/cvs";
 import StoreProvider from "./(components)/StoreProvider";
 import Navbar from "./(components)/Navbar";
+import Confirm from "./(components)/Confirm";
 
 async function initData() {
   const response = await fetch(process.env.HOST + "api/cv", {
