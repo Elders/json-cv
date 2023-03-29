@@ -22,7 +22,7 @@ export default function CVList({ initData }) {
 
   return (
     <AnimationWrapper>
-      <motion.div exit={{x:0, y:1000}} className={styles.cvs_holder}>
+      <motion.div className={styles.cvs_holder}>
         <AnimatePresence>
         {renderCV?.map((cv) => (
           <SingleCV key={cv.id} cv={cv} />
