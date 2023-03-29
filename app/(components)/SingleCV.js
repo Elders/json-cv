@@ -20,7 +20,7 @@ export default function SingleCV({ cv }) {
   const activeClass = edit ? styles.active : "";
   const router = useRouter();
   const animationPoints = {
-    start: { x: 0, y: 1000 },
+    start: { x: -1000, y: 0 },
     end: { x: 0, y: 0 },
   };
 

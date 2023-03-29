@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 function AnimationWrapper({ children }) {
   const anime = {
-    start: { x: 0, y: 1000 },
+    start: { x: -1000, y: 0 },
     end: {
       x: 0,
       y: 0,
