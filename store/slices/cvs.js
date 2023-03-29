@@ -15,12 +15,18 @@ const cvSlice = createSlice({
       });
     },
 
+    updateCV(state, { payload }) {
+      return state.map((cv) => {
+        return cv.id === payload.id ? payload : cv;
+      });
+    },
+
     deleteCV(state, { payload }) {
       return state.filter((cv) => cv.id !== payload);
     },
   },
 });
 
-export const { setData, addCV, deleteCV } = cvSlice.actions;
+export const { setData, addCV, updateCV, deleteCV } = cvSlice.actions;
 
 export default cvSlice.reducer;
