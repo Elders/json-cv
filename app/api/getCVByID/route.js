@@ -4,9 +4,12 @@ import { NextResponse } from "next/server";
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
   const ID = searchParams.get("id");
+
   const cvs = await fs.readFile("./data/cv.json", {
     encoding: "utf-8",
   });
+
+  console.log(cvs);
 
   const cv = JSON.parse(cvs).find((cv) => cv.id === ID);
 

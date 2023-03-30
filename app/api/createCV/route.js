@@ -6,12 +6,13 @@ import readFile from "@/helpers/readFile";
 
 export async function POST(req) {
   let isSuccess = true;
+
+  const result = JSON.parse(await parse(req));
   const CVID = crypto.randomUUID();
-  const result = await parse(req);
 
   const newCV = {
+    ...result,
     id: CVID,
-    name: result,
   };
 
   const currentContent = await readFile("./data/cv.json", []);

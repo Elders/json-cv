@@ -12,7 +12,7 @@ export default function CreateCV() {
   const router = useRouter();
 
   async function submitHandler() {
-    const { data } = await axios.post("/api/createCV", name);
+    const { data } = await axios.post("/api/createCV", { name });
     if (data.isSuccess) {
       router.push(`/cv/${data.id}`);
       store.dispatch(
