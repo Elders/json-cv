@@ -1,7 +1,7 @@
 "use client";
 import { useSelector } from "react-redux";
 import store from "@/store/store";
-import { setData } from "@/store/slices/cvs";
+import { updateCV } from "@/store/slices/cvs";
 import axios from "axios";
 
 export default function FormWrapper({ children, ...rest }) {
@@ -12,7 +12,7 @@ export default function FormWrapper({ children, ...rest }) {
 
     if (isEditing) return;
 
-    store.dispatch(setData(cv));
+    store.dispatch(updateCV(cv));
     axios.post("/api/updateCV", cv);
   }
 
