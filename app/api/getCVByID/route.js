@@ -9,8 +9,6 @@ export async function GET(req) {
     encoding: "utf-8",
   });
 
-  console.log(cvs);
-
   const cv = JSON.parse(cvs).find((cv) => cv.id === ID);
 
   return NextResponse.json(cv);

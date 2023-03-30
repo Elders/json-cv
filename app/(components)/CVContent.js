@@ -6,7 +6,6 @@ import ListCard from "./cards/ListCard";
 import PositionCard from "./cards/PositionCard";
 import LanguagesCard from "./cards/LanguagesCard";
 import ProjectsSection from "./ProjectsSection.js";
-import CreateCV from "./CreateCV";
 import store from "@/store/store";
 import {
   addPosition,

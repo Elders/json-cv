@@ -10,7 +10,6 @@ const cvSlice = createSlice({
     },
 
     addCV(state, { payload }) {
-      console.log(payload);
       return produce(state, (draft) => {
         draft.push(payload);
       });
