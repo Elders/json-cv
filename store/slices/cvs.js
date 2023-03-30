@@ -3,7 +3,7 @@ import produce from "immer";
 
 const cvSlice = createSlice({
   name: "cv",
-  initialState: [],
+  initialState: null,
   reducers: {
     setData(state, { payload }) {
       return payload;

@@ -13,20 +13,20 @@ export default function CVList({ initData }) {
   const [renderCV, setRenderCV] = useState(initData);
 
   useEffect(() => {
-    !storedCVS.length && store.dispatch(setData(initData));
+    !storedCVS && store.dispatch(setData(initData));
   }, []);
 
   useEffect(() => {
-    storedCVS.length && setRenderCV(storedCVS);
+    storedCVS && setRenderCV(storedCVS);
   }, [storedCVS]);
 
   return (
     <AnimationWrapper>
       <motion.div className={styles.cvs_holder}>
         <AnimatePresence>
-        {renderCV?.map((cv) => (
-          <SingleCV key={cv.id} cv={cv} />
-        ))}
+          {renderCV?.map((cv) => (
+            <SingleCV key={cv.id} cv={cv} />
+          ))}
         </AnimatePresence>
       </motion.div>
     </AnimationWrapper>
