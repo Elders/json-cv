@@ -22,12 +22,55 @@
 }
 
 .cvs_holder {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-
-  grid-gap: 20px;
-  grid-row-gap: 60px;
+  display: table;
+  width: 100%;
   margin-block: 3rem;
+  background-color: #fff;
+  border-radius: 12px;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  tbody {
+    width: 100%;
+  }
+
+  th {
+    text-align: left;
+    padding-block: 20px;
+  }
+
+  td {
+    padding-block: 1rem;
+    display: table-cell;
+    &.actions_holder {
+      & > div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    }
+  }
+
+  tr:nth-of-type(even) {
+    td {
+      background: rgb(150, 150, 150);
+      color: #fff;
+    }
+  }
+
+  tr > :first-child {
+    padding-left: 15px;
+  }
+
+  tr:last-child {
+    td:first-child {
+      border-bottom-left-radius: 12px;
+    }
+
+    td:last-child {
+      border-bottom-right-radius: 12px;
+    }
+  }
 }
 
 .cv_card {

@@ -1,6 +1,6 @@
 import CV from "./(components)/CV";
 
-import CVList from "./(components)/CVList";
+import CVList from "./(components)/CVTable";
 import StoreInitializer from "./(components)/StoreInitializer";
 import store from "@/store/store";
 import { setData } from "@/store/slices/cvs";
