@@ -37,6 +37,11 @@
   th {
     text-align: left;
     padding-block: 20px;
+
+    svg {
+      position: relative;
+      top: 5px;
+    }
   }
 
   td {
