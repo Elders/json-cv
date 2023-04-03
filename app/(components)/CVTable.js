@@ -37,8 +37,8 @@ export default function CVTable({ initData }) {
   }, []);
 
   useEffect(() => {
-    console.log("renderCV: ", renderCV, sortedItems);
-  }, [renderCV]);
+    console.log("sortedItems: ", sortedItems);
+  }, [sortedItems]);
 
   useEffect(() => {
     storedCVS && setRenderCV(storedCVS);
@@ -86,7 +86,7 @@ export default function CVTable({ initData }) {
             </th>
             <th>Actions</th>
           </tr>
-          {sortedItems?.map((cv) => {
+          {sortedItems?.map((cv, index) => {
             return (
               <SingleCV
                 key={cv.id}

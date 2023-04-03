@@ -5,7 +5,6 @@ import readFile from "@/helpers/readFile";
 
 export async function POST(req) {
   let isSuccess = true;
-
   let updatedCV = await bodyParser(req);
   updatedCV = JSON.parse(updatedCV.toString());
 

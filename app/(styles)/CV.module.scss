@@ -37,6 +37,7 @@
   th {
     text-align: left;
     padding-block: 20px;
+    user-select: none;
 
     svg {
       position: relative;
@@ -115,7 +116,10 @@
     }
   }
 }
-
+.img {
+  border-radius: 50%;
+  object-fit: cover;
+}
 .create_holder {
   margin-top: 20px;
   display: flex;

@@ -31,11 +31,14 @@ export default function useSort(items) {
     setSortedBy(field);
     setSortedOrder(sortTo);
     setSortedItems(sortedItems);
+
+    console.log("SSSSORTED ITEMS: ", sortedItems);
     return sortedItems;
   }
 
   useEffect(() => {
-    setSortedItems(sortList(sortedBy, sortedOrder));
+    const newOrder = sortedOrder === ASC ? DESC : ASC;
+    sortList(sortedBy, newOrder);
   }, [items]);
 
   return { sortList, sortedItems, sortedBy, sortedOrder };

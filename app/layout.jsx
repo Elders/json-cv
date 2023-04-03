@@ -4,6 +4,7 @@ import styles from "@/app/(styles)/layout.module.scss";
 import StoreInitializer from "./(components)/StoreInitializer";
 import store from "@/store/store";
 import StoreProvider from "./(components)/StoreProvider";
+import Image from "next/image";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
         head.jsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
+
       <body>
         <div className={`container ${montserrat.variable}`}>
           <div className={styles.layout_holder}>
