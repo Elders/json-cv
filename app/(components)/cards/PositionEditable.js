@@ -70,9 +70,9 @@ export default function PositionEditable({ positionID, index }) {
             <input
               type="text"
               placeholder="Project name"
-              value={currentPosition?.projectName || ""}
+              value={currentPosition?.companyName || ""}
               id="projectName"
-              onChange={(e) => editPosition({ projectName: e.target.value })}
+              onChange={(e) => editPosition({ companyName: e.target.value })}
             />
           </div>
         </div>
