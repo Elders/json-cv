@@ -10,7 +10,7 @@ import { deleteCV, updateCV } from "@/store/slices/cvs";
 import store from "@/store/store";
 import { motion } from "framer-motion";
 
-export default function SingleCV({ cv }) {
+export default function SingleCV({ cv, onDeleteStart }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState(cv.name);
@@ -55,13 +55,6 @@ export default function SingleCV({ cv }) {
 
   return (
     <>
-      {" "}
-      {showConfirm ? (
-        <Confirm
-          onConfirm={deleteHandler}
-          onCancel={() => setShowConfirm(false)}
-        />
-      ) : null}
       <tr>
         <td>{cv.img ? <Image src={cv.image} alt={cv.name} /> : "-"}</td>
         <td>{cv.elderNumber || "-"}</td>
@@ -77,7 +70,7 @@ export default function SingleCV({ cv }) {
             <Eye size={28} onClick={redirect} />
             {edit ? <Save onClick={save} /> : <Edit2 onClick={startEdit} />}
 
-            <Trash2 onClick={confirmDelete} />
+            <Trash2 onClick={() => onDeleteStart(cv.id)} />
           </div>
         </td>
         {/* <motion.div

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import isNumber from "@/helpers/isNumber";
 
 const ASC = 1;
@@ -10,13 +10,19 @@ export default function useSort(items) {
   const [sortedItems, setSortedItems] = useState([...items]);
 
   function sortList(field, currentSort = DESC) {
+    if (!field) return items;
     const sortTo = currentSort === ASC ? DESC : ASC;
     const sortedItems = [...items].sort((a, b) => {
       const value1 = a[field];
       const value2 = b[field];
 
+      if (!value1 && value1 !== 0) {
+        return -1 * sortTo;
+      }
+
       if (isNumber(value1)) {
-        return (value1 - value2) * sortTo;
+        const secondValue = value2 || 0;
+        return (value1 - secondValue) * sortTo;
       }
 
       return value1.localeCompare(value2) * sortTo;
@@ -27,6 +33,10 @@ export default function useSort(items) {
     setSortedItems(sortedItems);
     return sortedItems;
   }
+
+  useEffect(() => {
+    setSortedItems(sortList(sortedBy, sortedOrder));
+  }, [items]);
 
   return { sortList, sortedItems, sortedBy, sortedOrder };
 }
