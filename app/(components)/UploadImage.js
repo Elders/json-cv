@@ -1,10 +1,11 @@
 "use client";
-import { useRef } from "react";
+import { forwardRef } from "react";
 import { Upload } from "lucide-react";
 
-export default function UploadImage({ onChange }) {
-  const inputRef = useRef();
-
+export default forwardRef(function UploadImage(
+  { onChange, ...rest },
+  inputRef
+) {
   function uploadFile() {
     inputRef.current?.click();
   }
@@ -16,7 +17,7 @@ export default function UploadImage({ onChange }) {
   }
 
   return (
-    <div>
+    <div {...rest}>
       <input
         type="file"
         ref={inputRef}
@@ -27,4 +28,4 @@ export default function UploadImage({ onChange }) {
       <Upload onClick={uploadFile} />
     </div>
   );
-}
+});

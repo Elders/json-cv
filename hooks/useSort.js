@@ -38,7 +38,7 @@ export default function useSort(items) {
 
   useEffect(() => {
     const newOrder = sortedOrder === ASC ? DESC : ASC;
-    sortList(sortedBy, newOrder);
+    setSortedItems(sortList(sortedBy, newOrder));
   }, [items]);
 
   return { sortList, sortedItems, sortedBy, sortedOrder };

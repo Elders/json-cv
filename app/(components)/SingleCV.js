@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Confirm from "./Confirm";
 import styles from "@/app/(styles)/CV.module.scss";
@@ -17,6 +17,7 @@ export default function SingleCV({ cv, onDeleteStart }) {
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState(cv.name);
   const router = useRouter();
+  const uploadRef = useRef();
   const animationPoints = {
     start: { x: -1000, y: 0 },
     end: { x: 0, y: 0 },
@@ -65,6 +66,11 @@ export default function SingleCV({ cv, onDeleteStart }) {
     <>
       <tr>
         <td>
+          <UploadImage
+            onChange={changeImage}
+            className={cv.image ? "hidden" : ""}
+            ref={uploadRef}
+          />
           {cv.image ? (
             <Image
               src={cv.image}
@@ -73,10 +79,9 @@ export default function SingleCV({ cv, onDeleteStart }) {
               height={60}
               className={styles.img}
               loader={() => cv.image}
+              onClick={() => uploadRef.current?.click()}
             />
-          ) : (
-            <UploadImage onChange={changeImage} />
-          )}
+          ) : null}
         </td>
 
         <td>{cv.elderNumber || "-"}</td>
