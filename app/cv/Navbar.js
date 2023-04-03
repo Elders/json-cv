@@ -19,7 +19,18 @@ export default function Navbar({ cv }) {
   return (
     <nav className={styles.cv_navbar}>
       <div>
-        <Image src={person} alt="a person" />
+        <div className={styles.img_wrapper}>
+          {cv?.image ? (
+            <Image
+              src={cv.image}
+              width={70}
+              height={70}
+              className={`no-print ${styles.cv_picture}`}
+            />
+          ) : null}
+
+          <Image src={person} alt="a person" />
+        </div>
 
         <h1>
           ELDER N/{" "}

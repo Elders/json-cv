@@ -19,6 +19,20 @@
   @media print {
     background-color: transparent;
   }
+
+  .img_wrapper {
+    position: relative;
+    margin-right: 30px;
+    .cv_picture {
+      position: absolute;
+      inset: 0;
+      transform: translate(-20%, -20%);
+    }
+
+    @media print {
+      margin-right: 0;
+    }
+  }
 }
 
 .cvs_holder {
