@@ -1,4 +1,7 @@
 .card {
+  p{
+    word-break: break-word;
+  }
   padding: 1.5rem;
   page-break-inside: avoid;
   background: linear-gradient(
@@ -16,6 +19,7 @@
   &.list_card {
     font-size: 0.9rem;
   }
+
 }
 
 .card_group {
@@ -74,6 +78,8 @@
 .position_description {
   width: 80%;
 }
+
+
 
 .position_names_info {
   display: grid;

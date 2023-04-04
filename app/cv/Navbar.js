@@ -33,7 +33,7 @@ export default function Navbar({ cv }) {
         </div>
 
         <h1>
-          ELDER N/{" "}
+          ELDER-N/{" "}
           {isEditing ? (
             <input value={cv?.elderNumber || ""} onChange={changeNumber} />
           ) : (

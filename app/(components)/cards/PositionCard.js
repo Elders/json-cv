@@ -41,7 +41,7 @@ export default function PositionCard({ position, index, ...rest }) {
         {position.description ? (
           <div className={cardStyles.position_description}>
             <h2>Description: </h2>
-            <p>{position.description}</p>
+            <p className={cardStyles.paragraph}>{position.description}</p>
           </div>
         ) : null}
       </main>
