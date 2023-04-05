@@ -4,13 +4,10 @@
   }
   padding: 1.5rem;
   page-break-inside: avoid;
-  background: linear-gradient(
-    135.84deg,
-    rgba(255, 255, 255, 0.711) 21.92%,
-    rgba(255, 255, 255, 0.693) 89.46%
-  );
+  background: #fff;
   border-radius: 12px;
   margin-block: 1rem;
+  position: relative;
 
   button:not(:first-of-type) {
     margin-left: 10px;
@@ -92,11 +89,7 @@
 }
 
 .langs_and_tech {
-  background: linear-gradient(
-    135.84deg,
-    rgba(255, 255, 255, 0.711) 21.92%,
-    rgba(255, 255, 255, 0.693) 89.46%
-  );
+  background: #fff;
   padding: 1rem 2rem;
   display: grid;
   align-items: start;
@@ -104,6 +97,7 @@
   grid-gap: 2rem;
   border-radius: 12px;
   page-break-inside: avoid;
+  position: relative;
 
   h4 {
     font-size: 1rem;
