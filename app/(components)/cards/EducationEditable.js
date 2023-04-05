@@ -35,7 +35,7 @@ export default function EducationEditable({ items }) {
           <CardGroup key={index} deleteHandler={() => deleteHandler(index)}>
             <div>
               <div>
-                <label htmlFor="education-name">Education name: </label>
+                <label htmlFor="education-name">Institution: </label>
                 <input
                   type="text"
                   id="education-name"
@@ -45,7 +45,7 @@ export default function EducationEditable({ items }) {
               </div>
               <div>
                 <label htmlFor="education-description">
-                  Education description:
+                  Degree:
                 </label>
                 <input
                   type="text"
