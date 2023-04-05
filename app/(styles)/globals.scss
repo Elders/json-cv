@@ -110,6 +110,7 @@ label {
   color: var(--red);
   font-weight: 700;
   font-size: 0.9rem;
+  margin-bottom: 16px;
 }
 
 .pointer {
@@ -179,4 +180,9 @@ label {
 
 .hidden {
   display: none;
+}
+
+textarea {
+  height: 150px;
+  width: 100%;
 }

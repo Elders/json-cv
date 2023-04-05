@@ -17,6 +17,12 @@
   &.list_card {
     font-size: 0.9rem;
   }
+
+  .grid_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
 }
 
 .card_group {
@@ -61,7 +67,11 @@
   padding-bottom: 1rem;
   margin-bottom: 1rem;
 
-  .position_name {
+  :first-child {
+    flex-grow: 1;
+  }
+
+  .heading {
     margin-top: 0.5rem;
   }
 
@@ -69,6 +79,7 @@
     font-size: 3rem;
     color: #ccc;
     font-weight: 300;
+    flex-shrink: 0;
   }
 }
 
@@ -77,8 +88,6 @@
 }
 
 .position_names_info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   margin-block: 2rem;
 
   & > * > :nth-child(2) {

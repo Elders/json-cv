@@ -25,31 +25,53 @@ export default function PositionEditable({ positionID, index }) {
     <div className={`${cardStyles.card}`}>
       <header className={cardStyles.header}>
         <div>
-          <h3 className="column-name my-1">START DATE</h3>
-          <input
-            type="text"
-            id="startDate"
-            placeholder="Position start year"
-            value={currentPosition?.periodStart || ""}
-            onChange={(e) => editPosition({ periodStart: e.target.value })}
-          />{" "}
-          <h3 className="column-name my-1">END DATE</h3>
-          <input
-            type="text"
-            placeholder="Position end year"
-            id="endDate"
-            value={currentPosition?.periodEnd || ""}
-            onChange={(e) => editPosition({ periodEnd: e.target.value })}
-          />
-          <h2 className="my-1">Position name: </h2>
-          <input
-            type="text"
-            placeholder="Position name"
-            name="positionName"
-            id="name"
-            value={currentPosition?.name || ""}
-            onChange={(e) => editPosition({ name: e.target.value })}
-          />
+          <div className={cardStyles.grid_content}>
+            <div>
+              <h3 className="column-name">START DATE</h3>
+              <input
+                type="text"
+                id="startDate"
+                placeholder="Position start year"
+                value={currentPosition?.periodStart || ""}
+                onChange={(e) => editPosition({ periodStart: e.target.value })}
+              />
+            </div>
+            <div>
+              <h3 className="column-name">END DATE</h3>
+              <input
+                type="text"
+                placeholder="Position end year"
+                id="endDate"
+                value={currentPosition?.periodEnd || ""}
+                onChange={(e) => editPosition({ periodEnd: e.target.value })}
+              />
+            </div>
+          </div>
+
+          <div className={`${cardStyles.grid_content} my-1`}>
+            <div>
+              <h4 className="column-name">POSITION NAME</h4>
+              <input
+                type="text"
+                placeholder="Position name"
+                name="positionName"
+                id="name"
+                value={currentPosition?.name || ""}
+                onChange={(e) => editPosition({ name: e.target.value })}
+              />
+            </div>
+
+            <div>
+              <h4 className="column-name">COMPANY NAME</h4>
+              <input
+                type="text"
+                placeholder="Company name"
+                value={currentPosition?.companyName || ""}
+                id="projectName"
+                onChange={(e) => editPosition({ companyName: e.target.value })}
+              />{" "}
+            </div>
+          </div>
         </div>
         <span className={cardStyles.index}>{indexValue}</span>
       </header>
@@ -63,16 +85,6 @@ export default function PositionEditable({ positionID, index }) {
               value={currentPosition?.projectName || ""}
               id="projectName"
               onChange={(e) => editPosition({ projectName: e.target.value })}
-            />
-          </div>
-          <div>
-            <h4 className="column-name">COMPANY NAME</h4>
-            <input
-              type="text"
-              placeholder="Project name"
-              value={currentPosition?.companyName || ""}
-              id="projectName"
-              onChange={(e) => editPosition({ companyName: e.target.value })}
             />
           </div>
         </div>

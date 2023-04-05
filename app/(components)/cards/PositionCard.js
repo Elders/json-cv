@@ -13,11 +13,19 @@ export default function PositionCard({ position, index, ...rest }) {
   return (
     <div className={`${cardStyles.card}`} {...rest}>
       <header className={cardStyles.header}>
-        <div>
-          <h3 className="column-name">
-            POSITION / ({position.periodStart} - {position.periodEnd})
-          </h3>
-          <h2 className={cardStyles.position_name}>{position.name}</h2>
+        <div className={cardStyles.grid_content}>
+          <div>
+            <h4 className="column-name">COMPANY NAME</h4>
+            <h2 className={cardStyles.heading}>{position.companyName}</h2>
+          </div>
+          <div>
+            <h3 className="column-name">
+              POSITION / ({position.periodStart} - {position.periodEnd})
+            </h3>
+            <h2 className={`${cardStyles.position_name} ${cardStyles.heading}`}>
+              {position.name}
+            </h2>
+          </div>
         </div>
         <span className={cardStyles.index}>{indexValue}</span>
       </header>
@@ -26,10 +34,6 @@ export default function PositionCard({ position, index, ...rest }) {
           <div>
             <h4 className="column-name">PROJECT NAME</h4>
             <h3>{position.projectName}</h3>
-          </div>
-          <div>
-            <h4 className="column-name">COMPANY NAME</h4>
-            <h3>{position.companyName}</h3>
           </div>
         </div>
         {position.technologyStack ? (
