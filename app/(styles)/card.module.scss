@@ -87,19 +87,11 @@
 }
 
 .langs_and_tech {
-  background: #fff;
-  padding: 1rem 2rem;
+  @extend .card;
   display: grid;
   align-items: start;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
-  border-radius: 12px;
-  page-break-inside: avoid;
-  position: relative;
-
-  h4 {
-    font-size: 1rem;
-  }
 
   .heading {
     margin-top: 1.5rem;
