@@ -60,7 +60,6 @@ const appSlice = createSlice({
         draft.cv.languages.push({
           name: "",
           note: "",
-          tags: [],
         });
       });
     },

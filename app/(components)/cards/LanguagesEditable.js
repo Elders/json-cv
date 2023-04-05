@@ -1,5 +1,4 @@
 import cardStyles from "@/app/(styles)/card.module.scss";
-import MultipleInputs from "../MultipleInputs";
 import store from "@/store/store";
 import {
   addLanguage,
@@ -55,14 +54,6 @@ export default function LanguagesEditable({ languages }) {
                   }}
                 />
               </div>
-
-              <MultipleInputs
-                items={language.tags || []}
-                onChange={(newTags) => {
-                  const filteredTags = newTags.filter(Boolean);
-                  changeHandler([["tags", filteredTags]], index);
-                }}
-              />
             </CardGroup>
           );
         })}{" "}

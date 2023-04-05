@@ -22,15 +22,6 @@ export default function LanguagesCard({ languages }) {
               </h4>
               <div className={cardStyles.language_info}>
                 <h4>{language.note} </h4>
-                <div className={cardStyles.language_tags}>
-                  {language.tags?.map((tag) => {
-                    return (
-                      <div className="tag" key={tag}>
-                        {tag}
-                      </div>
-                    );
-                  })}
-                </div>
               </div>
             </div>
           );
