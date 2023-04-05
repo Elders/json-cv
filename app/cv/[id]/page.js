@@ -8,6 +8,7 @@ import findCV from "@/helpers/findCV";
 
 export default async function CVPage({ params }) {
   let cv = findCV(params.id);
+
   if (!cv) {
     const response = await fetch(
       `${process.env.HOST}/api/getCVByID?id=${params.id}`,
@@ -17,7 +18,7 @@ export default async function CVPage({ params }) {
     cv = await response.json();
   }
 
-  store.dispatch(setAppData({ cv }));
+  // store.dispatch(setAppData({ cv }));
 
   return (
     <StoreProvider>

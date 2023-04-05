@@ -6,6 +6,7 @@ import { deletePosition } from "@/store/slices/app";
 import { updatePosition } from "@/store/slices/app";
 import findPosition from "@/helpers/findPosition";
 import cardStyles from "@/app/(styles)/card.module.scss";
+import PositionProject from "../PositionProject";
 
 export default function PositionEditable({ positionID, index }) {
   const appData = useSelector((state) => state.app);
@@ -76,39 +77,12 @@ export default function PositionEditable({ positionID, index }) {
         <span className={cardStyles.index}>{indexValue}</span>
       </header>
       <main>
-        <div className={cardStyles.position_names_info}>
-          <div>
-            <h4 className="column-name">PROJECT NAME</h4>
-            <input
-              type="text"
-              placeholder="Project name"
-              value={currentPosition?.projectName || ""}
-              id="projectName"
-              onChange={(e) => editPosition({ projectName: e.target.value })}
-            />
-          </div>
-        </div>
-        <div className={cardStyles.position_technology_stack}>
-          <h2 className="my-1">Technology Stack: </h2>
-          <textarea
-            placeholder="Technology Stack"
-            value={currentPosition?.technologyStack || ""}
-            id="technologyStack"
-            onChange={(e) => editPosition({ technologyStack: e.target.value })}
-          ></textarea>
-        </div>
-
-        <div className={cardStyles.position_description}>
-          <h2 className="my-1">Description: </h2>
-          <textarea
-            placeholder="Description"
-            value={currentPosition?.description || ""}
-            id="description"
-            onChange={(e) => editPosition({ description: e.target.value })}
-          ></textarea>
-        </div>
+        <PositionProject
+          currentPosition={currentPosition}
+          editPosition={editPosition}
+        />
         <button onClick={deleteHandler} className="mt-1">
-          Delete
+          Delete Position
         </button>
       </main>
     </div>

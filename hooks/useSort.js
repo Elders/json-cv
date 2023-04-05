@@ -32,7 +32,6 @@ export default function useSort(items) {
     setSortedOrder(sortTo);
     setSortedItems(sortedItems);
 
-    console.log("SSSSORTED ITEMS: ", sortedItems);
     return sortedItems;
   }
 

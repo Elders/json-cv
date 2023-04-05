@@ -1,33 +1,14 @@
-import CV from "./(components)/CV";
-
-import CVList from "./(components)/CVTable";
-import StoreInitializer from "./(components)/StoreInitializer";
-import store from "@/store/store";
-import { setData } from "@/store/slices/cvs";
-import StoreProvider from "./(components)/StoreProvider";
+import CVTable from "./(components)/CVTable";
 import Navbar from "./(components)/Navbar";
-import Confirm from "./(components)/Confirm";
-
-async function initData() {
-  const response = await fetch(process.env.HOST + "api/cv", {
-    cache: "no-store",
-  });
-
-  const data = await response.json();
-
-  return data;
-}
+import fetchCVS from "@/helpers/fetchCVS";
 
 export default async function Home() {
-  const cvData = await initData();
+  const cvData = await fetchCVS();
 
   return (
     <>
       <Navbar />
-      <CVList initData={cvData} />
-      <StoreProvider>
-        <CV />
-      </StoreProvider>
+      <CVTable initData={cvData} />
     </>
   );
 }

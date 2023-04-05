@@ -33,14 +33,6 @@ export default function CVTable({ initData }) {
   const { sortList, sortedItems, sortedBy, sortedOrder } = useSort(renderCV);
 
   useEffect(() => {
-    !storedCVS && store.dispatch(setData(initData));
-  }, []);
-
-  useEffect(() => {
-    console.log("sortedItems: ", sortedItems);
-  }, [sortedItems]);
-
-  useEffect(() => {
     storedCVS && setRenderCV(storedCVS);
   }, [storedCVS]);
 

@@ -34,7 +34,7 @@ export default function Link({ link, placeholder }) {
 
       <Image
         src={linkIcon}
-        alt="link icon"
+        alt=""
         className={styles.link_icon}
         onClick={copyHandler}
       />

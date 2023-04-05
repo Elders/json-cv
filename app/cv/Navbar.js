@@ -23,6 +23,7 @@ export default function Navbar({ cv }) {
           {cv?.image ? (
             <Image
               src={cv.image}
+              alt=""
               width={70}
               height={70}
               className={`no-print ${styles.cv_picture}`}

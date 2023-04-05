@@ -2,16 +2,17 @@ import "@/app/(styles)/globals.scss";
 import { Montserrat } from "@next/font/google";
 import styles from "@/app/(styles)/layout.module.scss";
 import StoreInitializer from "./(components)/StoreInitializer";
-import store from "@/store/store";
 import StoreProvider from "./(components)/StoreProvider";
-import Image from "next/image";
+import fetchCVS from "@/helpers/fetchCVS";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
   variable: "--montserrat",
 });
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const cvData = await fetchCVS();
+
   return (
     <html lang="en">
       {/*
@@ -25,7 +26,7 @@ export default function RootLayout({ children }) {
           <div className={styles.layout_holder}>
             <StoreProvider>{children}</StoreProvider>
           </div>{" "}
-          {/* <StoreInitializer serverStore={store.getState()} /> */}
+          <StoreInitializer state={cvData} />
         </div>
       </body>
     </html>

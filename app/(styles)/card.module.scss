@@ -87,14 +87,6 @@
   width: 80%;
 }
 
-.position_names_info {
-  margin-block: 2rem;
-
-  & > * > :nth-child(2) {
-    margin-top: 10px;
-  }
-}
-
 .langs_and_tech {
   @extend .card;
   display: grid;
