@@ -110,7 +110,6 @@ label {
   color: var(--red);
   font-weight: 700;
   font-size: 0.9rem;
-  margin-bottom: 16px;
 }
 
 .pointer {
@@ -119,6 +118,14 @@ label {
 
 .flex {
   display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .tag {
@@ -166,8 +173,15 @@ label {
   }
 }
 
+.mb-05 {
+  margin-bottom: 8px;
+}
 .mt-1 {
   margin-top: 16px;
+}
+
+.mb-1 {
+  margin-bottom: 16px;
 }
 
 .mr-1 {
@@ -185,4 +199,34 @@ label {
 textarea {
   height: 150px;
   width: 100%;
+}
+
+@for $i from 1 through 5 {
+  .mt-#{$i} {
+    margin-top: 8px * $i;
+  }
+
+  .ml-#{$i} {
+    margin-left: 8px * $i;
+  }
+
+  .mr-#{$i} {
+    margin-right: 8px * $i;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: 8px * $i;
+  }
+
+  .m-#{$i} {
+    margin: 8px * $i;
+  }
+
+  .my-#{$i} {
+    margin-block: 8px * $i;
+  }
+
+  .mx-#{$i} {
+    margin-inline: 8px * $i;
+  }
 }

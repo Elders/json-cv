@@ -28,6 +28,31 @@ const appSlice = createSlice({
       });
     },
 
+    createPositionProject(state, { payload }) {
+      return produce(state, (draft) => {
+        const position = draft.cv.positions.find(({ id }) => id === payload);
+        const projects = position.projects || [];
+
+        projects.push({
+          id: crypto.randomUUID(),
+        });
+
+        position.projects = projects;
+      });
+    },
+
+    deletePositionProject(state, { payload }) {
+      return produce(state, (draft) => {
+        const position = draft.cv.positions.find(
+          ({ id }) => id === payload.positionID
+        );
+        const projects = position.projects;
+        position.projects = projects.filter(
+          (project) => project.id !== payload.projectID
+        );
+      });
+    },
+
     deletePosition(state, { payload }) {
       return produce(state, (draft) => {
         draft.cv.positions = draft.cv.positions.filter(
@@ -129,6 +154,8 @@ export const {
   setData,
   addPosition,
   updatePosition,
+  createPositionProject,
+  deletePositionProject,
   updateCv,
   deletePosition,
   updateLanguages,

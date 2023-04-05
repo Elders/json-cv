@@ -30,24 +30,30 @@ export default function PositionCard({ position, index, ...rest }) {
         <span className={cardStyles.index}>{indexValue}</span>
       </header>
       <main>
-        <div className={cardStyles.position_names_info}>
-          <div>
-            <h4 className="column-name">PROJECT NAME</h4>
-            <h3>{position.projectName}</h3>
-          </div>
-        </div>
-        {position.technologyStack ? (
-          <div className={cardStyles.position_technology_stack}>
-            <h2>Technology Stack: </h2>
-            <p>{position.technologyStack}</p>
-          </div>
-        ) : null}
-        {position.description ? (
-          <div className={cardStyles.position_description}>
-            <h2>Description: </h2>
-            <p className={cardStyles.paragraph}>{position.description}</p>
-          </div>
-        ) : null}
+        {position.projects?.map((project) => {
+          return (
+            <div key={project.id}>
+              <div className={cardStyles.position_names_info}>
+                <div>
+                  <h4 className="column-name mb-05">PROJECT NAME</h4>
+                  <h3>{project.projectName}</h3>
+                </div>
+              </div>
+              {project.technologyStack ? (
+                <div className={"my-3"}>
+                  <h2>Technology Stack: </h2>
+                  <p>{project.technologyStack}</p>
+                </div>
+              ) : null}
+              {project.description ? (
+                <div className={cardStyles.project_description}>
+                  <h2>Description: </h2>
+                  <p className={cardStyles.paragraph}>{project.description}</p>
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
       </main>
     </div>
   );
