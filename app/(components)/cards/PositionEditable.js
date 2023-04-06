@@ -79,6 +79,7 @@ export default function PositionEditable({ positionID, index }) {
                 dateFormat="dd/MM/yyyy"
                 className="date-picker"
                 isClearable={true}
+                required
               />
             </div>
             <div>

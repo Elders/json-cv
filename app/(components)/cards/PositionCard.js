@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import formatDate from "@/helpers/date";
 import cardStyles from "@/app/(styles)/card.module.scss";
 import PositionEditable from "./PositionEditable";
 
@@ -20,7 +21,8 @@ export default function PositionCard({ position, index, ...rest }) {
           </div>
           <div>
             <h3 className="column-name">
-              POSITION / ({position.periodStart} - {position.periodEnd})
+              POSITION / ({formatDate(position.startDate)} -{" "}
+              {formatDate(position.endDate)})
             </h3>
             <h2 className={`${cardStyles.position_name} ${cardStyles.heading}`}>
               {position.name}
