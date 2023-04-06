@@ -178,9 +178,11 @@ export default function PositionEditable({ positionID, index, length }) {
         </div>
       </header>
       <main>
-        {currentPosition?.projects?.map((project) => (
+        {currentPosition?.projects?.map((project, index, projects) => (
           <PositionProject
             key={project.id}
+            index={index}
+            length={projects.length}
             project={project}
             positionID={currentPosition.id}
             editHandler={(updatedPart) => editProject(project, updatedPart)}

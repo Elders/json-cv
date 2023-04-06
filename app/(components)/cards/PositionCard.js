@@ -40,7 +40,7 @@ export default function PositionCard({ position, index, length, ...rest }) {
       <main>
         {position.projects?.map((project) => {
           return (
-            <div key={project.id}>
+            <div key={project.id} className="my-3">
               <div className={cardStyles.position_names_info}>
                 <div>
                   <h4 className="column-name mb-05">PROJECT NAME</h4>
