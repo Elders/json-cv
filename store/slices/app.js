@@ -61,6 +61,14 @@ const appSlice = createSlice({
       });
     },
 
+    swapPositions(state, { payload }) {
+      return produce(state, (draft) => {
+        const positions = draft.cv.positions;
+        const [x, y] = payload;
+        [positions[x], positions[y]] = [positions[y], positions[x]];
+      });
+    },
+
     updateCv(state, { payload }) {
       return produce(state, (draft) => {
         Object.entries(payload).forEach((pair) => {
@@ -156,6 +164,7 @@ export const {
   updatePosition,
   createPositionProject,
   deletePositionProject,
+  swapPositions,
   updateCv,
   deletePosition,
   updateLanguages,

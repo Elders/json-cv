@@ -1,17 +1,24 @@
+import { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import store from "@/store/store";
-import { createPositionProject, deletePosition } from "@/store/slices/app";
+import {
+  createPositionProject,
+  deletePosition,
+  swapPositions,
+} from "@/store/slices/app";
 import { updatePosition } from "@/store/slices/app";
 import findPosition from "@/helpers/findPosition";
 import cardStyles from "@/app/(styles)/card.module.scss";
 import PositionProject from "../PositionProject";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useEffect, useState } from "react";
 
-export default function PositionEditable({ positionID, index }) {
+import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+
+export default function PositionEditable({ positionID, index, length }) {
   const appData = useSelector((state) => state.app);
   const indexValue = (index + 1).toString().padStart(2, "0");
+  const positionRef = useRef();
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [chosenPresent, setChosenPresent] = useState(false);
@@ -40,6 +47,8 @@ export default function PositionEditable({ positionID, index }) {
   }
 
   useEffect(() => {
+    if (!currentPosition) return;
+
     let endDate = null;
 
     const startDate = currentPosition.startDate
@@ -55,7 +64,19 @@ export default function PositionEditable({ positionID, index }) {
 
     setStartDate(startDate);
     setEndDate(endDate);
-  }, [currentPosition.startDate, currentPosition.endDate]);
+  }, [currentPosition?.startDate, currentPosition?.endDate]);
+
+  function movePosition(moveBy) {
+    const start = index;
+    const end = start + moveBy;
+
+    store.dispatch(swapPositions([start, end]));
+
+    if (moveBy < 0) return;
+
+    const height = positionRef.current.getBoundingClientRect().height;
+    window.scrollBy(0, height - 20);
+  }
 
   useEffect(() => {
     const newValue = chosenPresent ? "PRESENT" : endDate?.toString();
@@ -63,7 +84,7 @@ export default function PositionEditable({ positionID, index }) {
   }, [chosenPresent]);
 
   return (
-    <div className={`${cardStyles.card}`}>
+    <div className={`${cardStyles.card}`} ref={positionRef}>
       <header className={cardStyles.header}>
         <div>
           <div className={cardStyles.grid_content}>
@@ -111,6 +132,16 @@ export default function PositionEditable({ positionID, index }) {
 
           <div className={`${cardStyles.grid_content} my-1`}>
             <div>
+              <h4 className="column-name mb-1">COMPANY NAME</h4>
+              <input
+                type="text"
+                placeholder="Company name"
+                value={currentPosition?.companyName || ""}
+                id="companyName"
+                onChange={(e) => editPosition({ companyName: e.target.value })}
+              />{" "}
+            </div>
+            <div>
               <h4 className="column-name mb-1">POSITION NAME</h4>
               <input
                 type="text"
@@ -121,20 +152,29 @@ export default function PositionEditable({ positionID, index }) {
                 onChange={(e) => editPosition({ name: e.target.value })}
               />
             </div>
-
-            <div>
-              <h4 className="column-name mb-1">COMPANY NAME</h4>
-              <input
-                type="text"
-                placeholder="Company name"
-                value={currentPosition?.companyName || ""}
-                id="companyName"
-                onChange={(e) => editPosition({ companyName: e.target.value })}
-              />{" "}
-            </div>
           </div>
         </div>
-        <span className={cardStyles.index}>{indexValue}</span>
+        <div>
+          <span className={cardStyles.index}>{indexValue}</span>
+
+          <div className={cardStyles.reorder_parent}>
+            {index ? (
+              <ChevronUpIcon
+                size={35}
+                color="#ccc"
+                onClick={() => movePosition(-1)}
+              />
+            ) : null}
+
+            {index !== length - 1 ? (
+              <ChevronDownIcon
+                size={35}
+                color="#ccc"
+                onClick={() => movePosition(1)}
+              />
+            ) : null}
+          </div>
+        </div>
       </header>
       <main>
         {currentPosition?.projects?.map((project) => (
@@ -146,9 +186,11 @@ export default function PositionEditable({ positionID, index }) {
           />
         ))}
 
-        <button onClick={addProject}>Add Project +</button>
+        <button onClick={addProject} type="button">
+          Add Project +
+        </button>
 
-        <button onClick={deleteHandler} className="mt-1">
+        <button onClick={deleteHandler} className="mt-1" type="button">
           Delete Position
         </button>
       </main>

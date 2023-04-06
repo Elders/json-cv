@@ -37,9 +37,14 @@ export default function CVContent({ initialCV }) {
       <Navbar cv={CV} />
       <Image src={waves} alt="waves" className={cvStyles.waves} />
       <section>
-        {CV?.positions?.map((position, index) => {
+        {CV?.positions?.map((position, index, positions) => {
           return (
-            <PositionCard key={position.id} position={position} index={index} />
+            <PositionCard
+              key={position.id}
+              position={position}
+              index={index}
+              length={positions.length}
+            />
           );
         })}
 
@@ -47,6 +52,7 @@ export default function CVContent({ initialCV }) {
           <button
             className="no-print"
             onClick={() => store.dispatch(addPosition())}
+            type="button"
           >
             Add Position +
           </button>
@@ -72,6 +78,7 @@ export default function CVContent({ initialCV }) {
         <button
           className="no-print mt-1"
           onClick={() => store.dispatch(addProject())}
+          type="button"
         >
           Add Project +
         </button>

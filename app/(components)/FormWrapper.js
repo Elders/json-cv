@@ -21,7 +21,7 @@ export default function FormWrapper({ children, ...rest }) {
       })
     );
 
-    if (isEditing) return;
+    if (!isEditing) return;
 
     store.dispatch(updateCV(cv));
     axios.post("/api/updateCV", cv);

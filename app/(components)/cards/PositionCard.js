@@ -3,12 +3,18 @@ import formatDate from "@/helpers/date";
 import cardStyles from "@/app/(styles)/card.module.scss";
 import PositionEditable from "./PositionEditable";
 
-export default function PositionCard({ position, index, ...rest }) {
+export default function PositionCard({ position, index, length, ...rest }) {
   const { isEditing } = useSelector((state) => state.app);
   const indexValue = (index + 1).toString().padStart(2, "0");
 
   if (isEditing) {
-    return <PositionEditable positionID={position.id} index={index} />;
+    return (
+      <PositionEditable
+        positionID={position.id}
+        index={index}
+        length={length}
+      />
+    );
   }
 
   return (
