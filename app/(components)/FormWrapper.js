@@ -2,6 +2,8 @@
 import { useSelector } from "react-redux";
 import store from "@/store/store";
 import { updateCV } from "@/store/slices/cvs";
+import { setData as setAppData } from "@/store/slices/app";
+
 import axios from "axios";
 
 export default function FormWrapper({ children, ...rest }) {
@@ -9,6 +11,15 @@ export default function FormWrapper({ children, ...rest }) {
 
   function submitHandler(e) {
     e.preventDefault();
+    if (!e.target.checkValidity()) {
+      return;
+    }
+
+    store.dispatch(
+      setAppData({
+        isEditing: !isEditing,
+      })
+    );
 
     if (isEditing) return;
 
@@ -17,7 +28,7 @@ export default function FormWrapper({ children, ...rest }) {
   }
 
   return (
-    <form onSubmit={submitHandler} {...rest}>
+    <form onSubmit={submitHandler} id="cv-form" {...rest} noValidate>
       {children}
     </form>
   );

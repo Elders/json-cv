@@ -19,7 +19,6 @@ export default function NavButtons() {
   function toggle() {
     store.dispatch(
       setAppData({
-        isEditing: !isEditing,
         oldCV: cv,
       })
     );

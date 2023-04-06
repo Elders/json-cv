@@ -68,7 +68,7 @@ export default function PositionEditable({ positionID, index }) {
         <div>
           <div className={cardStyles.grid_content}>
             <div>
-              <h3 className="column-name mb-1">START DATE</h3>
+              <h3 className="column-name mb-1">START DATE *</h3>
 
               <ReactDatePicker
                 selected={startDate}
@@ -78,12 +78,13 @@ export default function PositionEditable({ positionID, index }) {
                 }}
                 dateFormat="dd/MM/yyyy"
                 className="date-picker"
+                form="cv-form"
                 isClearable={true}
-                required
+                required={true}
               />
             </div>
             <div>
-              <h3 className="column-name mb-1">END DATE</h3>
+              <h3 className="column-name mb-1">END DATE *</h3>
               <ReactDatePicker
                 selected={endDate}
                 placeholderText="DD/MM/YYYY"
@@ -94,6 +95,7 @@ export default function PositionEditable({ positionID, index }) {
                 className="date-picker"
                 isClearable={!chosenPresent}
                 disabled={chosenPresent}
+                required={true}
               />
               <div className="checkbox-wrapper my-1">
                 <input
