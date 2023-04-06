@@ -65,14 +65,19 @@ button {
     transform: scale(0.95);
   }
 
-  &:hover {
-    background: var(--red);
-    color: #fff;
-  }
-
   &:disabled {
     --clr: gray;
   }
+}
+
+.react-datepicker__input-container {
+  width: unset !important;
+}
+
+.react-datepicker__close-icon::after {
+  background: var(--red) !important;
+  vertical-align: unset;
+  padding: 3px;
 }
 
 input,
@@ -93,6 +98,17 @@ textarea {
 
   &:focus {
     outline: none;
+  }
+
+  [type="date"] {
+    user-select: none;
+  }
+}
+
+.checkbox-wrapper {
+  label {
+    display: inline-block;
+    user-select: none;
   }
 }
 

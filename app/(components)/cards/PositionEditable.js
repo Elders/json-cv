@@ -5,10 +5,16 @@ import { updatePosition } from "@/store/slices/app";
 import findPosition from "@/helpers/findPosition";
 import cardStyles from "@/app/(styles)/card.module.scss";
 import PositionProject from "../PositionProject";
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useEffect, useState } from "react";
 
 export default function PositionEditable({ positionID, index }) {
   const appData = useSelector((state) => state.app);
   const indexValue = (index + 1).toString().padStart(2, "0");
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [chosenPresent, setChosenPresent] = useState(false);
 
   const currentPosition = findPosition(appData.cv, positionID);
 
@@ -33,6 +39,29 @@ export default function PositionEditable({ positionID, index }) {
     store.dispatch(deletePosition(positionID));
   }
 
+  useEffect(() => {
+    let endDate = null;
+
+    const startDate = currentPosition.startDate
+      ? new Date(currentPosition.startDate)
+      : null;
+
+    console.log(currentPosition.endDate);
+    if (currentPosition.endDate === "PRESENT") {
+      setChosenPresent(true);
+    } else if (currentPosition.endDate) {
+      endDate = new Date(currentPosition.endDate);
+    }
+
+    setStartDate(startDate);
+    setEndDate(endDate);
+  }, [currentPosition.startDate, currentPosition.endDate]);
+
+  useEffect(() => {
+    const newValue = chosenPresent ? "PRESENT" : endDate?.toString();
+    newValue && editPosition({ endDate: newValue });
+  }, [chosenPresent]);
+
   return (
     <div className={`${cardStyles.card}`}>
       <header className={cardStyles.header}>
@@ -40,23 +69,40 @@ export default function PositionEditable({ positionID, index }) {
           <div className={cardStyles.grid_content}>
             <div>
               <h3 className="column-name mb-1">START DATE</h3>
-              <input
-                type="text"
-                id="startDate"
-                placeholder="Position start year"
-                value={currentPosition?.periodStart || ""}
-                onChange={(e) => editPosition({ periodStart: e.target.value })}
+
+              <ReactDatePicker
+                selected={startDate}
+                placeholderText="DD/MM/YYYY"
+                onChange={(date) => {
+                  editPosition({ startDate: date?.toString() || null });
+                }}
+                dateFormat="dd/MM/yyyy"
+                className="date-picker"
+                isClearable={true}
               />
             </div>
             <div>
               <h3 className="column-name mb-1">END DATE</h3>
-              <input
-                type="text"
-                placeholder="Position end year"
-                id="endDate"
-                value={currentPosition?.periodEnd || ""}
-                onChange={(e) => editPosition({ periodEnd: e.target.value })}
+              <ReactDatePicker
+                selected={endDate}
+                placeholderText="DD/MM/YYYY"
+                onChange={(date) => {
+                  editPosition({ endDate: date?.toString() || null });
+                }}
+                dateFormat="dd/MM/yyyy"
+                className="date-picker"
+                isClearable={!chosenPresent}
+                disabled={chosenPresent}
               />
+              <div className="checkbox-wrapper my-1">
+                <input
+                  type="checkbox"
+                  id="present"
+                  checked={chosenPresent}
+                  onChange={() => setChosenPresent(!chosenPresent)}
+                />{" "}
+                <label htmlFor="present">Choose Present</label>
+              </div>
             </div>
           </div>
 
