@@ -66,7 +66,7 @@ export default function SingleCV({ cv, onDeleteStart }) {
     <>
       <motion.tr exit={{ x: "-500vh", y: 0 }}
           variants={animationPoints}
-          whileHover={{ scale: 1.03 }}>
+          whileHover={{ scale: 1.01 }}>
         <td className={styles.edno_cv}>
           <UploadImage
             onChange={changeImage}
