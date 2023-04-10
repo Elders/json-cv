@@ -64,8 +64,10 @@ export default function SingleCV({ cv, onDeleteStart }) {
 
   return (
     <>
-      <tr>
-        <td>
+      <motion.tr exit={{ x: "-500vh", y: 0 }}
+          variants={animationPoints}
+          whileHover={{ scale: 1.03 }}>
+        <td className={styles.edno_cv}>
           <UploadImage
             onChange={changeImage}
             className={cv.image ? "hidden" : ""}
@@ -134,7 +136,7 @@ export default function SingleCV({ cv, onDeleteStart }) {
           </div>
         </motion.div>{" "}
         */}
-      </tr>
+      </motion.tr>
     </>
   );
 }

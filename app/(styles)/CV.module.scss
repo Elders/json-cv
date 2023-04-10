@@ -39,7 +39,7 @@
   display: table;
   width: 100%;
   margin-block: 3rem;
-  background-color: #fff;
+  // background-color: #e22121;
   border-radius: 12px;
   border-collapse: collapse;
   table-layout: fixed;
@@ -62,10 +62,14 @@
   td {
     padding-block: 1rem;
     display: table-cell;
+
     &.actions_holder {
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
       & > div {
         display: flex;
         align-items: center;
+        
         gap: 5px;
       }
     }
@@ -73,7 +77,13 @@
 
   tr:nth-of-type(even) {
     td {
-      background: rgb(150, 150, 150);
+      background: rgb(131, 92, 92);
+      color: #fff;
+    }
+  }
+  tr:nth-of-type(odd) {
+    td {
+      background: rgb(238, 187, 187);
       color: #fff;
     }
   }
@@ -164,4 +174,14 @@
   .waves {
     z-index: 1;
   }
+}
+
+.edno_cv{
+
+  width: 100%;
+  background-color: #fff;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-bottom: 1px black;
+
 }

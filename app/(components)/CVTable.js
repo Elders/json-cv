@@ -47,12 +47,12 @@ export default function CVTable({ initData }) {
   }
 
   return (
-    <>
-      {" "}
+    <AnimationWrapper>
       {deleteId ? (
         <Confirm onConfirm={deleteHandler} onCancel={() => setDeleteId(null)} />
       ) : null}
       <table className={styles.cvs_holder}>
+      {/* <table> */}
         <tbody>
           <tr>
             <th>Image</th>
@@ -78,6 +78,7 @@ export default function CVTable({ initData }) {
             </th>
             <th>Actions</th>
           </tr>
+          <AnimatePresence>
           {sortedItems?.map((cv, index) => {
             return (
               <SingleCV
@@ -87,9 +88,10 @@ export default function CVTable({ initData }) {
               />
             );
           })}
+          </AnimatePresence>
         </tbody>
       </table>
-    </>
+    </AnimationWrapper>
   );
 
   // return (
