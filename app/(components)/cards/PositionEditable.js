@@ -103,6 +103,8 @@ export default function PositionEditable({ positionID, index, length }) {
                 form="cv-form"
                 isClearable={true}
                 required={true}
+                monthsShown={1}
+                showYearDropdown
               />
             </div>
             <div>
@@ -118,6 +120,8 @@ export default function PositionEditable({ positionID, index, length }) {
                 isClearable={!chosenPresent}
                 disabled={chosenPresent}
                 required={true}
+                monthsShown={1}
+                showYearDropdown
               />
               <div className="checkbox-wrapper my-1">
                 <input
