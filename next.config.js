@@ -4,6 +4,14 @@ const nextConfig = {
     appDir: true,
   },
 
+  // webpack: (
+  //   config,
+  //   { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
+  // ) => {
+  //   config.optimization.minimize = false;
+  //   return config
+  // },
+
   images: {
     remotePatterns: [
       {
