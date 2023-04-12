@@ -117,6 +117,17 @@
     color: var(--red);
   }
 
+  .language_info_holder {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    h4 {
+      margin: 0;
+    }
+  }
+
   .language_info {
     display: flex;
     justify-content: space-between;

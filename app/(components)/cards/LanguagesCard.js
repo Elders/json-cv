@@ -16,7 +16,10 @@ export default function LanguagesCard({ languages }) {
       <div>
         {languages.map((language) => {
           return (
-            <div key={language.name}>
+            <div
+              key={language.name}
+              className={cardStyles.language_info_holder}
+            >
               <h4 className={`${cardStyles.language} ${cardStyles.heading}`}>
                 {language.name}
               </h4>
