@@ -55,7 +55,7 @@ export default function CVContent({ initialCV }) {
 
         {isEditing ? (
           <button
-            className="no-print"
+            className="no-print mt-1"
             onClick={() => store.dispatch(addPosition())}
             type="button"
           >
@@ -79,7 +79,8 @@ export default function CVContent({ initialCV }) {
       <section className={cardStyles.langs_and_tech}>
         <LanguagesCard languages={CV?.languages || []} />
         <EducationCard items={CV?.education || []} />
-      </section>
+      </section>{" "}
+      <div className="empty-div"></div>
       <ProjectsSection projects={CV?.projects || []} />
       {isEditing ? (
         <button
