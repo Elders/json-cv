@@ -1,0 +1,23 @@
+.image_holder {
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    .trash {
+      display: block;
+    }
+  }
+
+  .trash {
+    background: var(--red);
+    padding: 6px;
+    border-radius: 50%;
+    box-sizing: content-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(25%, -25%);
+    display: none;
+    cursor: pointer;
+  }
+}

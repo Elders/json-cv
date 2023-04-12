@@ -11,6 +11,8 @@ import store from "@/store/store";
 import { motion } from "framer-motion";
 import UploadImage from "./UploadImage";
 import toBase64 from "@/helpers/toBase64";
+import CVImage from "./CVImage";
+import getLastSegment from "@/helpers/getLastSegment";
 
 export default function SingleCV({ cv, onDeleteStart }) {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -51,6 +53,12 @@ export default function SingleCV({ cv, onDeleteStart }) {
     }
   }
 
+  async function deleteImage() {
+    const image = getLastSegment(cv.image);
+    const { data } = await axios.delete("/api/deleteImage/" + image);
+    data.isSuccess && store.dispatch(updateCV({ ...cv, image: null }));
+  }
+
   function save() {
     const updated = { ...cv, name };
     axios.post("/api/updateCV", updated);
@@ -64,9 +72,11 @@ export default function SingleCV({ cv, onDeleteStart }) {
 
   return (
     <>
-      <motion.tr exit={{ x: "-500vh", y: 0 }}
-          variants={animationPoints}
-          whileHover={{ scale: 1.01 }}>
+      <motion.tr
+        exit={{ x: "-500vh", y: 0 }}
+        variants={animationPoints}
+        whileHover={{ scale: 1.01 }}
+      >
         <td className={styles.edno_cv}>
           <UploadImage
             onChange={changeImage}
@@ -74,7 +84,7 @@ export default function SingleCV({ cv, onDeleteStart }) {
             ref={uploadRef}
           />
           {cv.image ? (
-            <Image
+            <CVImage
               src={cv.image}
               alt={cv.name}
               width={60}
@@ -82,6 +92,7 @@ export default function SingleCV({ cv, onDeleteStart }) {
               className={styles.img}
               loader={() => cv.image}
               onClick={() => uploadRef.current?.click()}
+              onDelete={deleteImage}
             />
           ) : null}
         </td>
