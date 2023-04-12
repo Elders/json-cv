@@ -39,12 +39,17 @@ export default function CVContent({ initialCV }) {
       <section>
         {CV?.positions?.map((position, index, positions) => {
           return (
-            <PositionCard
-              key={position.id}
-              position={position}
-              index={index}
-              length={positions.length}
-            />
+            <>
+              <PositionCard
+                key={position.id}
+                position={position}
+                index={index}
+                length={positions.length}
+              />
+              {positions.length !== index + 1 ? (
+                <div className="empty-div"></div>
+              ) : null}
+            </>
           );
         })}
 
@@ -58,17 +63,19 @@ export default function CVContent({ initialCV }) {
           </button>
         ) : null}
       </section>
+      <div className="empty-div"></div>
       <ListCard
         title="Tools & Technologies"
         items={CV?.technologies || []}
         propName="technologies"
       />
+      <div className="empty-div"></div>
       <ListCard
         title="Industry knowledge"
         items={CV?.industryKnowledge || []}
         propName="industryKnowledge"
       />
-
+      <div className="empty-div"></div>
       <section className={cardStyles.langs_and_tech}>
         <LanguagesCard languages={CV?.languages || []} />
         <EducationCard items={CV?.education || []} />

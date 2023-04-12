@@ -18,7 +18,7 @@ export default function PositionCard({ position, index, length, ...rest }) {
   }
 
   return (
-    <div className={`${cardStyles.card}`} {...rest}>
+    <div className={`${cardStyles.card} ${cardStyles.position_card}`} {...rest}>
       <header className={cardStyles.header}>
         <div className={cardStyles.grid_content}>
           <div>
@@ -43,6 +43,7 @@ export default function PositionCard({ position, index, length, ...rest }) {
             <div key={project.id} className="my-3 project">
               <div className={cardStyles.position_names_info}>
                 <div>
+                  <div className="empty-div"></div>
                   <h4 className="column-name mb-05">PROJECT NAME</h4>
                   <h3>{project.projectName}</h3>
                 </div>

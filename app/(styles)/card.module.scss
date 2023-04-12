@@ -4,11 +4,10 @@
   }
 
   padding: 1.5rem;
-  page-break-before: avoid;
   page-break-inside: avoid;
   background: #fff;
   border-radius: 12px;
-  margin-block: 1rem;
+  // margin-block: 1rem;
   position: relative;
 
   button:not(:first-of-type) {
@@ -24,6 +23,10 @@
     grid-template-columns: 1fr 1fr;
     width: 100%;
   }
+}
+
+.position_card {
+  page-break-before: avoid;
 }
 
 .reorder_parent {
@@ -177,3 +180,4 @@
     z-index: 3;
   }
 }
+
