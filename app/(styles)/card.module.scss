@@ -105,6 +105,13 @@
   width: 80%;
 }
 
+.list_holder {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 12px;
+  font-size: 16px;
+}
+
 .langs_and_tech {
   @extend .card;
   display: grid;
@@ -191,4 +198,3 @@
     z-index: 3;
   }
 }
-

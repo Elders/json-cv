@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import ListEditable from "./ListEditable";
 import cardStyles from "@/app/(styles)/card.module.scss";
-import FlowingList from "../FlowingList";
 
 export default function ListCard({ title, items, propName }) {
   const { isEditing } = useSelector((state) => state.app);
@@ -15,11 +14,12 @@ export default function ListCard({ title, items, propName }) {
       <header className={cardStyles.header}>
         <h2>{title}</h2>
       </header>
-      <FlowingList items={items} breakingCount={20}>
+
+      <div className={cardStyles.list_holder}>
         {items.map((item, index) => {
           return <span key={item + index}> - {item}</span>;
         })}
-      </FlowingList>
+      </div>
     </div>
   );
 }

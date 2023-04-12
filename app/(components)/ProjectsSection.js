@@ -4,10 +4,8 @@ import cardStyles from "@/app/(styles)/card.module.scss";
 import projectIcon from "@/assets/project-icon.svg";
 import Image from "next/image";
 import Link from "./Link";
-import FlowingList from "./FlowingList";
 
 export default function ProjectsSection({ projects }) {
-  // const { projects } = useSelector((state) => state.cv);
   const { isEditing, cv: cvData } = useSelector((state) => state.app);
   const appProjects = cvData?.projects || [];
 
@@ -51,11 +49,11 @@ export default function ProjectsSection({ projects }) {
             {project.references?.length ? (
               <div className={cardStyles.references}>
                 <h4>REFERENCES</h4>
-                <FlowingList items={project.references} breakingCount={10}>
+                <div className={cardStyles.list_holder}>
                   {project.references.map((reference, index) => {
                     return <Link link={reference} key={index} />;
                   })}
-                </FlowingList>
+                </div>
               </div>
             ) : null}
           </div>
