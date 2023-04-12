@@ -57,7 +57,7 @@ export default function PositionCard({ position, index, length, ...rest }) {
               {project.description ? (
                 <div className={cardStyles.project_description}>
                   <h2>Description: </h2>
-                  <p className={cardStyles.paragraph}>{project.description}</p>
+                  <pre className="mt-2">{project.description}</pre>
                 </div>
               ) : null}
             </div>

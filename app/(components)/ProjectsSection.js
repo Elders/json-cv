@@ -30,10 +30,12 @@ export default function ProjectsSection({ projects }) {
                 />
                 <h2>{project.name}</h2>
               </div>
-              <div>
-                <h4 className="column-name">ROLE:</h4>
-                <h5>{project.role}</h5>
-              </div>
+              {!project.role ? null : (
+                <div>
+                  <h4 className="column-name">ROLE:</h4>
+                  <h5>{project.role}</h5>
+                </div>
+              )}
             </header>
             <main>
               <p>{project.description}</p>
@@ -49,7 +51,7 @@ export default function ProjectsSection({ projects }) {
             {project.references?.length ? (
               <div className={cardStyles.references}>
                 <h4>REFERENCES</h4>
-                <div className={cardStyles.list_holder}>
+                <div >
                   {project.references.map((reference, index) => {
                     return <Link link={reference} key={index} />;
                   })}
