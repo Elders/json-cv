@@ -47,7 +47,10 @@ export default function SingleCV({ cv, onDeleteStart }) {
       const updatedCV = { ...cv, image: path };
 
       store.dispatch(updateCV({ ...cv, image: path }));
-      axios.post("/api/updateCV", updatedCV);
+      axios.post("/api/changeImage", {
+        cvId: cv.id,
+        newImage: path,
+      });
     } catch (err) {
       console.log("err: ", err);
     }
