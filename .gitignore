@@ -32,3 +32,4 @@ yarn-error.log*
 .vercel
 
 /data/cv.json
+/public/uploads

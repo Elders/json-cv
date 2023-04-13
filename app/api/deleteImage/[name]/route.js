@@ -6,8 +6,11 @@ import getLastSegment from "@/helpers/getLastSegment";
 export async function DELETE(req) {
   let isSuccess = true;
   const cvImage = decodeURI(getLastSegment(req.url));
+
   const content = await readFile("./data/cv.json");
-  const cv = content.find((cv) => getLastSegment(cv.image) === cvImage);
+  const cv = content.find((cv) => {
+    return getLastSegment(cv.image) === cvImage;
+  });
   cv.image = null;
 
   try {
