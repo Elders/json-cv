@@ -1,9 +1,9 @@
 import CVTable from "./(components)/CVTable";
 import Navbar from "./(components)/Navbar";
-import fetchCVS from "@/helpers/fetchCVS";
+import readCVS from "@/helpers/readCVS";
 
 export default async function Home() {
-  const cvData = await fetchCVS();
+  const cvData = await readCVS();
 
   return (
     <>

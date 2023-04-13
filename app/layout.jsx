@@ -3,7 +3,7 @@ import { Montserrat } from "@next/font/google";
 import styles from "@/app/(styles)/layout.module.scss";
 import StoreInitializer from "./(components)/StoreInitializer";
 import StoreProvider from "./(components)/StoreProvider";
-import fetchCVS from "@/helpers/fetchCVS";
+import readCVS from "@/helpers/readCVS";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -11,7 +11,7 @@ const montserrat = Montserrat({
 });
 
 export default async function RootLayout({ children }) {
-  const cvData = await fetchCVS();
+  const cvData = await readCVS();
 
   return (
     <html lang="en">
