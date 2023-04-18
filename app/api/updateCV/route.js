@@ -10,8 +10,10 @@ export async function POST(req) {
 
   let currentContent = await readFile("./data/cv.json");
   const newContent = currentContent.map((cv) => {
-    return cv.id === updatedCV.id ? updatedCV : cv;
+    return cv.id === updatedCV.id ? { ...updatedCV, image: cv.image } : cv;
   });
+
+  // Do not update image
 
   try {
     await fs.writeFile("./data/cv.json", JSON.stringify(newContent));

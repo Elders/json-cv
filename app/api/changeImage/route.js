@@ -3,6 +3,7 @@ import parse from "@/helpers/bodyParser";
 import readFile from "@/helpers/readFile";
 import { NextResponse } from "next/server";
 import getLastSegment from "@/helpers/getLastSegment";
+import uploadImage from "@/helpers/uploadImage";
 
 export async function POST(req) {
   let isSuccess = true;
@@ -13,10 +14,12 @@ export async function POST(req) {
 
   if (cv.image) {
     const imageName = getLastSegment(cv.image);
-    await fs.unlink("./public/uploads/" + imageName);
+    await fs.unlink("./images/" + imageName);
   }
 
-  cv.image = data.newImage;
+  const newImage = await uploadImage(data);
+
+  cv.image = newImage;
 
   try {
     await fs.writeFile("./data/cv.json", JSON.stringify(cvs));
@@ -25,5 +28,5 @@ export async function POST(req) {
     isSuccess = false;
   }
 
-  return NextResponse.json({ isSuccess });
+  return NextResponse.json({ isSuccess, path: newImage });
 }

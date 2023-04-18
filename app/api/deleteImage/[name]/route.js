@@ -9,13 +9,15 @@ export async function DELETE(req) {
 
   const content = await readFile("./data/cv.json");
   const cv = content.find((cv) => {
-    return getLastSegment(cv.image) === cvImage;
+    return getLastSegment(cv.image).includes(cvImage);
   });
+
+  const prevImage = getLastSegment(cv.image);
   cv.image = null;
 
   try {
     await fs.writeFile("./data/cv.json", JSON.stringify(content));
-    await fs.unlink("./public/uploads/" + cvImage);
+    await fs.unlink("./images/" + prevImage);
   } catch (err) {
     console.log(err);
     isSuccess = false;

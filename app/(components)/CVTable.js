@@ -52,7 +52,6 @@ export default function CVTable({ initData }) {
         <Confirm onConfirm={deleteHandler} onCancel={() => setDeleteId(null)} />
       ) : null}
       <table className={styles.cvs_holder}>
-        {/* <table> */}
         <tbody>
           <tr>
             <th>Image</th>

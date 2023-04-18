@@ -39,26 +39,20 @@ export default function SingleCV({ cv, onDeleteStart }) {
       const base64String = await toBase64(file);
       const {
         data: { path },
-      } = await axios.post("/api/uploadImage", {
+      } = await axios.post("/api/changeImage", {
         base64String,
-        fileName: cv.name,
-      });
-
-      const updatedCV = { ...cv, image: path };
-
-      store.dispatch(updateCV({ ...cv, image: path }));
-      axios.post("/api/changeImage", {
+        fileName: cv.id,
         cvId: cv.id,
-        newImage: path,
       });
+
+      store.dispatch(updateCV({ ...cv, image: base64String }));
     } catch (err) {
       console.log("err: ", err);
     }
   }
 
   async function deleteImage() {
-    const image = getLastSegment(cv.image);
-    const { data } = await axios.delete("/api/deleteImage/" + image);
+    const { data } = await axios.delete("/api/deleteImage/" + cv.id);
     data.isSuccess && store.dispatch(updateCV({ ...cv, image: null }));
   }
 

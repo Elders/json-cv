@@ -22,7 +22,6 @@ export async function POST(req) {
 
     fs.writeFile(filePath, fileContents, "base64");
     return NextResponse.json({
-      //   path: path.join(process.env.HOST, "uploads", fullFileName),
       path: process.env.HOST + "uploads/" + fullFileName,
     });
   } catch (err) {
