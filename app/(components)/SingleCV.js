@@ -95,7 +95,7 @@ export default function SingleCV({ cv, onDeleteStart }) {
         </td>
 
         <td>{cv.elderNumber || "-"}</td>
-        <td>
+        <td colSpan={5}>
           {edit ? (
             <input value={name} onChange={(e) => setName(e.target.value)} />
           ) : (
@@ -110,40 +110,6 @@ export default function SingleCV({ cv, onDeleteStart }) {
             <Trash2 onClick={() => onDeleteStart(cv.id)} />
           </div>
         </td>
-        {/* <motion.div
-          exit={{ x: 0, y: "100vh" }}
-          variants={animationPoints}
-          whileHover={{ scale: 1.1 }}
-          onClick={redirect}
-          className={`${styles.cv_card} ${activeClass} pointer`}
-        >
-          <div className={styles.icons}>
-            {edit ? (
-              <Image src={tickIcon} alt="save" onClick={save} />
-            ) : (
-              <Edit onClick={startEdit} />
-            )}
-
-            <Image
-              src={binIcon}
-              alt="bin"
-              className={styles.bin_icon}
-              onClick={confirmDelete}
-            />
-          </div>
-          <div className={styles.img_holder}>
-            <Image src={logo} alt="elders" />
-          </div>
-
-          <div className={styles.cv_name}>
-            {edit ? (
-              <input value={name} onChange={(e) => setName(e.target.value)} />
-            ) : (
-              <div>{cv.name}</div>
-            )}
-          </div>
-        </motion.div>{" "}
-        */}
       </motion.tr>
     </>
   );
