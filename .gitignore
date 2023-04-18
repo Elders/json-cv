@@ -33,3 +33,4 @@ yarn-error.log*
 
 /data/cv.json
 /public/uploads
+/images

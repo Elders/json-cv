@@ -20,3 +20,5 @@ export const metadata = {
     icon: "/favicon.ico",
   },
 };
+
+export const dynamic = "force-dynamic";
