@@ -31,6 +31,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-/data/cv.json
+/data
 /public/uploads
 /images
