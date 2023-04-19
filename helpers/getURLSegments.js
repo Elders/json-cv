@@ -3,7 +3,7 @@ module.exports = function getURLSegments(url) {
 
   return {
     protocol: matches[1],
-    hostName: matches[2],
+    hostname: matches[2],
     port: matches[3],
   };
 };
