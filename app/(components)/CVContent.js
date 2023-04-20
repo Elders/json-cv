@@ -25,7 +25,7 @@ export default function CVContent({ initialCV }) {
   const [CV, setCV] = useState(initialCV);
 
   useEffect(() => {
-    store.dispatch(setAppData({ cv: CV }));
+    store.dispatch(setAppData({ cv: CV, isEditing: false }));
   }, []);
 
   useEffect(() => {
