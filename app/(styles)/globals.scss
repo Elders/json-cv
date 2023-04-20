@@ -160,12 +160,6 @@ label {
   cursor: pointer;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
 @media print {
   html {
     background: #e6c4c2;
@@ -249,7 +243,6 @@ textarea {
 
 .project {
   page-break-inside: avoid;
-
 }
 
 .empty-div {

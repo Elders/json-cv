@@ -8,5 +8,4 @@ export async function GET(req) {
   const img = await fs.readFile("./images/" + imageName);
 
   return new NextResponse(img);
-  // return NextResponse.json({ a: 20 });
 }
