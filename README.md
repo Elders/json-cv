@@ -23,6 +23,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     - npm install
     - npm run build
     - npm start
+    
    one after the other, NOT all at once. The app should now run on http://localhost:3000/
     
 
