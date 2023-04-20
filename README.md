@@ -27,6 +27,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     
    one after the other, NOT all at once. The app should now run on http://localhost:3000/
     
+4. Create **.env** file in the root directory with the following content: 
+    ```
+    HOST=http://localhost:3000/
+    NEXT_PUBLIC_HOST=http://localhost:3000/
+    ```
 
 
 
