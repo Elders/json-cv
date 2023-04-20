@@ -26,6 +26,7 @@ export default function Navbar({ cv }) {
               alt=""
               width={70}
               height={70}
+              loader={() => cv.image}
               className={`no-print ${styles.cv_picture}`}
             />
           ) : null}
