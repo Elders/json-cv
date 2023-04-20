@@ -3,6 +3,7 @@ import crypto from "crypto";
 import { NextResponse } from "next/server";
 import parse from "@/helpers/bodyParser";
 import readFile from "@/helpers/readFile";
+import fileExists from "@/helpers/fileExists";
 
 export async function POST(req) {
   let isSuccess = true;
@@ -19,8 +20,14 @@ export async function POST(req) {
   currentContent.push(newCV);
 
   try {
+    const folderExists = await fileExists("./data");
+
+    if (!folderExists) {
+      await fs.mkdir("./data");
+    }
     await fs.writeFile("./data/cv.json", JSON.stringify(currentContent));
   } catch (err) {
+    console.log("ERROR: ", err);
     isSuccess = false;
   }
 
