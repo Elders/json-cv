@@ -7,12 +7,13 @@ import Image from "next/image";
 import styles from "@/app/(styles)/CV.module.scss";
 import { useSelector } from "react-redux";
 import { updateCv } from "@/store/slices/app";
+import { useState } from "react";
 
 export default function Navbar({ cv }) {
   const { isEditing } = useSelector((state) => state.app);
+  const [newElderNumber, setElderNumber] = useState(cv?.elderNumber);
 
-  function changeNumber(e) {
-    const number = e.target.value;
+  function changeNumber(number) {
     store.dispatch(updateCv({ elderNumber: number }));
   }
 
@@ -37,7 +38,13 @@ export default function Navbar({ cv }) {
         <h1>
           ELDER-N/{" "}
           {isEditing ? (
-            <input value={cv?.elderNumber || ""} onChange={changeNumber} />
+            <input
+              value={newElderNumber}
+              onChange={(e) => {
+                setElderNumber(e.target.value);
+                changeNumber(e.target.value);
+              }}
+            />
           ) : (
             cv?.elderNumber
           )}
