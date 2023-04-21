@@ -18,6 +18,7 @@ export default function FormWrapper({ children, ...rest }) {
     store.dispatch(
       setAppData({
         isEditing: !isEditing,
+        oldCV: cv,
       })
     );
 

@@ -39,9 +39,8 @@ export default function CVContent({ initialCV }) {
       <section>
         {CV?.positions?.map((position, index, positions) => {
           return (
-            <>
+            <div key={position.id}>
               <PositionCard
-                key={position.id}
                 position={position}
                 index={index}
                 length={positions.length}
@@ -49,7 +48,7 @@ export default function CVContent({ initialCV }) {
               {positions.length !== index + 1 ? (
                 <div className="empty-div"></div>
               ) : null}
-            </>
+            </div>
           );
         })}
 

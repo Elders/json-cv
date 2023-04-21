@@ -55,7 +55,6 @@ export default function PositionEditable({ positionID, index, length }) {
       ? new Date(currentPosition.startDate)
       : null;
 
-    console.log(currentPosition.endDate);
     if (currentPosition.endDate === "PRESENT") {
       setChosenPresent(true);
     } else if (currentPosition.endDate) {

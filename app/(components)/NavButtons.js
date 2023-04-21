@@ -16,14 +16,6 @@ export default function NavButtons() {
     );
   }
 
-  function toggle() {
-    store.dispatch(
-      setAppData({
-        oldCV: cv,
-      })
-    );
-  }
-
   function exportCV() {
     const dataStr =
       "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(cv));
@@ -41,7 +33,7 @@ export default function NavButtons() {
           Cancel
         </button>
       ) : null}
-      <button type="submit" className="no-print" onClick={toggle}>
+      <button type="submit" className="no-print">
         {isEditing ? "Save" : "Edit"}
       </button>
       <button type="button" className="no-print" onClick={exportCV}>
