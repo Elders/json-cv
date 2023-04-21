@@ -7,6 +7,8 @@ import SendButton from "./SendButton";
 import styles from "../(styles)/CV.module.scss";
 import store from "@/store/store";
 
+const ENTER_KEYCODE = 13;
+
 export default function CreateCV() {
   const [name, setName] = useState("");
   const router = useRouter();
@@ -32,6 +34,7 @@ export default function CreateCV() {
           placeholder="Name of the CV:"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          onKeyDown={(e) => e.keyCode === ENTER_KEYCODE && submitHandler()}
         />
         <SendButton onClick={submitHandler}>Create</SendButton>
       </div>
