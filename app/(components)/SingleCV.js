@@ -96,7 +96,7 @@ export default function SingleCV({ cv, onDeleteStart }) {
         </td>
 
         <td>{cv.elderNumber || "-"}</td>
-        <td colSpan={5}>
+        <td>
           {edit ? (
             <input value={name} onChange={(e) => setName(e.target.value)} />
           ) : (

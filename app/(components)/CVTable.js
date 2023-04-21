@@ -65,7 +65,7 @@ export default function CVTable({ initData }) {
                 />
               </div>
             </th>
-            <th className="pointer" colSpan={5}>
+            <th className="pointer">
               <div onClick={() => sortList("name", sortedOrder)}>
                 Name
                 <CorrectSortIcon

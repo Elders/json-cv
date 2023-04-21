@@ -42,16 +42,21 @@
   // background-color: #e22121;
   border-radius: 12px;
   border-collapse: collapse;
-  table-layout: fixed;
 
   tbody {
     width: 100%;
   }
 
   th {
-    text-align: left;
+    text-align: center;
     padding-block: 20px;
     user-select: none;
+
+    width: 150px;
+
+    &:nth-child(3) {
+      width: auto;
+    }
 
     svg {
       position: relative;
@@ -62,6 +67,7 @@
   td {
     padding-block: 1rem;
     display: table-cell;
+    text-align: center;
 
     &.actions_holder {
       border-top-right-radius: 12px;
@@ -69,7 +75,7 @@
       & > div {
         display: flex;
         align-items: center;
-
+        justify-content: center;
         gap: 5px;
       }
     }
@@ -177,7 +183,6 @@
 }
 
 .edno_cv {
-  width: 100%;
   background-color: #fff;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
