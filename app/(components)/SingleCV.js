@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Confirm from "./Confirm";
 import styles from "@/app/(styles)/CV.module.scss";
@@ -13,11 +13,12 @@ import UploadImage from "./UploadImage";
 import toBase64 from "@/helpers/toBase64";
 import CVImage from "./CVImage";
 import getLastSegment from "@/helpers/getLastSegment";
+import { flushSync } from "react-dom";
 
 export default function SingleCV({ cv, onDeleteStart }) {
-  const [showConfirm, setShowConfirm] = useState(false);
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState(cv.name);
+  const [showUpload, setShowUpload] = useState(true);
   const router = useRouter();
   const uploadRef = useRef();
   const animationPoints = {
@@ -51,6 +52,12 @@ export default function SingleCV({ cv, onDeleteStart }) {
     }
   }
 
+  function startChanging() {
+    flushSync(() => setShowUpload(true));
+
+    uploadRef.current?.click();
+  }
+
   async function deleteImage() {
     const { data } = await axios.delete("/api/deleteImage/" + cv.id);
     data.isSuccess && store.dispatch(updateCV({ ...cv, image: null }));
@@ -67,6 +74,10 @@ export default function SingleCV({ cv, onDeleteStart }) {
     openCV(cv.id);
   }
 
+  useEffect(() => {
+    setShowUpload(!cv.image);
+  }, [cv.image]);
+
   return (
     <>
       <motion.tr
@@ -75,6 +86,13 @@ export default function SingleCV({ cv, onDeleteStart }) {
         whileHover={{ scale: 1.01 }}
       >
         <td className={styles.edno_cv}>
+          {showUpload ? (
+            <UploadImage
+              onChange={changeImage}
+              className={cv.image ? "hidden" : ""}
+              ref={uploadRef}
+            />
+          ) : null}
           {cv.image ? (
             <CVImage
               src={cv.image}
@@ -83,16 +101,10 @@ export default function SingleCV({ cv, onDeleteStart }) {
               height={60}
               className={styles.img}
               loader={() => cv.image}
-              onClick={() => uploadRef.current?.click()}
+              onClick={startChanging}
               onDelete={deleteImage}
             />
-          ) : (
-            <UploadImage
-              onChange={changeImage}
-              className={cv.image ? "hidden" : ""}
-              ref={uploadRef}
-            />
-          )}
+          ) : null}
         </td>
 
         <td>{cv.elderNumber || "-"}</td>
