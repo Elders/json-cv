@@ -9,7 +9,7 @@ export async function DELETE(req) {
 
   const content = await readFile("./data/cv.json");
   const cv = content.find((cv) => {
-    return getLastSegment(cv.image).includes(cvImage);
+    return getLastSegment(cv.image)?.includes(cvImage);
   });
 
   const prevImage = getLastSegment(cv.image);
