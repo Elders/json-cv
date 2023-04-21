@@ -75,11 +75,6 @@ export default function SingleCV({ cv, onDeleteStart }) {
         whileHover={{ scale: 1.01 }}
       >
         <td className={styles.edno_cv}>
-          <UploadImage
-            onChange={changeImage}
-            className={cv.image ? "hidden" : ""}
-            ref={uploadRef}
-          />
           {cv.image ? (
             <CVImage
               src={cv.image}
@@ -91,7 +86,13 @@ export default function SingleCV({ cv, onDeleteStart }) {
               onClick={() => uploadRef.current?.click()}
               onDelete={deleteImage}
             />
-          ) : null}
+          ) : (
+            <UploadImage
+              onChange={changeImage}
+              className={cv.image ? "hidden" : ""}
+              ref={uploadRef}
+            />
+          )}
         </td>
 
         <td>{cv.elderNumber || "-"}</td>
