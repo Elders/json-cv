@@ -121,6 +121,7 @@ export default function PositionEditable({ positionID, index, length }) {
                 required={true}
                 monthsShown={1}
                 showYearDropdown
+                minDate={startDate}
               />
               <div className="checkbox-wrapper my-1">
                 <input
