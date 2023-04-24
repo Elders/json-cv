@@ -28,6 +28,7 @@ export default function ProjectsEditable({ projects }) {
               <input
                 type="text"
                 value={project.name}
+                required
                 onChange={(e) =>
                   editHandler("name", e.target.value, project.id)
                 }
