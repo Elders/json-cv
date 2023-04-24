@@ -1,3 +1,4 @@
+
 import cardStyles from "@/app/(styles)/card.module.scss";
 import store from "@/store/store";
 import {
@@ -6,6 +7,7 @@ import {
   updateLanguages,
 } from "@/store/slices/app";
 import CardGroup from "./CardGroup";
+import LanguagesExternal from "./LanguagesExternal";
 
 export default function LanguagesEditable({ languages }) {
   function addHandler() {
@@ -32,28 +34,11 @@ export default function LanguagesEditable({ languages }) {
                 deleteHandler(index);
               }}
             >
-              <div>
-                <label htmlFor="language-name">Language: </label>
-                <input
-                  type="text"
-                  value={language.name}
-                  onChange={(e) =>
-                    changeHandler([["name", e.target.value]], index)
-                  }
-                  placeholder="Language"
-                />
-              </div>
-              <div>
-                <label htmlFor="language-note">Note: </label>
-                <input
-                  type="text"
-                  value={language.note}
-                  placeholder="Note"
-                  onChange={(e) => {
-                    changeHandler([["note", e.target.value]], index);
-                  }}
-                />
-              </div>
+              <LanguagesExternal
+                index={index}
+                handler={changeHandler}
+                language={language}
+              />
             </CardGroup>
           );
         })}{" "}

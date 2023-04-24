@@ -6,6 +6,7 @@ import {
   editEducation,
 } from "@/store/slices/app";
 import store from "@/store/store";
+import EducationExternal from "./EducationExternal";
 
 export default function EducationEditable({ items }) {
   function addHandler() {
@@ -33,30 +34,7 @@ export default function EducationEditable({ items }) {
       {items.map((item, index) => {
         return (
           <CardGroup key={index} deleteHandler={() => deleteHandler(index)}>
-            <div>
-              <div>
-                <label htmlFor="education-name">Institution: </label>
-                <input
-                  type="text"
-                  id="education-name"
-                  value={item.name}
-                  onChange={(e) => editHandler(index, "name", e.target.value)}
-                />
-              </div>
-              <div>
-                <label htmlFor="education-description">
-                  Degree:
-                </label>
-                <input
-                  type="text"
-                  id="education-description"
-                  value={item.description}
-                  onChange={(e) =>
-                    editHandler(index, "description", e.target.value)
-                  }
-                />
-              </div>
-            </div>
+            <EducationExternal handler={editHandler} index={index} item={item}/>
           </CardGroup>
         );
       })}
