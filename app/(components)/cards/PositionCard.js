@@ -41,7 +41,7 @@ export default function PositionCard({ position, index, length, ...rest }) {
         {position.projects?.map((project) => {
           return (
             <div key={project.id} className="my-3 project">
-              <div className={cardStyles.position_names_info}>
+              <div className={`${cardStyles.position_names_info} mb-3`}>
                 <div>
                   <div className="empty-div"></div>
                   <h4 className="column-name mb-05">PROJECT NAME</h4>
@@ -49,7 +49,7 @@ export default function PositionCard({ position, index, length, ...rest }) {
                 </div>
               </div>
               {project.technologyStack ? (
-                <div className={"my-3"}>
+                <div className={"mb-3"}>
                   <h2>Technology Stack: </h2>
                   <p>{project.technologyStack}</p>
                 </div>
