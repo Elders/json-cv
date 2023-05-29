@@ -80,6 +80,7 @@ const appSlice = createSlice({
       });
     },
 
+    // {key1: value1, key2: value2}
     updateCv(state, { payload }) {
       return produce(state, (draft) => {
         Object.entries(payload).forEach((pair) => {

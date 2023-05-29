@@ -1,7 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
+import ReactStars from "react-stars";
+import { useSelector } from "react-redux";
 
-export default function MultipleInputs({ items, onChange }) {
+export default function MultipleInputs({
+  items,
+  onChange,
+  ratings,
+  updateRating,
+  deleteRating,
+}) {
   const [renderItems, setRenderItems] = useState(items);
 
   useEffect(() => {
@@ -28,21 +36,31 @@ export default function MultipleInputs({ items, onChange }) {
       const updatedItems = [...newItems];
       updatedItems.splice(index, 1);
       setRenderItems(updatedItems);
+      deleteRating();
     }
   }
 
   return (
-    <>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
       {renderItems.map((item, index) => {
         return (
-          <input
-            key={index}
-            value={item}
-            onChange={(e) => updateItem(e, index)}
-            className="mr-1"
-          />
+          <div key={index}>
+            <input
+              value={item}
+              onChange={(e) => updateItem(e, index)}
+              className="mr-1"
+            />
+            <ReactStars
+              count={5}
+              onChange={(newRating) => updateRating(newRating, index)}
+              size={24}
+              half={false}
+              value={ratings[index]}
+              color2={"#e40521"}
+            />
+          </div>
         );
       })}
-    </>
+    </div>
   );
 }
