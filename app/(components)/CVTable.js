@@ -30,7 +30,10 @@ export default function CVTable({ initData }) {
   const storedCVS = useSelector((state) => state.cvs);
   const [renderCV, setRenderCV] = useState(initData);
   const [deleteId, setDeleteId] = useState(null);
-  const { sortList, sortedItems, sortedBy, sortedOrder } = useSort(renderCV);
+  const { sortList, sortedItems, sortedBy, sortedOrder } = useSort(
+    renderCV,
+    "elderNumber"
+  );
 
   useEffect(() => {
     storedCVS && setRenderCV(storedCVS);

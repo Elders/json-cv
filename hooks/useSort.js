@@ -4,8 +4,8 @@ import isNumber from "@/helpers/isNumber";
 const ASC = 1;
 const DESC = -1;
 
-export default function useSort(items) {
-  const [sortedBy, setSortedBy] = useState();
+export default function useSort(items, defaultSort = "") {
+  const [sortedBy, setSortedBy] = useState(defaultSort);
   const [sortedOrder, setSortedOrder] = useState();
   const [sortedItems, setSortedItems] = useState([...items]);
 
@@ -37,6 +37,7 @@ export default function useSort(items) {
 
   useEffect(() => {
     const newOrder = sortedOrder === ASC ? DESC : ASC;
+
     setSortedItems(sortList(sortedBy, newOrder));
   }, [items]);
 
