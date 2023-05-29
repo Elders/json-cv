@@ -6,7 +6,7 @@ import ReactStars from "react-stars";
 export default function ListCard({ title, items, propName }) {
   const { isEditing, cv } = useSelector((state) => state.app);
   const ratingsPropName = propName + "ratings";
-  const ratings = cv ? cv[ratingsPropName] : [];
+  const ratings = cv ? cv[ratingsPropName] || [] : [];
 
   if (isEditing) {
     return <ListEditable title={title} items={items} propName={propName} />;
