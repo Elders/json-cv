@@ -11,33 +11,46 @@ const ENTER_KEYCODE = 13;
 
 export default function CreateCV() {
   const [name, setName] = useState("");
+  const [elderNumber, setElderNumber] = useState("");
   const router = useRouter();
 
-  async function submitHandler() {
-    const { data } = await axios.post("/api/createCV", { name });
+  async function submitHandler(e) {
+    e.preventDefault();
+    const { data } = await axios.post("/api/createCV", { name, elderNumber });
     if (data.isSuccess) {
       router.push(`/cv/${data.id}`);
       store.dispatch(
         addCV({
           id: data.id,
           name,
+          elderNumber,
         })
       );
     }
   }
 
   return (
-    <>
+    <form onSubmit={submitHandler}>
       <div className={styles.create_holder}>
         <input
+          type="number"
+          placeholder="Elder number"
+          value={elderNumber}
+          onChange={(e) => setElderNumber(e.target.value)}
+          min={1}
+          required
+        />
+        <input
           type="text"
-          placeholder="Name of the CV:"
+          placeholder="CV name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          onKeyDown={(e) => e.keyCode === ENTER_KEYCODE && submitHandler()}
+          onKeyDown={(e) => e.keyCode === ENTER_KEYCODE && submitHandler(e)}
+          required
         />
-        <SendButton onClick={submitHandler}>Create</SendButton>
+
+        <SendButton>Create</SendButton>
       </div>
-    </>
+    </form>
   );
 }

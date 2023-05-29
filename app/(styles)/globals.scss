@@ -105,6 +105,12 @@ textarea {
   }
 }
 
+input {
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
 .checkbox-wrapper {
   label {
     display: inline-block;
