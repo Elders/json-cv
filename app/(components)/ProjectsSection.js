@@ -18,7 +18,7 @@ export default function ProjectsSection({ projects }) {
       {projects?.map((project) => {
         return (
           <div
-            className={`${cardStyles.card} ${cardStyles.project_card}`}
+            className={`${cardStyles.card} ${cardStyles.project_card} mb-3`}
             key={project.id}
           >
             <header className={cardStyles.project_header}>
@@ -51,7 +51,7 @@ export default function ProjectsSection({ projects }) {
             {project.references?.length ? (
               <div className={cardStyles.references}>
                 <h4>REFERENCES</h4>
-                <div >
+                <div>
                   {project.references.map((reference, index) => {
                     return <Link link={reference} key={index} />;
                   })}
