@@ -14,7 +14,10 @@ export default function ProjectsSection({ projects }) {
   }
 
   return (
-    <section>
+    <section className={cardStyles.card}>
+      <header className={cardStyles.header}>
+        <h2>Open-source projects</h2>
+      </header>
       {projects?.map((project) => {
         return (
           <div
