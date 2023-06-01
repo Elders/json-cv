@@ -50,14 +50,16 @@ export default function MultipleInputs({
               onChange={(e) => updateItem(e, index)}
               className="mr-1"
             />
-            <ReactStars
-              count={5}
-              onChange={(newRating) => updateRating(newRating, index)}
-              size={24}
-              half={false}
-              value={ratings[index]}
-              color2={"#e40521"}
-            />
+            {ratings ? (
+              <ReactStars
+                count={5}
+                onChange={(newRating) => updateRating(newRating, index)}
+                size={24}
+                half={false}
+                value={ratings[index]}
+                color2={"#e40521"}
+              />
+            ) : null}
           </div>
         );
       })}
