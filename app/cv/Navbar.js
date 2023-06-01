@@ -12,9 +12,14 @@ import { useState } from "react";
 export default function Navbar({ cv }) {
   const { isEditing } = useSelector((state) => state.app);
   const [newElderNumber, setElderNumber] = useState(cv?.elderNumber);
+  const [newElderName, setNewElderName] = useState(cv?.name);
 
   function changeNumber(number) {
     store.dispatch(updateCv({ elderNumber: number }));
+  }
+
+  function changeName(name) {
+    store.dispatch(updateCv({ name }));
   }
 
   return (
@@ -35,8 +40,8 @@ export default function Navbar({ cv }) {
           <Image src={person} alt="a person" />
         </div>
 
-        <h1>
-          ELDER-N/{" "}
+        <div className="flex">
+          <h1>ELDER-N/</h1>
           {isEditing ? (
             <input
               value={newElderNumber}
@@ -46,9 +51,23 @@ export default function Navbar({ cv }) {
               }}
             />
           ) : (
-            cv?.elderNumber
+            <h1>{cv?.elderNumber}</h1>
           )}
-        </h1>
+          <div className="no-print flex">
+            <h1 className="ml-3">Name: </h1>
+            {isEditing ? (
+              <input
+                value={newElderName}
+                onChange={(e) => {
+                  setNewElderName(e.target.value);
+                  changeName(e.target.value);
+                }}
+              />
+            ) : (
+              <h1 className="ml-2">{cv?.name}</h1>
+            )}
+          </div>
+        </div>
       </div>
       <div>
         <Image src={logo} alt="elders" className={styles.logo} />
