@@ -4,14 +4,23 @@ import { setData as setAppData } from "@/store/slices/app";
 import { useSelector } from "react-redux";
 
 export default function NavButtons() {
-  const { isEditing } = useSelector((state) => state.app);
-  const { cv, oldCV } = useSelector((state) => state.app);
+  const { cv, oldCV, isEditing, showRatings } = useSelector(
+    (state) => state.app
+  );
 
   function cancelHandler() {
     store.dispatch(
       setAppData({
         cv: oldCV,
         isEditing: false,
+      })
+    );
+  }
+
+  function toggleRatings() {
+    store.dispatch(
+      setAppData({
+        showRatings: !showRatings,
       })
     );
   }
@@ -28,6 +37,9 @@ export default function NavButtons() {
 
   return (
     <div>
+      <button type="button" className="no-print" onClick={toggleRatings}>
+        Toggle Ratings
+      </button>
       {isEditing ? (
         <button type="button" className="no-print" onClick={cancelHandler}>
           Cancel

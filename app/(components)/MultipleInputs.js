@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import ReactStars from "react-stars";
-import { useSelector } from "react-redux";
 
 export default function MultipleInputs({
   items,

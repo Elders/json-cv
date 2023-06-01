@@ -4,7 +4,8 @@ import cardStyles from "@/app/(styles)/card.module.scss";
 import ReactStars from "react-stars";
 
 export default function ListCard({ title, items, propName }) {
-  const { isEditing, cv } = useSelector((state) => state.app);
+  const { isEditing, showRatings, cv } = useSelector((state) => state.app);
+
   const ratingsPropName = propName + "ratings";
   const ratings = cv ? cv[ratingsPropName] || [] : [];
 
@@ -23,15 +24,17 @@ export default function ListCard({ title, items, propName }) {
           return (
             <div key={item + index}>
               <span> - {item}</span>{" "}
-              <ReactStars
-                count={5}
-                onChange={(newRating) => updateRating(newRating, index)}
-                size={24}
-                half={false}
-                edit={false}
-                value={ratings[index]}
-                color2={"#e40521"}
-              />
+              {showRatings ? (
+                <ReactStars
+                  count={5}
+                  onChange={(newRating) => updateRating(newRating, index)}
+                  size={24}
+                  half={false}
+                  edit={false}
+                  value={ratings[index]}
+                  color2={"#e40521"}
+                />
+              ) : null}
             </div>
           );
         })}
