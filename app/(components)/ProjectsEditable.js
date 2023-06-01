@@ -12,12 +12,20 @@ import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 export default function ProjectsEditable({ projects }) {
   const projectsRef = useRef();
 
-  function editHandler(prop, value, id) {
+  function editHandler(references, labels, id) {
     store.dispatch(
       editProject({
         id,
-        prop,
-        value,
+        prop: "references",
+        value: references.filter(Boolean),
+      })
+    );
+
+    store.dispatch(
+      editProject({
+        id,
+        prop: "labels",
+        value: labels.filter(Boolean),
       })
     );
   }
@@ -91,12 +99,10 @@ export default function ProjectsEditable({ projects }) {
               </div>
               <MultipleInputs
                 items={project.references || []}
-                onChange={(references) => {
-                  editHandler(
-                    "references",
-                    references.filter(Boolean),
-                    project.id
-                  );
+                showLabel={true}
+                mainLabelText="URL: "
+                onChange={(references, labels) => {
+                  editHandler(references, labels, project.id);
                 }}
               />
               <div className="mt-1">

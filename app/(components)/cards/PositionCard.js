@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import formatDate from "@/helpers/date";
 import cardStyles from "@/app/(styles)/card.module.scss";
 import PositionEditable from "./PositionEditable";
+import Link from "../Link";
 
 export default function PositionCard({ position, index, length, ...rest }) {
   const { isEditing } = useSelector((state) => state.app);
@@ -60,6 +61,18 @@ export default function PositionCard({ position, index, length, ...rest }) {
                   <pre className="mt-2">{project.description}</pre>
                 </div>
               ) : null}
+              <h2 className="mt-2">References: </h2>
+              {project.references?.map((reference, index) => {
+                return (
+                  <div className="mt-2">
+                    <Link
+                      link={reference}
+                      placeholder={project.referencesLabels[index] || reference}
+                      key={index}
+                    />
+                  </div>
+                );
+              })}
             </div>
           );
         })}

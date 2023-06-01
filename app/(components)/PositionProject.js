@@ -5,6 +5,8 @@ import { deletePositionProject, swapProjects } from "@/store/slices/app";
 import store from "@/store/store";
 import { ChevronDownIcon, ChevronUpIcon, Trash2 } from "lucide-react";
 
+import MultipleInputs from "./MultipleInputs";
+
 export default function PositionProject({
   project,
   index,
@@ -91,6 +93,21 @@ export default function PositionProject({
           id="description"
           onChange={(e) => editHandler({ description: e.target.value })}
         ></textarea>
+      </div>
+      <div></div>
+      <div>
+        <MultipleInputs
+          items={project.references || []}
+          defaultLabels={project.referencesLabels}
+          showLabel={true}
+          mainLabelText={"URL: "}
+          onChange={(references, labels) => {
+            editHandler({
+              references: references.filter(Boolean),
+              referencesLabels: labels,
+            });
+          }}
+        />
       </div>
     </div>
   );

@@ -7,18 +7,22 @@ export default function MultipleInputs({
   items,
   onChange,
   ratings,
+  showLabel,
+  defaultLabels,
+  mainLabelText,
   updateRating,
   deleteRating,
 }) {
   const [renderItems, setRenderItems] = useState(items);
+  const [labelElements, setLabelElements] = useState(defaultLabels || []);
 
   useEffect(() => {
     if (!renderItems.length || renderItems[renderItems.length - 1]) {
       setRenderItems([...renderItems, ""]);
     }
 
-    onChange(renderItems);
-  }, [renderItems]);
+    onChange(renderItems, labelElements);
+  }, [renderItems, labelElements]);
 
   function updateItem(e, index) {
     const newItems = [...renderItems];
@@ -36,8 +40,14 @@ export default function MultipleInputs({
       const updatedItems = [...newItems];
       updatedItems.splice(index, 1);
       setRenderItems(updatedItems);
-      deleteRating();
+      ratings && deleteRating();
     }
+  }
+
+  function updateLabel(e, index) {
+    const labels = [...labelElements];
+    labels[index] = e.target.value;
+    setLabelElements(labels);
   }
 
   return (
@@ -45,11 +55,25 @@ export default function MultipleInputs({
       {renderItems.map((item, index) => {
         return (
           <div key={index}>
-            <input
-              value={item}
-              onChange={(e) => updateItem(e, index)}
-              className="mr-1"
-            />
+            {showLabel ? (
+              <div className="my-2">
+                <label className="mb-2">Label: </label>
+                <input
+                  value={labelElements[index] || ""}
+                  onChange={(e) => updateLabel(e, index)}
+                  className="mr-1"
+                />
+              </div>
+            ) : null}
+            <div>
+              <label className="mb-2">{mainLabelText}</label>
+              <input
+                value={item}
+                onChange={(e) => updateItem(e, index)}
+                className="mr-1"
+              />
+            </div>
+
             {ratings ? (
               <ReactStars
                 count={5}

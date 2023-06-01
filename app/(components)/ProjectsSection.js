@@ -56,7 +56,14 @@ export default function ProjectsSection({ projects }) {
                 <h4>REFERENCES</h4>
                 <div>
                   {project.references.map((reference, index) => {
-                    return <Link link={reference} key={index} />;
+                    return (
+                      <div className="mt-1" key={index}>
+                        <Link
+                          link={reference}
+                          placeholder={project.labels[index] || reference}
+                        />
+                      </div>
+                    );
                   })}
                 </div>
               </div>
