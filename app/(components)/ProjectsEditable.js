@@ -22,7 +22,7 @@ export default function ProjectsEditable({ projects }) {
     <section>
       {projects?.map((project) => {
         return (
-          <div className={cardStyles.card} key={project.id}>
+          <div className={`${cardStyles.card} mb-3`} key={project.id}>
             <header>
               <h4 className="my-1">Name: </h4>
               <input
