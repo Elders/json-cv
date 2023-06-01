@@ -140,6 +140,9 @@ label {
 
 .flex {
   display: flex;
+  .grow {
+    flex-grow: 1;
+  }
 }
 
 .align-center {

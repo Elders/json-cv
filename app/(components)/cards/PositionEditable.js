@@ -73,8 +73,9 @@ export default function PositionEditable({ positionID, index, length }) {
 
     if (moveBy < 0) return;
 
-    const height =
-      positionRef.current.nextElementSibling.getBoundingClientRect().height;
+    const element = positionRef.current.parentElement.children[0];
+
+    const height = element.getBoundingClientRect().height;
     window.scrollBy(0, height - 20);
   }
 

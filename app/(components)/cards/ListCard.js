@@ -21,21 +21,18 @@ export default function ListCard({ title, items, propName }) {
       <div className={cardStyles.list_holder}>
         {items.map((item, index) => {
           return (
-            <>
-              {" "}
-              <div key={item + index}>
-                <span> - {item}</span>{" "}
-                <ReactStars
-                  count={5}
-                  onChange={(newRating) => updateRating(newRating, index)}
-                  size={24}
-                  half={false}
-                  edit={false}
-                  value={ratings[index]}
-                  color2={"#e40521"}
-                />
-              </div>{" "}
-            </>
+            <div key={item + index}>
+              <span> - {item}</span>{" "}
+              <ReactStars
+                count={5}
+                onChange={(newRating) => updateRating(newRating, index)}
+                size={24}
+                half={false}
+                edit={false}
+                value={ratings[index]}
+                color2={"#e40521"}
+              />
+            </div>
           );
         })}
       </div>

@@ -69,6 +69,14 @@ const appSlice = createSlice({
       });
     },
 
+    swapOpenSourceProjects(state, { payload }) {
+      return produce(state, (draft) => {
+        const projects = draft.cv.projects;
+        const [x, y] = payload;
+        [projects[x], projects[y]] = [projects[y], projects[x]];
+      });
+    },
+
     swapProjects(state, { payload }) {
       return produce(state, (draft) => {
         const { positionID, indexes } = payload;
@@ -177,6 +185,7 @@ export const {
   createPositionProject,
   deletePositionProject,
   swapPositions,
+  swapOpenSourceProjects,
   swapProjects,
   updateCv,
   deletePosition,
