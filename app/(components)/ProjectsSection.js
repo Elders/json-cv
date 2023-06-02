@@ -1,9 +1,10 @@
-import { useSelector } from "react-redux";
-import ProjectsEditable from "./ProjectsEditable";
-import cardStyles from "@/app/(styles)/card.module.scss";
-import projectIcon from "@/assets/project-icon.svg";
-import Image from "next/image";
-import Link from "./Link";
+import { useSelector } from 'react-redux';
+import ProjectsEditable from './ProjectsEditable';
+import cardStyles from '@/app/(styles)/card.module.scss';
+import projectIcon from '@/assets/project-icon.svg';
+import Image from 'next/image';
+import Link from './Link';
+import MarkdownElement from './MarkdownElement';
 
 export default function ProjectsSection({ projects }) {
   const { isEditing, cv: cvData } = useSelector((state) => state.app);
@@ -43,7 +44,7 @@ export default function ProjectsSection({ projects }) {
                   )}
                 </header>
                 <main>
-                  <p>{project.description}</p>
+                  <MarkdownElement markdownContent={project.description} />
                 </main>
 
                 {project.environment ? (
