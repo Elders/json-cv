@@ -50,7 +50,8 @@ export default function CVTable({ initData }) {
   }
 
   return (
-    <AnimationWrapper>
+    // <AnimationWrapper>
+    <div>
       {deleteId ? (
         <Confirm onConfirm={deleteHandler} onCancel={() => setDeleteId(null)} />
       ) : null}
@@ -93,6 +94,7 @@ export default function CVTable({ initData }) {
           </AnimatePresence>
         </tbody>
       </table>
-    </AnimationWrapper>
+    {/* // </AnimationWrapper> */}
+    </div>
   );
 }
