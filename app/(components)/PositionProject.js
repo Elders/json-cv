@@ -1,11 +1,11 @@
-import { useRef } from "react";
-import cardStyles from "@/app/(styles)/card.module.scss";
-import useCustomProperty from "@/hooks/useCustomProperty";
-import { deletePositionProject, swapProjects } from "@/store/slices/app";
-import store from "@/store/store";
-import { ChevronDownIcon, ChevronUpIcon, Trash2 } from "lucide-react";
+import { useRef } from 'react';
+import cardStyles from '@/app/(styles)/card.module.scss';
+import useCustomProperty from '@/hooks/useCustomProperty';
+import { deletePositionProject, swapProjects } from '@/store/slices/app';
+import store from '@/store/store';
+import { ChevronDownIcon, ChevronUpIcon, Trash2 } from 'lucide-react';
 
-import MultipleInputs from "./MultipleInputs";
+import MultipleInputs from './MultipleInputs';
 
 export default function PositionProject({
   project,
@@ -14,7 +14,7 @@ export default function PositionProject({
   positionID,
   editHandler,
 }) {
-  const red = useCustomProperty("red");
+  const red = useCustomProperty('red');
   const projectsRef = useRef();
 
   function deleteHandler() {
@@ -45,7 +45,7 @@ export default function PositionProject({
             className={cardStyles.project_name_input}
             type="text"
             placeholder="Project name"
-            value={project?.projectName || ""}
+            value={project?.projectName || ''}
             id="projectName"
             onChange={(e) => editHandler({ projectName: e.target.value })}
           />
@@ -82,7 +82,7 @@ export default function PositionProject({
         <textarea
           className={cardStyles.textarea}
           placeholder="Technology Stack"
-          value={project?.technologyStack || ""}
+          value={project?.technologyStack || ''}
           id="technologyStack"
           onChange={(e) => editHandler({ technologyStack: e.target.value })}
         ></textarea>
@@ -92,7 +92,7 @@ export default function PositionProject({
         <textarea
           className={cardStyles.textarea}
           placeholder="Description"
-          value={project?.description || ""}
+          value={project?.description || ''}
           id="description"
           onChange={(e) => editHandler({ description: e.target.value })}
         ></textarea>
@@ -105,11 +105,11 @@ export default function PositionProject({
           items={project.references || []}
           defaultLabels={project.referencesLabels}
           showLabel={true}
-          mainLabelText={"URL: "}
+          mainLabelText={'URL: '}
           onChange={(references, labels) => {
             editHandler({
               references: references.filter(Boolean),
-              referencesLabels: labels,
+              referencesLabels: labels.filter(Boolean),
             });
           }}
         />
