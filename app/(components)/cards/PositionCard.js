@@ -61,7 +61,12 @@ export default function PositionCard({ position, index, length, ...rest }) {
                   <pre className="mt-2">{project.description}</pre>
                 </div>
               ) : null}
-              <h2 className="mt-2">References: </h2>
+              {project.references?.length < 1 ? (
+                <div>
+                  <h2 className="mt-2">References: </h2>
+                </div>
+              ) : null}
+
               {project.references?.map((reference, index) => {
                 return (
                   <div key={index} className="mt-2">
