@@ -140,6 +140,7 @@ export default function PositionEditable({ positionID, index, length }) {
             <div>
               <h4 className="column-name mb-1">COMPANY NAME</h4>
               <input
+                className={cardStyles.inputs}
                 type="text"
                 placeholder="Company name"
                 value={currentPosition?.companyName || ""}
@@ -150,6 +151,7 @@ export default function PositionEditable({ positionID, index, length }) {
             <div>
               <h4 className="column-name mb-1">POSITION NAME</h4>
               <input
+                className={cardStyles.inputs}
                 type="text"
                 placeholder="Position name"
                 name="positionName"

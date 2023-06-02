@@ -94,7 +94,9 @@ export default function PositionProject({
           onChange={(e) => editHandler({ description: e.target.value })}
         ></textarea>
       </div>
-      <div></div>
+      <div>
+        <h2 className="my-1">References:</h2>
+      </div>
       <div>
         <MultipleInputs
           items={project.references || []}
