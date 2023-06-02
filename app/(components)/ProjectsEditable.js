@@ -17,7 +17,7 @@ export default function ProjectsEditable({ projects }) {
       editProject({
         id,
         prop: "references",
-        value: references.filter(Boolean),
+        value: references?.filter(Boolean) || [],
       })
     );
 
@@ -25,7 +25,7 @@ export default function ProjectsEditable({ projects }) {
       editProject({
         id,
         prop: "labels",
-        value: labels.filter(Boolean),
+        value: labels?.filter(Boolean) || [],
       })
     );
   }
