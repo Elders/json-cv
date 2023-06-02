@@ -64,7 +64,7 @@ export default function PositionCard({ position, index, length, ...rest }) {
               <h2 className="mt-2">References: </h2>
               {project.references?.map((reference, index) => {
                 return (
-                  <div className="mt-2">
+                  <div key={index} className="mt-2">
                     <Link
                       link={reference}
                       placeholder={project.referencesLabels[index] || reference}
