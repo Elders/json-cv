@@ -79,6 +79,7 @@ export default function PositionProject({
       <div className={cardStyles.position_technology_stack}>
         <h2 className="my-1">Technology Stack: </h2>
         <textarea
+          className={cardStyles.textarea}
           placeholder="Technology Stack"
           value={project?.technologyStack || ""}
           id="technologyStack"
@@ -88,6 +89,7 @@ export default function PositionProject({
       <div className={cardStyles.position_description}>
         <h2 className="my-1">Description: </h2>
         <textarea
+          className={cardStyles.textarea}
           placeholder="Description"
           value={project?.description || ""}
           id="description"
