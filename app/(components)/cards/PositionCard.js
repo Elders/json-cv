@@ -61,7 +61,7 @@ export default function PositionCard({ position, index, length, ...rest }) {
                   <pre className="mt-2">{project.description}</pre>
                 </div>
               ) : null}
-              {project.references?.length < 1 ? (
+              {project.references?.length >= 1 ? (
                 <div>
                   <h2 className="mt-2">References: </h2>
                 </div>
