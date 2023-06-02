@@ -42,6 +42,7 @@ export default function PositionProject({
         <div>
           <h4 className="column-name mb-1">PROJECT NAME</h4>
           <input
+            className={cardStyles.project_name_input}
             type="text"
             placeholder="Project name"
             value={project?.projectName || ""}

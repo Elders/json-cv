@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import cardStyles from '@/app/(styles)/card.module.scss'
 
 function EducationExternal(props) {
   const [education, setEducation] = useState();
@@ -9,9 +10,10 @@ function EducationExternal(props) {
   return (
     <>
       <div>
-        <div>
+        <div className={cardStyles.mt}>
           <label htmlFor="education-name">Institution: </label>
           <input
+            className={cardStyles.project_name_input}
             type="text"
             id="education-name"
             value={education ? education : props.item.name}
@@ -21,9 +23,10 @@ function EducationExternal(props) {
             }}
           />
         </div>
-        <div>
+        <div className={cardStyles.mt}>
           <label htmlFor="education-description">Degree:</label>
           <input
+            className={cardStyles.project_name_input}
             type="text"
             id="education-description"
             value={description ? description : props.item.description}
