@@ -22,8 +22,10 @@ export default function ProjectsSection({ projects }) {
           </header>
           {projects?.map((project) => {
             return (
+              <div key={project.id}>
+              <div className="empty-div"></div>
               <div
-                className={`${cardStyles.card} ${cardStyles.project_card} mb-3`}
+                className={`${cardStyles.card} ${cardStyles.project_card}`}
                 key={project.id}
               >
                 <header className={cardStyles.project_header}>
@@ -71,6 +73,8 @@ export default function ProjectsSection({ projects }) {
                   </div>
                 ) : null}
               </div>
+              </div>
+              
             );
           })}
         </section>
