@@ -89,10 +89,9 @@ export default function PositionProject({
         ></textarea>
       </div>
       <div className={cardStyles.position_description}>
-        <h2 className="my-1">Description: </h2>
-
         <MarkdownElement
           markdownContent={project?.description || ""}
+          sectionHeading="Description: "
           canEdit={true}
         >
           <textarea

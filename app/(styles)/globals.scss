@@ -153,6 +153,10 @@ label {
   justify-content: space-between;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .tag {
   color: #2d2e2d;
   background: #d8d8d8;
@@ -263,5 +267,3 @@ pre {
   font-family: inherit;
   white-space: pre-wrap;
 }
-
-
