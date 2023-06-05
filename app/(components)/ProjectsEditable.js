@@ -72,8 +72,9 @@ export default function ProjectsEditable({ projects }) {
                 </div>
               </header>
               <div>
-                <h4 className="my-1">Description:</h4>
+                
                 <MarkdownElement
+                  sectionHeading={<h4 className="my-1">Description:</h4>}
                   canEdit={true}
                   markdownContent={project.description}
                 >

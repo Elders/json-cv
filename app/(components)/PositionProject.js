@@ -91,7 +91,7 @@ export default function PositionProject({
       <div className={cardStyles.position_description}>
         <MarkdownElement
           markdownContent={project?.description || ""}
-          sectionHeading="Description: "
+          sectionHeading={<h2 className="my-1">Description:</h2>}
           canEdit={true}
         >
           <textarea

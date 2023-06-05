@@ -22,7 +22,7 @@ export default function MarkdownElement({
   return (
     <div>
       <div className="pointer flex align-center justify-between">
-        <h2 className="my-1">{sectionHeading}</h2>
+        {sectionHeading}
 
         {isPreview ? (
           <EyeOff onClick={() => setIsPreview(false)} />
