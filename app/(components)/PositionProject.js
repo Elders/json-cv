@@ -99,14 +99,13 @@ export default function PositionProject({
           sectionHeading={<h2 className="my-1">Description:</h2>}
           canEdit={true}
         >
-         
           <textarea
             placeholder="Description"
             value={project?.description || ""}
             id="description"
             onChange={(e) => editHandler({ description: e.target.value })}
           ></textarea>
-           <p className="hints align-right">Supports Markdown</p>
+          <p className="hints align-right">Supports Markdown</p>
           <p className="hints">
             In a few concise and comprehensive sentences describe:
           </p>
@@ -122,8 +121,9 @@ export default function PositionProject({
           </ul>
           <p className="hints">
             Use active words to highlight your strengths and skills, to describe
-            things you&apos;ve done like &quot;organised&quot;, &quot;built&quot;, &quot;created&quot;, &quot;managed&quot;,
-            and &quot;planned&quot;.
+            things you&apos;ve done like &quot;organised&quot;,
+            &quot;built&quot;, &quot;created&quot;, &quot;managed&quot;, and
+            &quot;planned&quot;.
           </p>
         </MarkdownElement>
       </div>

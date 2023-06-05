@@ -1,14 +1,14 @@
-import { useRef } from 'react';
-import cardStyles from '@/app/(styles)/card.module.scss';
-import store from '@/store/store';
-import MultipleInputs from './MultipleInputs';
+import { useRef } from "react";
+import cardStyles from "@/app/(styles)/card.module.scss";
+import store from "@/store/store";
+import MultipleInputs from "./MultipleInputs";
 import {
   editProject,
   deleteProject,
   swapOpenSourceProjects,
-} from '@/store/slices/app';
-import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
-import MarkdownElement from './MarkdownElement';
+} from "@/store/slices/app";
+import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import MarkdownElement from "./MarkdownElement";
 
 export default function ProjectsEditable({ projects }) {
   const projectsRef = useRef();
@@ -47,7 +47,7 @@ export default function ProjectsEditable({ projects }) {
         return (
           <div className={`${cardStyles.card} mb-3 flex`} key={project.id}>
             <main className="grow">
-              {' '}
+              {" "}
               <header>
                 <h4 className="my-1">Name: </h4>
                 <input
@@ -56,7 +56,7 @@ export default function ProjectsEditable({ projects }) {
                   value={project.name}
                   required
                   onChange={(e) =>
-                    editHandler('name', e.target.value, project.id)
+                    editHandler("name", e.target.value, project.id)
                   }
                 />
                 <div>
@@ -66,13 +66,12 @@ export default function ProjectsEditable({ projects }) {
                     type="text"
                     value={project.role}
                     onChange={(e) =>
-                      editHandler('role', e.target.value, project.id)
+                      editHandler("role", e.target.value, project.id)
                     }
                   ></input>
                 </div>
               </header>
               <div>
-                
                 <MarkdownElement
                   sectionHeading={<h4 className="my-1">Description:</h4>}
                   canEdit={true}
@@ -81,9 +80,10 @@ export default function ProjectsEditable({ projects }) {
                   <textarea
                     value={project.description}
                     onChange={(e) =>
-                      editHandler('description', e.target.value, project.id)
+                      editHandler("description", e.target.value, project.id)
                     }
-                  ></textarea>
+                  ></textarea>{" "}
+                  <p className="hints align-right">Supports Markdown</p>
                 </MarkdownElement>
               </div>
               <div>
@@ -92,7 +92,7 @@ export default function ProjectsEditable({ projects }) {
                   className={cardStyles.project_name_input}
                   value={project.environment}
                   onChange={(e) =>
-                    editHandler('environment', e.target.value, project.id)
+                    editHandler("environment", e.target.value, project.id)
                   }
                 />
               </div>
@@ -107,12 +107,12 @@ export default function ProjectsEditable({ projects }) {
                 className={cardStyles.references}
                 onChange={(references, labels) => {
                   editHandler(
-                    'references',
+                    "references",
                     references?.filter(Boolean) || [],
                     project.id
                   );
                   editHandler(
-                    'labels',
+                    "labels",
                     labels?.filter(Boolean) || [],
                     project.id
                   );
@@ -123,7 +123,7 @@ export default function ProjectsEditable({ projects }) {
                   Delete
                 </button>
               </div>
-            </main>{' '}
+            </main>{" "}
             <div className={cardStyles.reorder_parent}>
               {index ? (
                 <ChevronUpIcon
