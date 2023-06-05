@@ -27,6 +27,8 @@
       position: absolute;
       inset: 0;
       transform: translate(-20%, -20%);
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     @media print {
