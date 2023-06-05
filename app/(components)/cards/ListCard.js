@@ -3,6 +3,7 @@ import ListEditable from "./ListEditable";
 import cardStyles from "@/app/(styles)/card.module.scss";
 import ReactStars from "react-stars";
 
+
 export default function ListCard({ title, items, propName }) {
   const { isEditing, showRatings, cv } = useSelector((state) => state.app);
 

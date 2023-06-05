@@ -1,0 +1,34 @@
+.input_wrapper {
+    position: relative;
+
+    input:has(+ .suggestions) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+
+
+.suggestions {
+    position: absolute;
+background: #fff;
+z-index: 10;
+width: 100%;
+overflow: hidden;
+border-radius: 8px;
+border: 1px solid var(--red);
+border-top: 0;
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+
+span {
+    display: block;
+    padding: 0.5rem;
+    cursor: pointer;
+
+     &.active_suggestion {
+        background: var(--red);
+        color: #fff;
+    }
+}
+}

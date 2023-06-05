@@ -1,11 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import ReactStars from "react-stars";
+import Input from "./Input";
 
 export default function MultipleInputs({
   items,
   onChange,
   ratings,
+  dictionary,
   showLabel,
   defaultLabels,
   mainLabelText,
@@ -23,17 +25,17 @@ export default function MultipleInputs({
     onChange(renderItems, labelElements);
   }, [renderItems, labelElements]);
 
-  function updateItem(e, index) {
+  function updateItem(value, index) {
     const newItems = [...renderItems];
-    newItems[index] = e.target.value;
+    newItems[index] = value;
     setRenderItems(newItems);
 
-    if (index === renderItems.length - 1 && e.target.value) {
+    if (index === renderItems.length - 1 && value) {
       setRenderItems((renderItems) => [...renderItems, ""]);
       return;
     }
 
-    if (e.target.value) return;
+    if (value) return;
 
     if (index === renderItems.length - 2 && !renderItems[index + 1]) {
       const updatedItems = [...newItems];
@@ -64,14 +66,13 @@ export default function MultipleInputs({
                 />
               </div>
             ) : null}
-            <div>
-              <label className="mb-2">{mainLabelText}</label>
-              <input
-                value={item}
-                onChange={(e) => updateItem(e, index)}
-                className="mr-1"
-              />
-            </div>
+            <Input
+              onChange={(value) => updateItem(value, index)}
+              value={item}
+              dictionary={dictionary}
+              labelText={mainLabelText}
+             
+            ></Input>
 
             {ratings ? (
               <ReactStars

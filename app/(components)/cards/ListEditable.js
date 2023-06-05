@@ -5,6 +5,7 @@ import store from "@/store/store";
 import { updateCv } from "@/store/slices/app";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import * as dictionary from "@/dictionary";
 
 export default function ListEditable({ title, items, holderClass, propName }) {
   const data = useSelector((state) => state.app).cv;
@@ -51,6 +52,7 @@ export default function ListEditable({ title, items, holderClass, propName }) {
           ratings={ratings}
           updateRating={updateRating}
           deleteRating={deleteRating}
+          dictionary={dictionary[propName]}
         />
       </main>
     </div>

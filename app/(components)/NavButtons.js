@@ -2,6 +2,8 @@
 import store from "@/store/store";
 import { setData as setAppData } from "@/store/slices/app";
 import { useSelector } from "react-redux";
+import { updateCV } from "@/store/slices/cvs";
+import axios from "axios";
 
 export default function NavButtons() {
   const { cv, oldCV, isEditing, showRatings } = useSelector(
@@ -35,6 +37,20 @@ export default function NavButtons() {
     downloadAnchorNode.remove();
   }
 
+  function saveData() {
+    store.dispatch(
+      setAppData({
+        isEditing: !isEditing,
+        oldCV: cv,
+      })
+    );
+
+    if (!isEditing) return;
+
+    store.dispatch(updateCV(cv));
+    axios.post("/api/updateCV", cv);
+  }
+
   return (
     <div>
       <button type="button" className="no-print" onClick={toggleRatings}>
@@ -45,7 +61,7 @@ export default function NavButtons() {
           Cancel
         </button>
       ) : null}
-      <button type="submit" className="no-print">
+      <button type="button" className="no-print" onClick={saveData}>
         {isEditing ? "Save" : "Edit"}
       </button>
       <button type="button" className="no-print" onClick={exportCV}>
