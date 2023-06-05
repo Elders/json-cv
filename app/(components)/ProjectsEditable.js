@@ -104,6 +104,7 @@ export default function ProjectsEditable({ projects }) {
                 items={project.references || []}
                 showLabel={true}
                 mainLabelText="URL: "
+                className={cardStyles.references}
                 onChange={(references, labels) => {
                   editHandler(
                     'references',

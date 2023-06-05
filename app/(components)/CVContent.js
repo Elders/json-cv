@@ -65,12 +65,16 @@ export default function CVContent({ initialCV }) {
       <div className="empty-div"></div>
       <ListCard
         title="Tools & Technologies"
+        hint={
+          "Tools you have experience and/or are familiar with, like programming languages, frameworks, libraries, 3rd party applications and APIs, source control, debugging and/or testing tools, and cloud providers."
+        }
         items={CV?.technologies || []}
         propName="technologies"
       />
       <div className="empty-div"></div>
       <ListCard
         title="Industry knowledge"
+        hint={"Paradigms, software development/testing methodologies, workflows (e.g. Scrum, Mobile testing, Microservices, CI/CD, etc.)"}
         items={CV?.industryKnowledge || []}
         propName="industryKnowledge"
       />

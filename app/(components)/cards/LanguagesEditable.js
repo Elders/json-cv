@@ -1,4 +1,3 @@
-
 import cardStyles from "@/app/(styles)/card.module.scss";
 import store from "@/store/store";
 import {
@@ -25,6 +24,12 @@ export default function LanguagesEditable({ languages }) {
   return (
     <div className={`${cardStyles.card}`}>
       <h2>Languages</h2>
+      <p className="hints">
+        Language competence levels:
+        <br />
+        Beginner, Intermediate, Fluent, Native
+      </p>
+      <p className="hints">State the certificate level, if you have one (A1-C2)</p>
       <div>
         {languages.map((language, index) => {
           return (

@@ -30,6 +30,7 @@ export default function EducationEditable({ items }) {
   return (
     <div className={cardStyles.card}>
       <h2>Education</h2>
+      <p className="hints">Degree and speciality (e.g. Master of Computer Science, Bachelor of Marketing)</p>
 
       {items.map((item, index) => {
         return (

@@ -4,14 +4,14 @@ import cardStyles from "@/app/(styles)/card.module.scss";
 import ReactStars from "react-stars";
 
 
-export default function ListCard({ title, items, propName }) {
+export default function ListCard({ title, items, propName, hint }) {
   const { isEditing, showRatings, cv } = useSelector((state) => state.app);
 
   const ratingsPropName = propName + "ratings";
   const ratings = cv ? cv[ratingsPropName] || [] : [];
 
   if (isEditing) {
-    return <ListEditable title={title} items={items} propName={propName} />;
+    return <ListEditable hint={hint} title={title} items={items} propName={propName} />;
   }
 
   return (

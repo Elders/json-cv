@@ -7,7 +7,13 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import * as dictionary from "@/dictionary";
 
-export default function ListEditable({ title, items, holderClass, propName }) {
+export default function ListEditable({
+  title,
+  items,
+  holderClass,
+  propName,
+  hint,
+}) {
   const data = useSelector((state) => state.app).cv;
   const ratingsPropName = propName + "ratings";
   const ratings = data[ratingsPropName] || [];
@@ -45,6 +51,7 @@ export default function ListEditable({ title, items, holderClass, propName }) {
       <header className={cardStyles.header}>
         <h2>{title}</h2>
       </header>
+      <p className="hints">{hint}</p>
       <main className={`${cardStyles.list_items_holder}  ${holderClass}`}>
         <MultipleInputs
           items={items}

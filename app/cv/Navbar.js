@@ -40,10 +40,11 @@ export default function Navbar({ cv }) {
           <Image src={person} alt="a person" />
         </div>
 
-        <div className="flex">
+        <div className="flex align-center">
           <h1>ELDER-N/</h1>
           {isEditing ? (
             <input
+              className="ml-1"
               value={newElderNumber}
               onChange={(e) => {
                 setElderNumber(e.target.value);
@@ -57,6 +58,7 @@ export default function Navbar({ cv }) {
             <h1 className="ml-3">Name: </h1>
             {isEditing ? (
               <input
+                className="ml-1"
                 value={newElderName}
                 onChange={(e) => {
                   setNewElderName(e.target.value);

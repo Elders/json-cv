@@ -13,6 +13,7 @@ export default function MultipleInputs({
   mainLabelText,
   updateRating,
   deleteRating,
+  ...rest
 }) {
   const [renderItems, setRenderItems] = useState(items);
   const [labelElements, setLabelElements] = useState(defaultLabels || []);
@@ -52,7 +53,7 @@ export default function MultipleInputs({
   }
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "30px" }} {...rest}>
       {renderItems.map((item, index) => {
         return (
           <div key={index}>
