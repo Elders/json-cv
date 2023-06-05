@@ -51,6 +51,7 @@ export default function ProjectsEditable({ projects }) {
               <header>
                 <h4 className="my-1">Name: </h4>
                 <input
+                  className={cardStyles.project_name_input}
                   type="text"
                   value={project.name}
                   required
@@ -61,6 +62,7 @@ export default function ProjectsEditable({ projects }) {
                 <div>
                   <h4 className="my-1">Role:</h4>
                   <input
+                    className={cardStyles.project_name_input}
                     type="text"
                     value={project.role}
                     onChange={(e) =>
@@ -86,6 +88,7 @@ export default function ProjectsEditable({ projects }) {
               <div>
                 <h4 className="my-1">Environment:</h4>
                 <input
+                  className={cardStyles.project_name_input}
                   value={project.environment}
                   onChange={(e) =>
                     editHandler('environment', e.target.value, project.id)
