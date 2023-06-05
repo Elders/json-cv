@@ -81,7 +81,6 @@ export default function PositionProject({
       <div className={cardStyles.position_technology_stack}>
         <h2 className="my-1">Technology Stack: </h2>
         <textarea
-          className={cardStyles.textarea}
           placeholder="Technology Stack"
           value={project?.technologyStack || ""}
           id="technologyStack"
@@ -100,13 +99,14 @@ export default function PositionProject({
           sectionHeading={<h2 className="my-1">Description:</h2>}
           canEdit={true}
         >
+         
           <textarea
-            className={cardStyles.textarea}
             placeholder="Description"
             value={project?.description || ""}
             id="description"
             onChange={(e) => editHandler({ description: e.target.value })}
           ></textarea>
+           <p className="hints align-right">Supports Markdown</p>
           <p className="hints">
             In a few concise and comprehensive sentences describe:
           </p>

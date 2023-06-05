@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import cardStyles from '@/app/(styles)/card.module.scss'
+import cardStyles from "@/app/(styles)/card.module.scss";
 
 function EducationExternal(props) {
   const [education, setEducation] = useState();
@@ -35,6 +35,10 @@ function EducationExternal(props) {
               props.handler(props.index, "description", e.target.value);
             }}
           />
+          <p className="hints">
+            Degree and speciality (e.g. Master of Computer Science, Bachelor of
+            Marketing)
+          </p>
         </div>
       </div>
     </>

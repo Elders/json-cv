@@ -23,12 +23,13 @@ export default function MarkdownElement({
     <div>
       <div className="pointer flex align-center justify-between">
         {sectionHeading}
-
-        {isPreview ? (
-          <EyeOff onClick={() => setIsPreview(false)} />
-        ) : (
-          <Eye onClick={() => setIsPreview(true)} />
-        )}
+        <button
+          onClick={() => setIsPreview(!isPreview)}
+          className={styles.markdown_button}
+        >
+          {isPreview ? <EyeOff /> : <Eye />}
+          Preview
+        </button>
       </div>
       <div className="grow">
         {isPreview ? (

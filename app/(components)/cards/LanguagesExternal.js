@@ -22,7 +22,7 @@ function LanguagesExternal(props) {
         />
       </div>
       <div>
-        <label htmlFor="language-note">Note: </label>
+        <label htmlFor="language-note">Competence (Beginner, Intermediate, Fluent, Native):  </label>
         <input
           className={cardStyles.project_name_input}
           type="text"
@@ -33,6 +33,7 @@ function LanguagesExternal(props) {
             props.handler([["note", e.target.value]], props.index);
           }}
         />
+        <p className="hints">State the certificate level, if you have one (A1-C2)</p>
       </div>
     </>
   );

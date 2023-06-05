@@ -87,7 +87,7 @@ textarea {
   padding: 8px;
 
   border-radius: 8px;
-  resize: none;
+  resize: vertical;
   font-family: inherit;
   font-size: 1rem;
 
@@ -271,4 +271,12 @@ pre {
 .hints {
   font-size: 0.85rem;
   color: #888b88;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.gap-1 {
+  gap: 8px;
 }
