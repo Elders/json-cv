@@ -1,18 +1,19 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Confirm from "./Confirm";
+
 import styles from "@/app/(styles)/CV.module.scss";
 import { Edit2, Eye, Save, Trash2, Upload } from "lucide-react";
-import Image from "next/image";
+
 import axios from "axios";
-import { deleteCV, updateCV } from "@/store/slices/cvs";
+import { updateCV } from "@/store/slices/cvs";
 import store from "@/store/store";
 import { motion } from "framer-motion";
 import UploadImage from "./UploadImage";
 import toBase64 from "@/helpers/toBase64";
 import CVImage from "./CVImage";
-import getLastSegment from "@/helpers/getLastSegment";
+import customLoader from "@/helpers/customLoader.js";
+
 import { flushSync } from "react-dom";
 
 export default function SingleCV({ cv, onDeleteStart }) {
@@ -38,11 +39,8 @@ export default function SingleCV({ cv, onDeleteStart }) {
   async function changeImage(url, file) {
     try {
       const base64String = await toBase64(file);
-      const {
-        data: { path },
-      } = await axios.post("/api/changeImage", {
+      await axios.post("/api/changeImage", {
         base64String,
-        fileName: cv.id,
         cvId: cv.id,
       });
 
@@ -100,7 +98,7 @@ export default function SingleCV({ cv, onDeleteStart }) {
               width={60}
               height={60}
               className={styles.img}
-              loader={() => cv.image}
+              loader={customLoader}
               onClick={startChanging}
               onDelete={deleteImage}
             />

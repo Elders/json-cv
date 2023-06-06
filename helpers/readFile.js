@@ -6,7 +6,7 @@ export default async function readFile(path, defaultValue) {
     currentContent = await fs.readFile(path);
     currentContent = JSON.parse(currentContent.toString());
   } catch (err) {
-    if (typeof defaultValue === undefined) {
+    if (typeof defaultValue === "undefined") {
       throw new Error(err.message);
     }
   }

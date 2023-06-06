@@ -19,5 +19,6 @@ export default async function uploadImage(data) {
 
   fs.writeFile(filePath, fileContents, "base64");
 
-  return process.env.HOST + "api/getImage/" + fullFileName;
+  // return process.env.HOST + "api/getImage/" + fullFileName;
+  return fullFileName;
 }

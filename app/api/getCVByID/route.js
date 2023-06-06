@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
+  console.log("tu");
   const { searchParams } = new URL(req.url);
   const ID = searchParams.get("id");
 

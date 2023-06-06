@@ -1,27 +1,20 @@
 import fs from "fs/promises";
-import readFile from "@/helpers/readFile";
 import { NextResponse } from "next/server";
 import getLastSegment from "@/helpers/getLastSegment";
+import getCVByID from "@/helpers/getCVById";
 
 export async function DELETE(req) {
   let isSuccess = true;
-  console.log("requrl: ", req.url);
-  const cvImage = decodeURI(getLastSegment(req.url));
 
-  const content = await readFile("./data/cv.json");
-  const cv = content.find((cv) => {
-    console.log("ls: ", getLastSegment(cv.image), cvImage);
-    return getLastSegment(cv.image)?.includes(cvImage);
-  });
+  const cvID = decodeURI(getLastSegment(req.url));
+  const cv = await getCVByID(cvID);
 
-  const prevImage = getLastSegment(cv.image);
   cv.image = null;
 
   try {
-    await fs.writeFile("./data/cv.json", JSON.stringify(content));
-    await fs.unlink("./images/" + prevImage);
+    await fs.writeFile(`./data/${cvID}.json`, JSON.stringify(cv));
   } catch (err) {
-    console.log(err);
+    console.log("error: ", err);
     isSuccess = false;
   }
 

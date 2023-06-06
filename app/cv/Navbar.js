@@ -8,6 +8,7 @@ import styles from "@/app/(styles)/CV.module.scss";
 import { useSelector } from "react-redux";
 import { updateCv } from "@/store/slices/app";
 import { useState } from "react";
+import customLoader from "@/helpers/customLoader";
 
 export default function Navbar({ cv }) {
   const { isEditing } = useSelector((state) => state.app);
@@ -32,7 +33,7 @@ export default function Navbar({ cv }) {
               alt=""
               width={70}
               height={70}
-              loader={() => cv.image}
+              loader={customLoader}
               className={`no-print ${styles.cv_picture}`}
             />
           ) : null}

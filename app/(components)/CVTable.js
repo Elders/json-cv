@@ -43,6 +43,7 @@ export default function CVTable({ initData }) {
     setDeleteId(false);
     try {
       await axios.delete(`${process.env.NEXT_PUBLIC_HOST}/api/cv/${deleteId}`);
+      console.log("deleteID: ", deleteId);
       store.dispatch(deleteCV(deleteId));
     } catch (err) {
       console.log("ERROR: ", err);
@@ -94,7 +95,7 @@ export default function CVTable({ initData }) {
           </AnimatePresence>
         </tbody>
       </table>
-    {/* // </AnimationWrapper> */}
+      {/* // </AnimationWrapper> */}
     </div>
   );
 }
