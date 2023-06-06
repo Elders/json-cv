@@ -11,7 +11,7 @@ export async function POST(req) {
   const result = JSON.parse(await parse(req));
   let CVID = result.id || crypto.randomUUID();
 
-  while (currentContent.indexOf(CVID) !== -1) {
+  while (currentContent.includes(CVID)) {
     CVID = crypto.randomUUID();
   }
 
