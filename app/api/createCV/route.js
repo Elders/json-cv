@@ -7,16 +7,19 @@ import fileExists from "@/helpers/fileExists";
 
 export async function POST(req) {
   let isSuccess = true;
-
+  const currentContent = await readFile("./data/cv.json", []);
   const result = JSON.parse(await parse(req));
-  const CVID = result.id || crypto.randomUUID();
+  let CVID = result.id || crypto.randomUUID();
+
+  while (currentContent.indexOf(CVID) !== -1) {
+    CVID = crypto.randomUUID();
+  }
 
   const newCV = {
     id: CVID,
     ...result,
   };
 
-  const currentContent = await readFile("./data/cv.json", []);
   currentContent.push(newCV);
 
   try {
