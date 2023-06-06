@@ -9,11 +9,11 @@ export async function POST(req) {
   let isSuccess = true;
 
   const result = JSON.parse(await parse(req));
-  const CVID = crypto.randomUUID();
+  const CVID = result.id || crypto.randomUUID();
 
   const newCV = {
-    ...result,
     id: CVID,
+    ...result,
   };
 
   const currentContent = await readFile("./data/cv.json", []);

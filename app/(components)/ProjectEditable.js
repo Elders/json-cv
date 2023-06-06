@@ -29,7 +29,6 @@ export default function ProjectEditable({ project, index, length }) {
 
   function moveProject(start, moveBy) {
     const end = start + moveBy;
-    console.log(ref.current.getBoundingClientRect());
 
     store.dispatch(swapOpenSourceProjects([start, end]));
     const { height, top, bottom, y } = ref.current.getBoundingClientRect();

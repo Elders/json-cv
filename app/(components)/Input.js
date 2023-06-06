@@ -39,7 +39,6 @@ function Input({
   }
 
   function handleKeyDown(e) {
-    console.log(e.keyCode);
     if (e.keyCode === ESCAPE_KEYCODE) {
       handleBlur();
     } else if (e.keyCode === DOWN_KEYCODE) {
