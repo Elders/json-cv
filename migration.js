@@ -10,6 +10,9 @@ async function main() {
   if (!fileContents) return;
 
   for (const cv of fileContents) {
+    if(!cv.image) {
+      continue;
+    }
     cv.image = cv.image.slice(cv.image.lastIndexOf("/"));
     await fs.writeFile(`./data/${cv.id}.json`, JSON.stringify(cv));
   }
