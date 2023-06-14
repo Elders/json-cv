@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import ListEditable from "./ListEditable";
 import cardStyles from "@/app/(styles)/card.module.scss";
-import ReactStars from "react-stars";
-
+import Rating from "react-rating";
+import RatingPlaceholder from "../RatingPlaceholder";
 
 export default function ListCard({ title, items, propName, hint }) {
   const { isEditing, showRatings, cv } = useSelector((state) => state.app);
@@ -11,7 +11,14 @@ export default function ListCard({ title, items, propName, hint }) {
   const ratings = cv ? cv[ratingsPropName] || [] : [];
 
   if (isEditing) {
-    return <ListEditable hint={hint} title={title} items={items} propName={propName} />;
+    return (
+      <ListEditable
+        hint={hint}
+        title={title}
+        items={items}
+        propName={propName}
+      />
+    );
   }
 
   return (
@@ -26,15 +33,14 @@ export default function ListCard({ title, items, propName, hint }) {
             <div key={item + index}>
               <span> - {item}</span>{" "}
               {showRatings ? (
-                <ReactStars
-                  count={5}
-                  onChange={(newRating) => updateRating(newRating, index)}
-                  size={24}
-                  half={false}
-                  edit={false}
-                  value={ratings[index]}
-                  color2={"#e40521"}
-                />
+                <div className="mt-1">
+                  <Rating
+                    readonly={true}
+                    initialRating={ratings[index]}
+                    emptySymbol={<RatingPlaceholder />}
+                    fullSymbol={<RatingPlaceholder isFilled={true} />}
+                  />
+                </div>
               ) : null}
             </div>
           );

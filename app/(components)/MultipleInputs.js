@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import ReactStars from "react-stars";
+import Rating from "react-rating";
 import Input from "./Input";
+import RatingPlaceholder from "./RatingPlaceholder";
 
 export default function MultipleInputs({
   items,
@@ -72,18 +73,17 @@ export default function MultipleInputs({
               value={item}
               dictionary={dictionary}
               labelText={mainLabelText}
-             
             ></Input>
 
             {ratings ? (
-              <ReactStars
-                count={5}
-                onChange={(newRating) => updateRating(newRating, index)}
-                size={24}
-                half={false}
-                value={ratings[index]}
-                color2={"#e40521"}
-              />
+              <div className="mt-1">
+                <Rating
+                  initialRating={ratings[index]}
+                  emptySymbol={<RatingPlaceholder />}
+                  fullSymbol={<RatingPlaceholder isFilled={true} />}
+                  onChange={(newRating) => updateRating(newRating, index)}
+                />
+              </div>
             ) : null}
           </div>
         );
