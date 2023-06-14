@@ -2,10 +2,11 @@
   height: 15px;
   width: 20px;
   border-radius: 20%;
-  background-color: gray;
+  border: 1px solid gray;
   margin-right: 5px;
 
   &.filled {
     background-color: var(--red);
+    border: 1px solid var(--red);
   }
 }
