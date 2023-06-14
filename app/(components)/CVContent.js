@@ -17,6 +17,7 @@ import cardStyles from "@/app/(styles)/card.module.scss";
 import cvStyles from "@/app/(styles)/CV.module.scss";
 import Image from "next/image";
 import waves from "@/assets/waves.svg";
+import AboutCard from "./cards/AboutCard";
 
 export default function CVContent({ initialCV }) {
   const { isEditing } = useSelector((state) => state.app);
@@ -36,6 +37,8 @@ export default function CVContent({ initialCV }) {
     <>
       <Navbar cv={CV} />
       <Image src={waves} alt="waves" className={cvStyles.waves} />
+      <AboutCard info={CV?.info}/>
+      <div className="empty-div"></div>
       <section>
         {CV?.positions?.map((position, index, positions) => {
           return (
