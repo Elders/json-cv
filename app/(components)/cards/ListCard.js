@@ -33,7 +33,7 @@ export default function ListCard({ title, items, propName, hint }) {
             <div key={item + index}>
               <span> - {item}</span>{" "}
               {showRatings ? (
-                <div className="mt-1">
+                <div>
                   <Rating
                     readonly={true}
                     initialRating={ratings[index]}
