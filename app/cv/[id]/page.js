@@ -16,8 +16,10 @@ export default async function CVPage({ params }) {
 export async function generateMetadata({ params }) {
   const cv = await getCV(params);
 
+  const title = cv.elderNumber ? `Elder ${cv.elderNumber}` : "CV Page";
+
   return {
-    title: cv.name || "CV Page",
+    title,
   };
 }
 
