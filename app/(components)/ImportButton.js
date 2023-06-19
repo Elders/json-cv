@@ -3,7 +3,9 @@ import axios from "axios";
 import { useRef } from "react";
 import { addCV } from "@/store/slices/cvs";
 import { useRouter } from "next/navigation";
+import { DEFAULT_SCHEMA, CURRENT_SCHEMA } from "@/constants";
 import store from "@/store/store";
+import getMigratedCV from "@/helpers/getMigratedCV.mjs";
 
 export default function ImportButton({ ...rest }) {
   const router = useRouter();
@@ -19,7 +21,13 @@ export default function ImportButton({ ...rest }) {
     fileReader.readAsText(e.target.files[0]);
 
     fileReader.onloadend = async () => {
-      const importedCV = JSON.parse(fileReader.result);
+      let importedCV = JSON.parse(fileReader.result);
+      try {
+        importedCV.schema = DEFAULT_SCHEMA;
+        importedCV = getMigratedCV(importedCV, CURRENT_SCHEMA);
+      } catch {
+        alert("Unsupported CV schema");
+      }
 
       const { data } = await axios.post("/api/createCV", importedCV);
       if (!data.isSuccess) {

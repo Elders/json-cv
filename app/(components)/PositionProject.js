@@ -7,6 +7,8 @@ import { ChevronDownIcon, ChevronUpIcon, Trash2 } from "lucide-react";
 
 import MultipleInputs from "./MultipleInputs";
 import MarkdownElement from "./MarkdownElement";
+import reduceObjField from "@/helpers/reduceObjField";
+import parseReferences from "@/helpers/parseReferences.mjs";
 
 export default function PositionProject({
   project,
@@ -17,6 +19,8 @@ export default function PositionProject({
 }) {
   const red = useCustomProperty("red");
   const projectsRef = useRef();
+  const defaultLabels = reduceObjField(project.references, "label");
+  const referencesLinks = reduceObjField(project.references, "link");
 
   function deleteHandler() {
     store.dispatch(
@@ -132,15 +136,14 @@ export default function PositionProject({
       </div>
       <div>
         <MultipleInputs
-          items={project.references || []}
-          defaultLabels={project.referencesLabels}
+          items={referencesLinks || []}
+          defaultLabels={defaultLabels}
           showLabel={true}
           mainLabelText={"URL: "}
           className={cardStyles.references}
           onChange={(references, labels) => {
             editHandler({
-              references: references.filter(Boolean),
-              referencesLabels: labels.filter(Boolean),
+              references: parseReferences(references, labels),
             });
           }}
         />

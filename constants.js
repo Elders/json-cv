@@ -1,0 +1,4 @@
+const DEFAULT_SCHEMA = 0;
+const CURRENT_SCHEMA = 1;
+
+export { DEFAULT_SCHEMA, CURRENT_SCHEMA };

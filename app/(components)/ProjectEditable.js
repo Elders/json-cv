@@ -9,9 +9,13 @@ import {
 } from "@/store/slices/app";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import MarkdownElement from "./MarkdownElement";
+import reduceObjField from "@/helpers/reduceObjField";
+import parseReferences from "@/helpers/parseReferences.mjs";
 
 export default function ProjectEditable({ project, index, length }) {
   const ref = useRef();
+  const referencesLabels = reduceObjField(project.references, "label");
+  const referencesLinks = reduceObjField(project.references, "link");
 
   function editHandler(prop, value, id) {
     store.dispatch(
@@ -102,18 +106,17 @@ export default function ProjectEditable({ project, index, length }) {
           <h4 className="my-1">References:</h4>
         </div>
         <MultipleInputs
-          defaultLabels={project.labels}
-          items={project.references || []}
+          defaultLabels={referencesLabels}
+          items={referencesLinks || []}
           showLabel={true}
           mainLabelText="URL: "
           className={cardStyles.references}
           onChange={(references, labels) => {
             editHandler(
               "references",
-              references?.filter(Boolean) || [],
+              parseReferences(references, labels),
               project.id
             );
-            editHandler("labels", labels?.filter(Boolean) || [], project.id);
           }}
         />
         <div className="mt-1">

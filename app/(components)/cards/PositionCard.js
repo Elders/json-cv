@@ -1,13 +1,13 @@
-import { useSelector } from 'react-redux';
-import formatDate from '@/helpers/date';
-import cardStyles from '@/app/(styles)/card.module.scss';
-import PositionEditable from './PositionEditable';
-import Link from '../Link';
-import MarkdownElement from '../MarkdownElement';
+import { useSelector } from "react-redux";
+import formatDate from "@/helpers/date";
+import cardStyles from "@/app/(styles)/card.module.scss";
+import PositionEditable from "./PositionEditable";
+import Link from "../Link";
+import MarkdownElement from "../MarkdownElement";
 
 export default function PositionCard({ position, index, length, ...rest }) {
   const { isEditing } = useSelector((state) => state.app);
-  const indexValue = (index + 1).toString().padStart(2, '0');
+  const indexValue = (index + 1).toString().padStart(2, "0");
 
   if (isEditing) {
     return (
@@ -29,7 +29,7 @@ export default function PositionCard({ position, index, length, ...rest }) {
           </div>
           <div>
             <h3 className="column-name">
-              POSITION / ({formatDate(position.startDate)} -{' '}
+              POSITION / ({formatDate(position.startDate)} -{" "}
               {formatDate(position.endDate)})
             </h3>
             <h2 className={`${cardStyles.position_name} ${cardStyles.heading}`}>
@@ -51,7 +51,7 @@ export default function PositionCard({ position, index, length, ...rest }) {
                 </div>
               </div>
               {project.technologyStack ? (
-                <div className={'mb-3'}>
+                <div className={"mb-3"}>
                   <h2>Technology Stack: </h2>
                   <p>{project.technologyStack}</p>
                 </div>
@@ -72,8 +72,8 @@ export default function PositionCard({ position, index, length, ...rest }) {
                 return (
                   <div key={index} className="mt-2">
                     <Link
-                      link={reference}
-                      placeholder={project.referencesLabels[index] || reference}
+                      link={reference.link}
+                      placeholder={reference.label || reference.link}
                       key={index}
                     />
                   </div>

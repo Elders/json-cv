@@ -3,7 +3,7 @@ import { Montserrat } from "@next/font/google";
 import styles from "@/app/(styles)/layout.module.scss";
 import StoreInitializer from "./(components)/StoreInitializer";
 import StoreProvider from "./(components)/StoreProvider";
-import readCVS from "@/helpers/readCVS";
+import readCVS from "@/helpers/readCVS.mjs";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],

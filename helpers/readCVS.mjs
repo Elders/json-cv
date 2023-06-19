@@ -1,5 +1,5 @@
 import fs from "fs/promises";
-import readFile from "./readFile";
+import readFile from "./readFile.mjs";
 
 export default async function readCVS() {
   const result = [];

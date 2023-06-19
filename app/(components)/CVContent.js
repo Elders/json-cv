@@ -37,7 +37,7 @@ export default function CVContent({ initialCV }) {
     <>
       <Navbar cv={CV} />
       <Image src={waves} alt="waves" className={cvStyles.waves} />
-      <AboutCard info={CV?.info}/>
+      <AboutCard info={CV?.info} />
       <div className="empty-div"></div>
       <section>
         {CV?.positions?.map((position, index, positions) => {
@@ -77,7 +77,9 @@ export default function CVContent({ initialCV }) {
       <div className="empty-div"></div>
       <ListCard
         title="Industry knowledge"
-        hint={"Paradigms, software development/testing methodologies, workflows (e.g. Scrum, Mobile testing, Microservices, CI/CD, etc.)"}
+        hint={
+          "Paradigms, software development/testing methodologies, workflows (e.g. Scrum, Mobile testing, Microservices, CI/CD, etc.)"
+        }
         items={CV?.industryKnowledge || []}
         propName="industryKnowledge"
       />

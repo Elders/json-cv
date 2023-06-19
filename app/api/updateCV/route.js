@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import bodyParser from "@/helpers/bodyParser";
-import readFile from "@/helpers/readFile";
+import readFile from "@/helpers/readFile.mjs";
 
 export async function POST(req) {
   let isSuccess = true;

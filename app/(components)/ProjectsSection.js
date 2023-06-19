@@ -46,12 +46,12 @@ function ProjectCard({ project }) {
             <h4>REFERENCES</h4>
             <div>
               {project.references.map((reference, index) => {
-                const placeholder = project.labels
-                  ? project.labels[index]
-                  : reference;
+                console.log("project.references: ", project.references);
+                const placeholder = reference.label || reference.link;
+
                 return (
                   <div className="mt-1" key={index}>
-                    <Link link={reference} placeholder={placeholder} />
+                    <Link link={reference.link} placeholder={placeholder} />
                   </div>
                 );
               })}
