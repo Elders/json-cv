@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import readCVS from "./helpers/readCVS.mjs";
 import getMigratedCV from "./helpers/getMigratedCV.mjs";
-import { DEFAULT_SCHEMA, CURRENT_SCHEMA } from "@/constants.js";
+import { DEFAULT_SCHEMA, CURRENT_SCHEMA } from "./constants.mjs";
 
 async function main() {
   try {
