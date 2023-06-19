@@ -42,7 +42,7 @@ export default function Navbar({ cv }) {
         </div>
 
         <div className="flex align-center">
-          <h1>ELDER-N/</h1>
+          <h1>ELDER </h1>
           {isEditing ? (
             <input
               className="ml-1"
@@ -53,7 +53,7 @@ export default function Navbar({ cv }) {
               }}
             />
           ) : (
-            <h1>{cv?.elderNumber}</h1>
+            <h1>&nbsp; {cv?.elderNumber}</h1>
           )}
           <div className="no-print flex">
             <h1 className="ml-3">Name: </h1>
