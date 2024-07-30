@@ -18,6 +18,7 @@ export default function ListEditable({
   const ratingsPropName = propName + "ratings";
   const ratings = data[ratingsPropName] || [];
 
+
   function updateItems(newItems) {
     store.dispatch(
       updateCv({

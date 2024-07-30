@@ -19,6 +19,8 @@ export default function MultipleInputs({
   const [renderItems, setRenderItems] = useState(items);
   const [labelElements, setLabelElements] = useState(defaultLabels || []);
 
+
+
   useEffect(() => {
     if (!renderItems.length || renderItems[renderItems.length - 1]) {
       setRenderItems([...renderItems, ""]);
@@ -32,6 +34,8 @@ export default function MultipleInputs({
     newItems[index] = value;
     setRenderItems(newItems);
 
+
+
     if (index === renderItems.length - 1 && value) {
       setRenderItems((renderItems) => [...renderItems, ""]);
       return;
@@ -44,7 +48,15 @@ export default function MultipleInputs({
       updatedItems.splice(index, 1);
       setRenderItems(updatedItems);
       ratings && deleteRating();
+
     }
+    if (index !== renderItems.length - 2) {
+      const updatedItems = [...newItems];
+      updatedItems.splice(index, 1);
+      setRenderItems(updatedItems);
+      ratings && deleteRating();
+    }
+
   }
 
   function updateLabel(e, index) {
